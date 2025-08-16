@@ -13,10 +13,16 @@ interface UserInfoProps {
 }
 
 export default function UserInfo({ onContinue, onBack }: UserInfoProps) {
-  const [firstName, setFirstName] = useState("Daniel");
-  const [lastName, setLastName] = useState("Daniel");
-  const [birthday, setBirthday] = useState("");
+  const { userData, updateUserData } = useUser();
+  const [firstName, setFirstName] = useState(userData.firstName || "Daniel");
+  const [lastName, setLastName] = useState(userData.lastName || "Daniel");
+  const [birthday, setBirthday] = useState(userData.birthday || "");
   const [showDatePicker, setShowDatePicker] = useState(false);
+
+  // Update context when local state changes
+  useEffect(() => {
+    updateUserData({ firstName, lastName, birthday });
+  }, [firstName, lastName, birthday, updateUserData]);
 
   const handleContinue = () => {
     if (onContinue) {
