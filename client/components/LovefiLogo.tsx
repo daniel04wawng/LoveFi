@@ -44,7 +44,7 @@ export default function LovefiLogo({ size = 275, className = "" }: LovefiLogoPro
       </div>
       
       {/* LoveFi Text */}
-      <h1 className="text-4xl font-normal mt-4 bg-gradient-to-r from-lovefi-purple to-lovefi-purple-pink bg-clip-text text-transparent">
+      <h1 className="text-3xl sm:text-4xl font-alata font-normal mt-4 bg-gradient-to-r from-lovefi-purple to-lovefi-purple-pink bg-clip-text text-transparent">
         LoveFi
       </h1>
     </div>
