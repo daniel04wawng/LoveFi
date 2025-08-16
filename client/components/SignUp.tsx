@@ -20,18 +20,21 @@ export default function SignUp({
   return (
     <div className="h-screen bg-white flex flex-col items-center px-6 sm:px-10 py-8 overflow-hidden">
       <div className="w-full max-w-[295px] flex flex-col items-center h-full justify-between">
-        {/* Logo Section */}
-        <div className="mb-8 sm:mb-12">
-          <LovefiLogo size={240} className="sm:scale-110" />
-        </div>
+        {/* Top Section with Logo */}
+        <div className="flex flex-col items-center pt-4">
+          {/* Logo Section */}
+          <div className="mb-8">
+            <LovefiLogo size={240} className="sm:scale-110" />
+          </div>
 
-        {/* Sign Up Section */}
-        <div className="w-full space-y-6 mb-12">
           {/* Heading */}
           <h2 className="text-lg font-alata font-normal text-center text-black mb-8">
             Sign up to continue
           </h2>
+        </div>
 
+        {/* Middle Section with Buttons */}
+        <div className="w-full space-y-6 flex-grow flex flex-col justify-center">
           {/* Email Button */}
           <button
             onClick={onEmailSignUp}
@@ -50,30 +53,30 @@ export default function SignUp({
           >
             Use phone number
           </button>
-        </div>
 
-        {/* Social Login Section */}
-        <div className="w-full space-y-6 mb-12">
-          {/* Divider */}
-          <div className="flex items-center">
-            <div className="flex-1 h-px bg-black opacity-40"></div>
-            <span className="px-4 text-xs font-alata font-normal text-black">
-              or sign up with
-            </span>
-            <div className="flex-1 h-px bg-black opacity-40"></div>
+          {/* Social Login Section */}
+          <div className="w-full space-y-6 pt-6">
+            {/* Divider */}
+            <div className="flex items-center">
+              <div className="flex-1 h-px bg-black opacity-40"></div>
+              <span className="px-4 text-xs font-alata font-normal text-black">
+                or sign up with
+              </span>
+              <div className="flex-1 h-px bg-black opacity-40"></div>
+            </div>
+
+            {/* Social Icons */}
+            <SocialLogin
+              onFacebookClick={onFacebookLogin}
+              onGoogleClick={onGoogleLogin}
+              onAppleClick={onAppleLogin}
+              className="justify-center"
+            />
           </div>
-
-          {/* Social Icons */}
-          <SocialLogin
-            onFacebookClick={onFacebookLogin}
-            onGoogleClick={onGoogleLogin}
-            onAppleClick={onAppleLogin}
-            className="justify-center"
-          />
         </div>
 
-        {/* Footer Links */}
-        <div className="flex items-center justify-center gap-6 text-sm">
+        {/* Bottom Section with Footer Links */}
+        <div className="flex items-center justify-center gap-6 text-sm pb-4">
           <Link
             to="/terms"
             className="text-lovefi-text-secondary font-alata hover:opacity-80 transition-opacity"
