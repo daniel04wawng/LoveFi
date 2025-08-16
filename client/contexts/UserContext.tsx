@@ -29,13 +29,13 @@ const UserContext = createContext<UserContextType | undefined>(undefined);
 export function UserProvider({ children }: { children: ReactNode }) {
   const [userData, setUserData] = useState<UserData>({});
 
-  const updateUserData = (data: Partial<UserData>) => {
+  const updateUserData = useCallback((data: Partial<UserData>) => {
     setUserData(prev => ({ ...prev, ...data }));
-  };
+  }, []);
 
-  const clearUserData = () => {
+  const clearUserData = useCallback(() => {
     setUserData({});
-  };
+  }, []);
 
   return (
     <UserContext.Provider value={{ userData, updateUserData, clearUserData }}>
