@@ -51,7 +51,7 @@ export default function WalletConnect({
         type: walletInfo.type
       }
     });
-  }, [walletInfo, updateUserData]);
+  }, [walletInfo.name, walletInfo.logo, walletInfo.type, updateUserData]);
 
   const handleConnectWallet = async () => {
     setIsConnecting(true);
