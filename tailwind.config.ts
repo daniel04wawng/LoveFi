@@ -57,6 +57,13 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        lovefi: {
+          purple: "hsl(var(--lovefi-purple))",
+          "purple-light": "hsl(var(--lovefi-purple-light))",
+          "purple-pink": "hsl(var(--lovefi-purple-pink))",
+          "text-secondary": "hsl(var(--lovefi-text-secondary))",
+          border: "hsl(var(--lovefi-border))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
