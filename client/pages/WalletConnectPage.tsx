@@ -11,8 +11,8 @@ export default function WalletConnectPage() {
     // 2. Update user profile/state
     // 3. Navigate to next step in onboarding
 
-    // For now, just log the data
-    // navigate("/next-step"); // Navigate to next onboarding step
+    // Navigate to user info collection
+    navigate("/user-info");
   };
 
   const handleBack = () => {
