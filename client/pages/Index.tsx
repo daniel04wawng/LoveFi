@@ -1,14 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import SignUp from "../components/SignUp";
 
 export default function Index() {
+  const navigate = useNavigate();
+
   const handleEmailSignUp = () => {
     console.log("Email sign up clicked");
-    // TODO: Implement email sign up logic
+    navigate("/wallet-connect");
   };
 
   const handlePhoneSignUp = () => {
     console.log("Phone sign up clicked");
-    // TODO: Implement phone sign up logic
+    navigate("/wallet-connect");
   };
 
   const handleFacebookLogin = () => {
