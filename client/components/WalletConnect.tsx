@@ -31,7 +31,8 @@ const WALLET_CONFIGS = {
 export default function WalletConnect({ onContinue, onBack }: WalletConnectProps) {
   const [walletInfo, setWalletInfo] = useState<WalletInfo>({
     name: "Metamask",
-    logo: undefined // Will be updated when wallet connects
+    type: 'metamask',
+    logo: WALLET_CONFIGS.metamask.logo
   });
   const [isConnecting, setIsConnecting] = useState(false);
 
@@ -39,16 +40,34 @@ export default function WalletConnect({ onContinue, onBack }: WalletConnectProps
     setIsConnecting(true);
     // TODO: Implement actual wallet connection logic here
     // This will connect to third-party API and update logo/name
-    
-    // Simulate API call
+
+    // Simulate API call - in real implementation this would:
+    // 1. Detect available wallets
+    // 2. Connect to selected wallet
+    // 3. Get wallet info from third-party API
+    // 4. Update state with actual wallet data
     setTimeout(() => {
       setIsConnecting(false);
-      // The logo and name would be updated from the API response
+      // Simulate different wallet types being detected
+      const walletType = 'metamask'; // This would come from API detection
+      const config = WALLET_CONFIGS[walletType];
+
       setWalletInfo({
-        name: "Metamask", // This would come from API
-        logo: undefined // This would be the actual logo URL from API
+        name: config.name,
+        type: walletType,
+        logo: config.logo // This would be the actual logo URL from API
       });
     }, 1000);
+  };
+
+  // Function to simulate wallet detection (for demo purposes)
+  const simulateWalletChange = (walletType: keyof typeof WALLET_CONFIGS) => {
+    const config = WALLET_CONFIGS[walletType];
+    setWalletInfo({
+      name: config.name,
+      type: walletType,
+      logo: config.logo
+    });
   };
 
   const handleContinue = () => {
