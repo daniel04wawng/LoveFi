@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import LovefiLogo from "./LovefiLogo";
 import SocialLogin from "./SocialIcons";
+import AnimatedPageWrapper from "./AnimatedPageWrapper";
 
 interface SignUpProps {
   onEmailSignUp?: () => void;
