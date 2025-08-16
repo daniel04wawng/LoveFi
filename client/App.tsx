@@ -44,16 +44,6 @@ const App = () => (
   </QueryClientProvider>
 );
 
-// Only create root if it doesn't exist
 const rootElement = document.getElementById("root")!;
-let root: ReturnType<typeof createRoot>;
-
-// Check if we're in development and root already exists
-if (rootElement.hasChildNodes()) {
-  // In development, just update the existing root
-  root = createRoot(rootElement);
-} else {
-  root = createRoot(rootElement);
-}
-
+const root = createRoot(rootElement);
 root.render(<App />);
