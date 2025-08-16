@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import WalletConnectPage from "./pages/WalletConnectPage";
+import UserInfoPage from "./pages/UserInfoPage";
 
 const queryClient = new QueryClient();
 
