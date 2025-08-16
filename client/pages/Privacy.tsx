@@ -14,13 +14,13 @@ export default function Privacy() {
 
         {/* Content */}
         <div className="space-y-6">
-          <h1 className="text-2xl font-semibold text-center mb-8">Privacy Policy</h1>
+          <h1 className="text-2xl font-alata font-semibold text-center mb-8">Privacy Policy</h1>
           
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 text-center">
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-600 font-alata mb-4">
               This is a placeholder page for Privacy Policy.
             </p>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-500 font-alata">
               Continue prompting to have me fill in the actual privacy policy content.
             </p>
           </div>
@@ -28,7 +28,7 @@ export default function Privacy() {
           <div className="text-center pt-6">
             <Link 
               to="/" 
-              className="inline-flex items-center justify-center px-6 py-3 rounded-2xl text-white font-normal transition-all hover:opacity-90"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-2xl text-white font-alata font-normal transition-all hover:opacity-90"
               style={{
                 background: "linear-gradient(90deg, #8D7DFF 0%, #C160FF 100%)"
               }}
