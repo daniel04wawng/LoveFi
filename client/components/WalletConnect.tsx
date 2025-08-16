@@ -9,7 +9,24 @@ interface WalletConnectProps {
 interface WalletInfo {
   name: string;
   logo?: string;
+  type?: 'metamask' | 'coinbase' | 'walletconnect' | 'phantom' | 'other';
 }
+
+// Wallet type configurations
+const WALLET_CONFIGS = {
+  metamask: {
+    name: 'Metamask',
+    logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMjguNSAxNkMxOS4xNjcgMjAuNzUgMTYgMjQgMTYgMjRzLTMuMTY3LTMuMjUtMTIuNS04QzYuNSAxOS43NSA5LjY2NyAyMyAzLjUgMjcuNSA5LjY2NyAyNy41IDEyIDI0IDE2IDI0IDIwIDI0IDI0IDI3LjUgMjguNSAyNy41IDIyLjMzMyAyMyAyNS41IDE5Ljc1IDI4LjUgMTZ6IiBmaWxsPSIjRjY4NTFCIi8+PC9zdmc+'
+  },
+  coinbase: {
+    name: 'Coinbase Wallet',
+    logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIxNiIgZmlsbD0iIzAwNTJGRiIvPjxyZWN0IHg9IjkiIHk9IjkiIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCIgcng9IjMiIGZpbGw9IndoaXRlIi8+PC9zdmc+'
+  },
+  phantom: {
+    name: 'Phantom',
+    logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIxNiIgZmlsbD0iIzRGNDREOCIvPjxwYXRoIGQ9Ik0xMS41IDIyLjVDMTMgMjQgMTUgMjMuNSAxNiAyMmMxLTEuNSAxLjUtMi41IDEuNS0yLjVzMC41IDEgMS41IDIuNWMxIDEuNSAzIDIgNC41IDAuNWMxLjUtMS41IDEuNS00IDAtNS41LTEuNS0xLjUtMy40LTItNC0yLjVzLS44LTEuNS0uOC0xLjVzLS4zIDEtLjggMS41Yy0uNiAwLjUtMi41IDEtNCAyLjUtMS41IDEuNS0xLjUgNC0wIDUuNXoiIGZpbGw9IndoaXRlIi8+PC9zdmc+'
+  }
+};
 
 export default function WalletConnect({ onContinue, onBack }: WalletConnectProps) {
   const [walletInfo, setWalletInfo] = useState<WalletInfo>({
