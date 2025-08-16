@@ -18,8 +18,8 @@ export default function SignUp({
   onAppleLogin
 }: SignUpProps) {
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-6 sm:px-10 py-8">
-      <div className="w-full max-w-[295px] flex flex-col items-center">
+    <div className="h-screen bg-white flex flex-col items-center px-6 sm:px-10 py-8 overflow-hidden">
+      <div className="w-full max-w-[295px] flex flex-col items-center h-full justify-between">
         {/* Logo Section */}
         <div className="mb-8 sm:mb-12">
           <LovefiLogo size={240} className="sm:scale-110" />
