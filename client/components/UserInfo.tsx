@@ -200,7 +200,7 @@ export default function UserInfo({ onContinue, onBack }: UserInfoProps) {
                 </svg>
                 
                 {/* Date Text */}
-                <span className="text-sm font-alata font-normal text-lovefi-purple">
+                <span className="text-sm font-alata font-normal text-white">
                   {formatDate(birthday)}
                 </span>
               </button>
