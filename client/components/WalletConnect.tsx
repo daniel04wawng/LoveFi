@@ -34,12 +34,24 @@ export default function WalletConnect({
   onContinue,
   onBack,
 }: WalletConnectProps) {
+  const { userData, updateUserData } = useUser();
   const [walletInfo, setWalletInfo] = useState<WalletInfo>({
-    name: "Metamask",
-    type: "metamask",
-    logo: WALLET_CONFIGS.metamask.logo,
+    name: userData.wallet?.name || "Metamask",
+    type: (userData.wallet?.type as any) || "metamask",
+    logo: userData.wallet?.logo || WALLET_CONFIGS.metamask.logo,
   });
   const [isConnecting, setIsConnecting] = useState(false);
+
+  // Update context when wallet info changes
+  useEffect(() => {
+    updateUserData({
+      wallet: {
+        name: walletInfo.name,
+        logo: walletInfo.logo,
+        type: walletInfo.type
+      }
+    });
+  }, [walletInfo, updateUserData]);
 
   const handleConnectWallet = async () => {
     setIsConnecting(true);
