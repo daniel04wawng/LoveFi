@@ -40,7 +40,7 @@ export default function AnimatedPageWrapper({
       exit="exit"
       transition={slideTransition}
       className="w-full h-full absolute inset-0"
-      style={{ willChange: 'transform, opacity' }}
+      style={{ willChange: "transform, opacity" }}
     >
       {children}
     </motion.div>

@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import AnimatedPageWrapper from "./AnimatedPageWrapper";
 
 interface UserInfoProps {
-  onContinue?: (userInfo: { firstName: string; lastName: string; birthday: string }) => void;
+  onContinue?: (userInfo: {
+    firstName: string;
+    lastName: string;
+    birthday: string;
+  }) => void;
   onBack?: () => void;
 }
 
@@ -27,10 +31,10 @@ export default function UserInfo({ onContinue, onBack }: UserInfoProps) {
   const formatDate = (dateString: string) => {
     if (!dateString) return "Choose birthday date";
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-GB', { 
-      day: '2-digit', 
-      month: '2-digit', 
-      year: 'numeric' 
+    return date.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
     });
   };
 
@@ -45,17 +49,17 @@ export default function UserInfo({ onContinue, onBack }: UserInfoProps) {
               onClick={onBack}
               className="inline-flex items-center justify-center w-[52px] h-[52px] rounded-2xl border border-lovefi-border bg-white hover:bg-gray-50 transition-colors"
             >
-              <svg 
-                width="24" 
-                height="24" 
-                viewBox="0 0 24 24" 
-                fill="none" 
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path 
-                  fillRule="evenodd" 
-                  clipRule="evenodd" 
-                  d="M15.2071 18.7071C14.8166 19.0976 14.1834 19.0976 13.7929 18.7071L7.79289 12.7071C7.40237 12.3166 7.40237 11.6834 7.79289 11.2929L13.7929 5.29289C14.1834 4.90237 14.8166 4.90237 15.2071 5.29289C15.5976 5.68342 15.5976 6.31658 15.2071 6.70711L9.91421 12L15.2071 17.2929C15.5976 17.6834 15.5976 18.3166 15.2071 18.7071Z" 
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M15.2071 18.7071C14.8166 19.0976 14.1834 19.0976 13.7929 18.7071L7.79289 12.7071C7.40237 12.3166 7.40237 11.6834 7.79289 11.2929L13.7929 5.29289C14.1834 4.90237 14.8166 4.90237 15.2071 5.29289C15.5976 5.68342 15.5976 6.31658 15.2071 6.70711L9.91421 12L15.2071 17.2929C15.5976 17.6834 15.5976 18.3166 15.2071 18.7071Z"
                   fill="#9579FF"
                 />
               </svg>
@@ -66,7 +70,9 @@ export default function UserInfo({ onContinue, onBack }: UserInfoProps) {
           <div className="pt-12 pb-8">
             <h1 className="text-lg font-alata font-normal leading-[150%] text-black">
               Nice! Next, what is your{" "}
-              <span className="text-lovefi-text-secondary">name and birthday?</span>
+              <span className="text-lovefi-text-secondary">
+                name and birthday?
+              </span>
             </h1>
           </div>
 
@@ -117,88 +123,88 @@ export default function UserInfo({ onContinue, onBack }: UserInfoProps) {
                 className="w-full h-[58px] rounded-2xl bg-lovefi-purple bg-opacity-10 flex items-center px-4 gap-3 transition-colors hover:bg-opacity-20"
               >
                 {/* Calendar Icon */}
-                <svg 
-                  width="20" 
-                  height="22" 
-                  viewBox="0 0 20 22" 
-                  fill="none" 
+                <svg
+                  width="20"
+                  height="22"
+                  viewBox="0 0 20 22"
+                  fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                   className="flex-shrink-0"
                 >
-                  <path 
-                    d="M1.09265 8.40427H18.9166" 
-                    stroke="#937AFF" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
+                  <path
+                    d="M1.09265 8.40427H18.9166"
+                    stroke="#937AFF"
+                    strokeWidth="2"
+                    strokeLinecap="round"
                     strokeLinejoin="round"
                   />
-                  <path 
-                    d="M14.4421 12.3097H14.4513" 
-                    stroke="#937AFF" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
+                  <path
+                    d="M14.4421 12.3097H14.4513"
+                    stroke="#937AFF"
+                    strokeWidth="2"
+                    strokeLinecap="round"
                     strokeLinejoin="round"
                   />
-                  <path 
-                    d="M10.0046 12.3097H10.0139" 
-                    stroke="#937AFF" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
+                  <path
+                    d="M10.0046 12.3097H10.0139"
+                    stroke="#937AFF"
+                    strokeWidth="2"
+                    strokeLinecap="round"
                     strokeLinejoin="round"
                   />
-                  <path 
-                    d="M5.55787 12.3097H5.56713" 
-                    stroke="#937AFF" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
+                  <path
+                    d="M5.55787 12.3097H5.56713"
+                    stroke="#937AFF"
+                    strokeWidth="2"
+                    strokeLinecap="round"
                     strokeLinejoin="round"
                   />
-                  <path 
-                    d="M14.4421 16.1962H14.4513" 
-                    stroke="#937AFF" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
+                  <path
+                    d="M14.4421 16.1962H14.4513"
+                    stroke="#937AFF"
+                    strokeWidth="2"
+                    strokeLinecap="round"
                     strokeLinejoin="round"
                   />
-                  <path 
-                    d="M10.0046 16.1962H10.0139" 
-                    stroke="#937AFF" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
+                  <path
+                    d="M10.0046 16.1962H10.0139"
+                    stroke="#937AFF"
+                    strokeWidth="2"
+                    strokeLinecap="round"
                     strokeLinejoin="round"
                   />
-                  <path 
-                    d="M5.55787 16.1962H5.56713" 
-                    stroke="#937AFF" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
+                  <path
+                    d="M5.55787 16.1962H5.56713"
+                    stroke="#937AFF"
+                    strokeWidth="2"
+                    strokeLinecap="round"
                     strokeLinejoin="round"
                   />
-                  <path 
-                    d="M14.0437 1V4.29078" 
-                    stroke="#937AFF" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
+                  <path
+                    d="M14.0437 1V4.29078"
+                    stroke="#937AFF"
+                    strokeWidth="2"
+                    strokeLinecap="round"
                     strokeLinejoin="round"
                   />
-                  <path 
-                    d="M5.96552 1V4.29078" 
-                    stroke="#937AFF" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
+                  <path
+                    d="M5.96552 1V4.29078"
+                    stroke="#937AFF"
+                    strokeWidth="2"
+                    strokeLinecap="round"
                     strokeLinejoin="round"
                   />
-                  <path 
-                    fillRule="evenodd" 
-                    clipRule="evenodd" 
-                    d="M14.2383 2.57919H5.77096C2.83427 2.57919 1 4.21513 1 7.22222V16.2719C1 19.3262 2.83427 21 5.77096 21H14.229C17.175 21 19 19.3546 19 16.3475V7.22222C19.0092 4.21513 17.1842 2.57919 14.2383 2.57919Z" 
-                    stroke="#937AFF" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M14.2383 2.57919H5.77096C2.83427 2.57919 1 4.21513 1 7.22222V16.2719C1 19.3262 2.83427 21 5.77096 21H14.229C17.175 21 19 19.3546 19 16.3475V7.22222C19.0092 4.21513 17.1842 2.57919 14.2383 2.57919Z"
+                    stroke="#937AFF"
+                    strokeWidth="2"
+                    strokeLinecap="round"
                     strokeLinejoin="round"
                   />
                 </svg>
-                
+
                 {/* Date Text */}
                 <span className="text-sm font-alata font-normal text-white">
                   {formatDate(birthday)}
@@ -225,7 +231,7 @@ export default function UserInfo({ onContinue, onBack }: UserInfoProps) {
               onClick={handleContinue}
               className="w-full h-14 rounded-2xl text-white font-alata font-normal text-base transition-all hover:opacity-90"
               style={{
-                background: "linear-gradient(90deg, #8F7CFF 0%, #BE62FF 100%)"
+                background: "linear-gradient(90deg, #8F7CFF 0%, #BE62FF 100%)",
               }}
             >
               Continue
