@@ -41,7 +41,7 @@ export default function WalletConnect({ onContinue, onBack }: WalletConnectProps
     setIsConnecting(true);
     // TODO: Implement actual wallet connection logic here
     // This will connect to third-party API and update logo/name
-
+    
     // Simulate API call - in real implementation this would:
     // 1. Detect available wallets
     // 2. Connect to selected wallet
@@ -52,7 +52,7 @@ export default function WalletConnect({ onContinue, onBack }: WalletConnectProps
       // Simulate different wallet types being detected
       const walletType = 'metamask'; // This would come from API detection
       const config = WALLET_CONFIGS[walletType];
-
+      
       setWalletInfo({
         name: config.name,
         type: walletType,
@@ -78,91 +78,92 @@ export default function WalletConnect({ onContinue, onBack }: WalletConnectProps
   };
 
   return (
-    <div className="h-screen bg-white px-5 py-5 relative overflow-hidden">
-      <div className="w-full max-w-[375px] mx-auto h-full flex flex-col">
-        {/* Back Button */}
-        <div className="flex-shrink-0 pt-4">
-          <Link
-            to="/"
-            onClick={onBack}
-            className="inline-flex items-center justify-center w-[52px] h-[52px] rounded-2xl border border-lovefi-border bg-white hover:bg-gray-50 transition-colors"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+    <AnimatedPageWrapper direction="left">
+      <div className="h-screen bg-white px-5 py-5 relative overflow-hidden">
+        <div className="w-full max-w-[375px] mx-auto h-full flex flex-col">
+          {/* Back Button */}
+          <div className="flex-shrink-0 pt-4">
+            <Link
+              to="/"
+              onClick={onBack}
+              className="inline-flex items-center justify-center w-[52px] h-[52px] rounded-2xl border border-lovefi-border bg-white hover:bg-gray-50 transition-colors"
             >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M15.2071 18.7071C14.8166 19.0976 14.1834 19.0976 13.7929 18.7071L7.79289 12.7071C7.40237 12.3166 7.40237 11.6834 7.79289 11.2929L13.7929 5.29289C14.1834 4.90237 14.8166 4.90237 15.2071 5.29289C15.5976 5.68342 15.5976 6.31658 15.2071 6.70711L9.91421 12L15.2071 17.2929C15.5976 17.6834 15.5976 18.3166 15.2071 18.7071Z"
-                fill="#B865FF"
-              />
-            </svg>
-          </Link>
-        </div>
+              <svg 
+                width="24" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path 
+                  fillRule="evenodd" 
+                  clipRule="evenodd" 
+                  d="M15.2071 18.7071C14.8166 19.0976 14.1834 19.0976 13.7929 18.7071L7.79289 12.7071C7.40237 12.3166 7.40237 11.6834 7.79289 11.2929L13.7929 5.29289C14.1834 4.90237 14.8166 4.90237 15.2071 5.29289C15.5976 5.68342 15.5976 6.31658 15.2071 6.70711L9.91421 12L15.2071 17.2929C15.5976 17.6834 15.5976 18.3166 15.2071 18.7071Z" 
+                  fill="#B865FF"
+                />
+              </svg>
+            </Link>
+          </div>
 
-        {/* Header Text */}
-        <div className="pt-12 pb-4">
-          <h1 className="text-lg font-alata font-normal leading-[150%] text-black">
-            Its time to find your{" "}
-            <span className="text-lovefi-text-secondary">true love!</span>
-            <br />
-            First, lets connect your wallet
-          </h1>
-        </div>
+          {/* Header Text */}
+          <div className="pt-12 pb-4">
+            <h1 className="text-lg font-alata font-normal leading-[150%] text-black">
+              Its time to find your{" "}
+              <span className="text-lovefi-text-secondary">true love!</span>
+              <br />
+              First, lets connect your wallet
+            </h1>
+          </div>
 
-        {/* Wallet Input Field */}
-        <div className="relative flex-grow pt-2">
-          {/* Input Container */}
-          <div className="relative">
-            <div className="w-full h-[58px] border border-lovefi-border rounded-2xl bg-white flex items-center px-4 gap-3">
-              {/* Wallet Logo */}
-              <div className="w-6 h-5 flex items-center justify-center">
-                {walletInfo.logo ? (
-                  <img
-                    src={walletInfo.logo}
-                    alt={walletInfo.name}
-                    className="w-5 h-5 object-contain"
-                  />
-                ) : (
-                  <div className="w-6 h-5 bg-gray-300 rounded flex items-center justify-center">
-                    <span className="text-[10px] font-alata text-gray-600">logo</span>
-                  </div>
-                )}
+          {/* Wallet Input Field */}
+          <div className="relative flex-grow pt-2">
+            {/* Input Container */}
+            <div className="relative">
+              <div className="w-full h-[58px] border border-lovefi-border rounded-2xl bg-white flex items-center px-4 gap-3">
+                {/* Wallet Logo */}
+                <div className="w-6 h-5 flex items-center justify-center">
+                  {walletInfo.logo ? (
+                    <img 
+                      src={walletInfo.logo} 
+                      alt={walletInfo.name}
+                      className="w-5 h-5 object-contain"
+                    />
+                  ) : (
+                    <div className="w-6 h-5 bg-gray-300 rounded flex items-center justify-center">
+                      <span className="text-[10px] font-alata text-gray-600">logo</span>
+                    </div>
+                  )}
+                </div>
+                
+                {/* Wallet Name */}
+                <span className="text-sm font-alata font-normal text-black">
+                  {walletInfo.name}
+                </span>
               </div>
               
-              {/* Wallet Name */}
-              <span className="text-sm font-alata font-normal text-black">
-                {walletInfo.name}
-              </span>
-            </div>
-            
-            {/* Floating Label */}
-            <div className="absolute -top-[9px] left-5 bg-white px-2">
-              <span className="text-xs font-alata font-normal text-black text-opacity-40">
-                Wallet
-              </span>
+              {/* Floating Label */}
+              <div className="absolute -top-[9px] left-5 bg-white px-2">
+                <span className="text-xs font-alata font-normal text-black text-opacity-40">
+                  Wallet
+                </span>
+              </div>
             </div>
           </div>
-        </div>
 
-
-        {/* Continue Button */}
-        <div className="flex-shrink-0 pb-8">
-          <button
-            onClick={handleContinue}
-            className="w-full h-14 rounded-2xl text-white font-alata font-normal text-base transition-all hover:opacity-90"
-            style={{
-              background: "linear-gradient(90deg, #8F7CFF 0%, #BB63FF 100%)"
-            }}
-          >
-            Continue
-          </button>
+          {/* Continue Button */}
+          <div className="flex-shrink-0 pb-8">
+            <button
+              onClick={handleContinue}
+              className="w-full h-14 rounded-2xl text-white font-alata font-normal text-base transition-all hover:opacity-90"
+              style={{
+                background: "linear-gradient(90deg, #8F7CFF 0%, #BB63FF 100%)"
+              }}
+            >
+              Continue
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </AnimatedPageWrapper>
   );
 }
