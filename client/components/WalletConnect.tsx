@@ -150,7 +150,7 @@ export default function WalletConnect({ onContinue, onBack }: WalletConnectProps
 
 
         {/* Continue Button */}
-        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-full max-w-[295px]">
+        <div className="flex-shrink-0 pb-8">
           <button
             onClick={handleContinue}
             className="w-full h-14 rounded-2xl text-white font-alata font-normal text-base transition-all hover:opacity-90"
