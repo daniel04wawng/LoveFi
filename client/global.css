@@ -54,6 +54,13 @@
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* LoveFi Brand Colors */
+    --lovefi-purple: 258 90% 74%;
+    --lovefi-purple-light: 268 100% 85%;
+    --lovefi-purple-pink: 293 100% 69%;
+    --lovefi-text-secondary: 259 73% 71%;
+    --lovefi-border: 279 15% 92%;
   }
 
   .dark {
@@ -92,6 +99,13 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* LoveFi Brand Colors (same in dark mode) */
+    --lovefi-purple: 258 90% 74%;
+    --lovefi-purple-light: 268 100% 85%;
+    --lovefi-purple-pink: 293 100% 69%;
+    --lovefi-text-secondary: 259 73% 71%;
+    --lovefi-border: 279 15% 92%;
   }
 }
 
