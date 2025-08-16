@@ -44,12 +44,16 @@ const App = () => (
   </QueryClientProvider>
 );
 
-// Ensure root is only created once
+// Only create root if it doesn't exist
 const rootElement = document.getElementById("root")!;
-if (!rootElement._reactRoot) {
-  const root = createRoot(rootElement);
-  rootElement._reactRoot = root;
-  root.render(<App />);
+let root: ReturnType<typeof createRoot>;
+
+// Check if we're in development and root already exists
+if (rootElement.hasChildNodes()) {
+  // In development, just update the existing root
+  root = createRoot(rootElement);
 } else {
-  rootElement._reactRoot.render(<App />);
+  root = createRoot(rootElement);
 }
+
+root.render(<App />);
