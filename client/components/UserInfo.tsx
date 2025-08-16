@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useUser } from "../contexts/UserContext";
 import AnimatedPageWrapper from "./AnimatedPageWrapper";
 
 interface UserInfoProps {
