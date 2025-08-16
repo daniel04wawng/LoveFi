@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
 interface AnimatedPageWrapperProps {
@@ -8,7 +8,7 @@ interface AnimatedPageWrapperProps {
 
 const slideVariants = {
   enter: (direction: "left" | "right") => ({
-    x: direction === "left" ? -300 : 300,
+    x: direction === "left" ? -100 : 100,
     opacity: 0,
   }),
   center: {
@@ -16,7 +16,7 @@ const slideVariants = {
     opacity: 1,
   },
   exit: (direction: "left" | "right") => ({
-    x: direction === "left" ? 300 : -300,
+    x: direction === "left" ? 100 : -100,
     opacity: 0,
   }),
 };
@@ -24,7 +24,7 @@ const slideVariants = {
 const slideTransition = {
   type: "tween",
   ease: [0.25, 0.1, 0.25, 1],
-  duration: 0.4,
+  duration: 0.3,
 };
 
 export default function AnimatedPageWrapper({
@@ -33,14 +33,14 @@ export default function AnimatedPageWrapper({
 }: AnimatedPageWrapperProps) {
   return (
     <motion.div
-      key={direction}
       custom={direction}
       variants={slideVariants}
       initial="enter"
       animate="center"
       exit="exit"
       transition={slideTransition}
-      className="w-full h-full"
+      className="w-full h-full absolute inset-0"
+      style={{ willChange: 'transform, opacity' }}
     >
       {children}
     </motion.div>
