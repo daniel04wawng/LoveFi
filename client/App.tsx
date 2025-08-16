@@ -15,6 +15,7 @@ import Privacy from "./pages/Privacy";
 import WalletConnectPage from "./pages/WalletConnectPage";
 import UserInfoPage from "./pages/UserInfoPage";
 import GenderSelectionPage from "./pages/GenderSelectionPage";
+import LocationSelectionPage from "./pages/LocationSelectionPage";
 
 const queryClient = new QueryClient();
 
