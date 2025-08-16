@@ -6,8 +6,8 @@ export default function GenderSelectionPage() {
 
   const handleContinue = () => {
     console.log("Gender selection completed");
-    // TODO: Navigate to next step in onboarding
-    // navigate("/next-step");
+    // Navigate to location selection
+    navigate("/location-selection");
   };
 
   const handleBack = () => {
