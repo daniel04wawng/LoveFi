@@ -3,7 +3,10 @@ interface LovefiLogoProps {
   className?: string;
 }
 
-export default function LovefiLogo({ size = 275, className = "" }: LovefiLogoProps) {
+export default function LovefiLogo({
+  size = 275,
+  className = "",
+}: LovefiLogoProps) {
   return (
     <div className={`flex flex-col items-center ${className}`}>
       {/* Logo Icon */}
@@ -14,7 +17,7 @@ export default function LovefiLogo({ size = 275, className = "" }: LovefiLogoPro
         height={size}
         className="w-full h-auto"
       />
-      
+
       {/* LoveFi Text */}
       <h1 className="text-3xl sm:text-4xl font-alata font-normal mt-4 bg-gradient-to-r from-lovefi-purple to-lovefi-purple-pink bg-clip-text text-transparent">
         LoveFi

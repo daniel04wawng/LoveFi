@@ -27,9 +27,9 @@ const slideTransition = {
   duration: 0.4,
 };
 
-export default function AnimatedPageWrapper({ 
-  children, 
-  direction = "left" 
+export default function AnimatedPageWrapper({
+  children,
+  direction = "left",
 }: AnimatedPageWrapperProps) {
   return (
     <motion.div
@@ -50,7 +50,7 @@ export default function AnimatedPageWrapper({
 // Higher order component for page transitions
 export function withPageTransition<T extends object>(
   Component: React.ComponentType<T>,
-  direction: "left" | "right" = "left"
+  direction: "left" | "right" = "left",
 ) {
   return function AnimatedPage(props: T) {
     return (

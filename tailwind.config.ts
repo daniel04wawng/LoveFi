@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        alata: ['Alata', 'sans-serif'],
-        sans: ['Alata', 'system-ui', 'sans-serif'],
+        alata: ["Alata", "sans-serif"],
+        sans: ["Alata", "system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

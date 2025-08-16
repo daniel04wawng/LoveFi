@@ -10,7 +10,7 @@ export default function WalletConnectPage() {
     // 1. Save wallet data to backend
     // 2. Update user profile/state
     // 3. Navigate to next step in onboarding
-    
+
     // For now, just log the data
     // navigate("/next-step"); // Navigate to next onboarding step
   };
@@ -19,10 +19,5 @@ export default function WalletConnectPage() {
     navigate("/");
   };
 
-  return (
-    <WalletConnect
-      onContinue={handleContinue}
-      onBack={handleBack}
-    />
-  );
+  return <WalletConnect onContinue={handleContinue} onBack={handleBack} />;
 }

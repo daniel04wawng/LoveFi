@@ -16,7 +16,7 @@ export default function SignUp({
   onPhoneSignUp,
   onFacebookLogin,
   onGoogleLogin,
-  onAppleLogin
+  onAppleLogin,
 }: SignUpProps) {
   return (
     <AnimatedPageWrapper direction="right">
@@ -42,7 +42,7 @@ export default function SignUp({
               onClick={onEmailSignUp}
               className="w-full h-14 rounded-2xl text-white font-alata font-normal text-base transition-all hover:opacity-90"
               style={{
-                background: "linear-gradient(90deg, #8D7DFF 0%, #C160FF 100%)"
+                background: "linear-gradient(90deg, #8D7DFF 0%, #C160FF 100%)",
               }}
             >
               Continue with email
