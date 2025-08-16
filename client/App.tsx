@@ -13,6 +13,7 @@ import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import WalletConnectPage from "./pages/WalletConnectPage";
 import UserInfoPage from "./pages/UserInfoPage";
+import GenderSelectionPage from "./pages/GenderSelectionPage";
 
 const queryClient = new QueryClient();
 
