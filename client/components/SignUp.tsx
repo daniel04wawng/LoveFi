@@ -18,24 +18,24 @@ export default function SignUp({
   onAppleLogin
 }: SignUpProps) {
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-10 py-8">
-      <div className="w-full max-w-sm flex flex-col items-center">
+    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-6 sm:px-10 py-8">
+      <div className="w-full max-w-[295px] flex flex-col items-center">
         {/* Logo Section */}
-        <div className="mb-12 sm:mb-16">
-          <LovefiLogo size={275} className="scale-75 sm:scale-100" />
+        <div className="mb-8 sm:mb-12">
+          <LovefiLogo size={240} className="sm:scale-110" />
         </div>
 
         {/* Sign Up Section */}
         <div className="w-full space-y-6 mb-12">
           {/* Heading */}
-          <h2 className="text-lg font-normal text-center text-black mb-8">
+          <h2 className="text-lg font-alata font-normal text-center text-black mb-8">
             Sign up to continue
           </h2>
 
           {/* Email Button */}
           <button
             onClick={onEmailSignUp}
-            className="w-full h-14 rounded-2xl text-white font-normal text-base transition-all hover:opacity-90"
+            className="w-full h-14 rounded-2xl text-white font-alata font-normal text-base transition-all hover:opacity-90"
             style={{
               background: "linear-gradient(90deg, #8D7DFF 0%, #C160FF 100%)"
             }}
@@ -46,7 +46,7 @@ export default function SignUp({
           {/* Phone Number Button */}
           <button
             onClick={onPhoneSignUp}
-            className="w-full h-14 rounded-2xl border border-gray-100 bg-white text-lovefi-text-secondary font-normal text-base transition-all hover:bg-gray-50"
+            className="w-full h-14 rounded-2xl border border-gray-100 bg-white text-lovefi-text-secondary font-alata font-normal text-base transition-all hover:bg-gray-50"
           >
             Use phone number
           </button>
@@ -57,7 +57,7 @@ export default function SignUp({
           {/* Divider */}
           <div className="flex items-center">
             <div className="flex-1 h-px bg-black opacity-40"></div>
-            <span className="px-4 text-xs font-normal text-black">
+            <span className="px-4 text-xs font-alata font-normal text-black">
               or sign up with
             </span>
             <div className="flex-1 h-px bg-black opacity-40"></div>
@@ -74,15 +74,15 @@ export default function SignUp({
 
         {/* Footer Links */}
         <div className="flex items-center justify-center gap-6 text-sm">
-          <Link 
-            to="/terms" 
-            className="text-lovefi-text-secondary hover:opacity-80 transition-opacity"
+          <Link
+            to="/terms"
+            className="text-lovefi-text-secondary font-alata hover:opacity-80 transition-opacity"
           >
             Terms of use
           </Link>
-          <Link 
-            to="/privacy" 
-            className="text-lovefi-text-secondary hover:opacity-80 transition-opacity"
+          <Link
+            to="/privacy"
+            className="text-lovefi-text-secondary font-alata hover:opacity-80 transition-opacity"
           >
             Privacy Policy
           </Link>
