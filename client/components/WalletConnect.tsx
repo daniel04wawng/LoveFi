@@ -146,19 +146,6 @@ export default function WalletConnect({ onContinue, onBack }: WalletConnectProps
           </div>
         </div>
 
-        {/* Connect Wallet Button (if not connected) */}
-        {!walletInfo.name && (
-          <button
-            onClick={handleConnectWallet}
-            disabled={isConnecting}
-            className="w-full h-14 rounded-2xl mb-8 text-white font-alata font-normal text-base transition-all hover:opacity-90 disabled:opacity-50"
-            style={{
-              background: "linear-gradient(90deg, #8F7CFF 0%, #BB63FF 100%)"
-            }}
-          >
-            {isConnecting ? "Connecting..." : "Connect Wallet"}
-          </button>
-        )}
 
         {/* Continue Button */}
         <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-full max-w-[295px]">
