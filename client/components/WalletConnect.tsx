@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import AnimatedPageWrapper from "./AnimatedPageWrapper";
 
 interface WalletConnectProps {
   onContinue?: (walletData: { name: string; logo?: string }) => void;
