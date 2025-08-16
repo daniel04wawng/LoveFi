@@ -77,7 +77,7 @@ export default function WalletConnect({ onContinue, onBack }: WalletConnectProps
   };
 
   return (
-    <div className="min-h-screen bg-white px-5 py-5">
+    <div className="min-h-screen bg-white px-5 py-5 relative">
       <div className="w-full max-w-[375px] mx-auto">
         {/* Back Button */}
         <Link
