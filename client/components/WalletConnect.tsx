@@ -116,16 +116,18 @@ export default function WalletConnect({ onContinue, onBack }: WalletConnectProps
           {/* Input Container */}
           <div className="relative">
             <div className="w-full h-[58px] border border-lovefi-border rounded-2xl bg-white flex items-center px-4 gap-3">
-              {/* Wallet Logo Placeholder */}
-              <div className="w-6 h-5 bg-gray-300 rounded flex items-center justify-center">
+              {/* Wallet Logo */}
+              <div className="w-6 h-5 flex items-center justify-center">
                 {walletInfo.logo ? (
-                  <img 
-                    src={walletInfo.logo} 
+                  <img
+                    src={walletInfo.logo}
                     alt={walletInfo.name}
-                    className="w-full h-full object-contain"
+                    className="w-5 h-5 object-contain"
                   />
                 ) : (
-                  <span className="text-[10px] font-alata text-gray-600">logo</span>
+                  <div className="w-6 h-5 bg-gray-300 rounded flex items-center justify-center">
+                    <span className="text-[10px] font-alata text-gray-600">logo</span>
+                  </div>
                 )}
               </div>
               
