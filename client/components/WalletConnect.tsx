@@ -104,7 +104,7 @@ export default function WalletConnect({ onContinue, onBack }: WalletConnectProps
         </div>
 
         {/* Header Text */}
-        <div className="pt-12 pb-8">
+        <div className="pt-12 pb-4">
           <h1 className="text-lg font-alata font-normal leading-[150%] text-black">
             Its time to find your{" "}
             <span className="text-lovefi-text-secondary">true love!</span>
@@ -114,7 +114,7 @@ export default function WalletConnect({ onContinue, onBack }: WalletConnectProps
         </div>
 
         {/* Wallet Input Field */}
-        <div className="relative flex-grow">
+        <div className="relative flex-grow pt-2">
           {/* Input Container */}
           <div className="relative">
             <div className="w-full h-[58px] border border-lovefi-border rounded-2xl bg-white flex items-center px-4 gap-3">
