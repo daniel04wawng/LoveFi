@@ -39,6 +39,14 @@ export default function ProfilePage() {
     return userData.gender.charAt(0).toUpperCase() + userData.gender.slice(1);
   };
 
+  const getSexualityDisplay = () => {
+    if (!userData.sexuality) return "Not set";
+    if (userData.sexuality === "other" && userData.customSexuality) {
+      return userData.customSexuality;
+    }
+    return userData.sexuality.charAt(0).toUpperCase() + userData.sexuality.slice(1);
+  };
+
   const getPartnerPreferencesDisplay = () => {
     if (
       !userData.partnerPreferences ||
