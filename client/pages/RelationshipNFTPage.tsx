@@ -88,7 +88,39 @@ export default function RelationshipNFTPage() {
 
   return (
     <AnimatedPageWrapper>
-      <div className="w-full min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 relative max-w-sm mx-auto">
+      <div
+        className="w-full min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 relative max-w-sm mx-auto overflow-hidden"
+        style={{
+          transform: showCelebration ? 'scale(0.8)' : 'scale(1)',
+          animation: showCelebration ? 'celebrationScale 1s ease-out forwards' : 'none'
+        }}
+      >
+        {/* Confetti Animation */}
+        {confettiVisible && (
+          <div className="fixed inset-0 pointer-events-none z-50">
+            {Array.from({ length: 50 }).map((_, i) => (
+              <div
+                key={i}
+                className="absolute animate-confetti"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 3}s`,
+                  animationDuration: `${3 + Math.random() * 2}s`,
+                }}
+              >
+                <div
+                  className={`w-2 h-2 ${
+                    ['bg-pink-400', 'bg-purple-400', 'bg-yellow-400', 'bg-blue-400', 'bg-green-400'][
+                      Math.floor(Math.random() * 5)
+                    ]
+                  } ${
+                    Math.random() > 0.5 ? 'rounded-full' : 'rotate-45'
+                  }`}
+                />
+              </div>
+            ))}
+          </div>
+        )}
         {/* Header */}
         <div className="px-8 pt-8 pb-6 text-center">
           <h1 className="text-3xl font-[Alata] text-black mb-2">
