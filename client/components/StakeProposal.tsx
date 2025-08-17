@@ -35,9 +35,9 @@ export default function StakeProposal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 z-[60] flex items-center justify-center p-4">
-      <div 
-        className="bg-white rounded-[24px] p-8 w-full max-w-sm mx-auto"
+    <div className="fixed inset-0 bg-black/50 z-[60] flex items-end justify-center p-4">
+      <div
+        className="bg-white rounded-[24px] p-6 w-full max-w-sm mx-auto mb-4"
         style={{
           animation: 'slideUp 0.3s ease-out forwards'
         }}
