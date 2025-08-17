@@ -254,7 +254,7 @@ export default function ProfilePage() {
               </h2>
               <button
                 onClick={() =>
-                  navigate("/wallet-connect", { state: { from: "profile" } })
+                  navigate("/", { state: { from: "profile" } })
                 }
                 className="text-lovefi-purple font-[Alata] text-sm hover:underline"
               >
