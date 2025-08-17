@@ -6,8 +6,8 @@ export default function LocationSelectionPage() {
 
   const handleContinue = () => {
     console.log("Location selection completed");
-    // Navigate to partner preferences
-    navigate("/partner-preferences");
+    // Navigate to personal interests
+    navigate("/personal-interests");
   };
 
   const handleBack = () => {
