@@ -162,9 +162,19 @@ export default function ProfilePage() {
               </div>
               <div className="flex justify-between items-center py-3 border-b border-gray-100">
                 <span className="text-black font-[Alata]">Sexuality</span>
-                <span className="text-black/70 font-[Alata]">
-                  {getSexualityDisplay()}
-                </span>
+                <div className="flex items-center gap-3">
+                  <span className="text-black/70 font-[Alata]">
+                    {getSexualityDisplay()}
+                  </span>
+                  <button
+                    onClick={() =>
+                      navigate("/sexuality-selection", { state: { from: "profile" } })
+                    }
+                    className="text-lovefi-purple font-[Alata] text-sm hover:underline"
+                  >
+                    Edit
+                  </button>
+                </div>
               </div>
             </div>
           </div>
