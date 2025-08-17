@@ -109,7 +109,11 @@ interface UserContextType {
   getConversation: (profileId: string) => ChatMessage[];
   markMessagesAsRead: (profileId: string) => void;
   sendStakeProposal: (profileId: string, amount: number) => void;
-  respondToStakeProposal: (profileId: string, messageId: string, accept: boolean) => void;
+  respondToStakeProposal: (
+    profileId: string,
+    messageId: string,
+    accept: boolean,
+  ) => void;
 }
 
 // Create context with a default value to prevent undefined errors
@@ -377,77 +381,84 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     });
   }, []);
 
-  const respondToStakeProposal = useCallback((profileId: string, messageId: string, accept: boolean) => {
-    setUserData((prev) => {
-      const conversations = prev.conversations || [];
-      const timestamp = new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      });
+  const respondToStakeProposal = useCallback(
+    (profileId: string, messageId: string, accept: boolean) => {
+      setUserData((prev) => {
+        const conversations = prev.conversations || [];
+        const timestamp = new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
 
-      const updatedConversations = conversations.map((conv) => {
-        if (conv.profileId === profileId) {
-          const updatedMessages = conv.messages.map((msg) => {
-            if (msg.id === messageId && msg.type === "stake_proposal") {
-              return {
-                ...msg,
-                stakeData: {
-                  ...msg.stakeData!,
-                  status: accept ? "accepted" : "declined",
-                },
-              };
-            }
-            return msg;
-          });
+        const updatedConversations = conversations.map((conv) => {
+          if (conv.profileId === profileId) {
+            const updatedMessages = conv.messages.map((msg) => {
+              if (msg.id === messageId && msg.type === "stake_proposal") {
+                return {
+                  ...msg,
+                  stakeData: {
+                    ...msg.stakeData!,
+                    status: accept ? "accepted" : "declined",
+                  },
+                };
+              }
+              return msg;
+            });
 
-          // Add response message
-          const responseMessage: ChatMessage = {
-            id: (Date.now() + 1).toString(),
-            text: accept
-              ? `Accepted the stake proposal. You are now in a committed relationship!`
-              : `Declined the stake proposal.`,
-            timestamp,
-            isFromUser: false,
-            isRead: false,
-            type: "stake_response",
-          };
+            // Add response message
+            const responseMessage: ChatMessage = {
+              id: (Date.now() + 1).toString(),
+              text: accept
+                ? `Accepted the stake proposal. You are now in a committed relationship!`
+                : `Declined the stake proposal.`,
+              timestamp,
+              isFromUser: false,
+              isRead: false,
+              type: "stake_response",
+            };
 
-          return {
-            ...conv,
-            messages: [...updatedMessages, responseMessage],
-            lastActivity: new Date().toISOString(),
+            return {
+              ...conv,
+              messages: [...updatedMessages, responseMessage],
+              lastActivity: new Date().toISOString(),
+            };
+          }
+          return conv;
+        });
+
+        // If accepted, update relationship status
+        let newData = {
+          ...prev,
+          conversations: updatedConversations,
+        };
+
+        if (accept) {
+          // Find the stake amount from the original proposal
+          const conversation = conversations.find(
+            (conv) => conv.profileId === profileId,
+          );
+          const stakeMessage = conversation?.messages.find(
+            (msg) => msg.id === messageId,
+          );
+          const stakeAmount = stakeMessage?.stakeData?.amount || 0;
+
+          newData = {
+            ...newData,
+            relationshipStatus: {
+              isInRelationship: true,
+              partnerId: profileId,
+              stakeAmount,
+              startDate: new Date().toISOString(),
+            },
           };
         }
-        return conv;
+
+        saveToStorage(newData);
+        return newData;
       });
-
-      // If accepted, update relationship status
-      let newData = {
-        ...prev,
-        conversations: updatedConversations,
-      };
-
-      if (accept) {
-        // Find the stake amount from the original proposal
-        const conversation = conversations.find(conv => conv.profileId === profileId);
-        const stakeMessage = conversation?.messages.find(msg => msg.id === messageId);
-        const stakeAmount = stakeMessage?.stakeData?.amount || 0;
-
-        newData = {
-          ...newData,
-          relationshipStatus: {
-            isInRelationship: true,
-            partnerId: profileId,
-            stakeAmount,
-            startDate: new Date().toISOString(),
-          },
-        };
-      }
-
-      saveToStorage(newData);
-      return newData;
-    });
-  }, []);
+    },
+    [],
+  );
 
   const contextValue = {
     userData,

@@ -59,8 +59,15 @@ const sampleMessages = [
 // No default messages - chats start completely empty
 
 export default function MessagesPage() {
-  const { userData, updateUserData, sendMessage, getConversation, markMessagesAsRead, sendStakeProposal, respondToStakeProposal } =
-    useUser();
+  const {
+    userData,
+    updateUserData,
+    sendMessage,
+    getConversation,
+    markMessagesAsRead,
+    sendStakeProposal,
+    respondToStakeProposal,
+  } = useUser();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchText, setSearchText] = useState("");
@@ -566,39 +573,65 @@ export default function MessagesPage() {
                                       </g>
                                       <defs>
                                         <clipPath id="clip0_20_209">
-                                          <rect width="34" height="34" fill="white" />
+                                          <rect
+                                            width="34"
+                                            height="34"
+                                            fill="white"
+                                          />
                                         </clipPath>
                                       </defs>
                                     </svg>
-                                    <span className="font-[Alata] font-medium">Stake Proposal</span>
+                                    <span className="font-[Alata] font-medium">
+                                      Stake Proposal
+                                    </span>
                                   </div>
                                   <p className="text-sm font-[Alata] mb-3">
-                                    💎 {message.stakeData?.amount} ETH for exclusive relationship
+                                    💎 {message.stakeData?.amount} ETH for
+                                    exclusive relationship
                                   </p>
-                                  {message.stakeData?.status === "pending" && !message.isFromUser && (
-                                    <div className="flex gap-2 mt-3">
-                                      <button
-                                        onClick={() => openChatId && respondToStakeProposal(openChatId, message.id, true)}
-                                        className="flex-1 bg-white/20 hover:bg-white/30 text-white border border-white/30 rounded-lg py-2 px-3 text-xs font-[Alata] transition-colors"
-                                      >
-                                        Accept
-                                      </button>
-                                      <button
-                                        onClick={() => openChatId && respondToStakeProposal(openChatId, message.id, false)}
-                                        className="flex-1 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-lg py-2 px-3 text-xs font-[Alata] transition-colors"
-                                      >
-                                        Decline
-                                      </button>
-                                    </div>
-                                  )}
+                                  {message.stakeData?.status === "pending" &&
+                                    !message.isFromUser && (
+                                      <div className="flex gap-2 mt-3">
+                                        <button
+                                          onClick={() =>
+                                            openChatId &&
+                                            respondToStakeProposal(
+                                              openChatId,
+                                              message.id,
+                                              true,
+                                            )
+                                          }
+                                          className="flex-1 bg-white/20 hover:bg-white/30 text-white border border-white/30 rounded-lg py-2 px-3 text-xs font-[Alata] transition-colors"
+                                        >
+                                          Accept
+                                        </button>
+                                        <button
+                                          onClick={() =>
+                                            openChatId &&
+                                            respondToStakeProposal(
+                                              openChatId,
+                                              message.id,
+                                              false,
+                                            )
+                                          }
+                                          className="flex-1 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-lg py-2 px-3 text-xs font-[Alata] transition-colors"
+                                        >
+                                          Decline
+                                        </button>
+                                      </div>
+                                    )}
                                   {message.stakeData?.status === "accepted" && (
                                     <div className="bg-green-500/20 border border-green-300/30 rounded-lg p-2 mt-2">
-                                      <p className="text-xs font-[Alata] text-green-100">✅ Accepted</p>
+                                      <p className="text-xs font-[Alata] text-green-100">
+                                        ✅ Accepted
+                                      </p>
                                     </div>
                                   )}
                                   {message.stakeData?.status === "declined" && (
                                     <div className="bg-red-500/20 border border-red-300/30 rounded-lg p-2 mt-2">
-                                      <p className="text-xs font-[Alata] text-red-100">❌ Declined</p>
+                                      <p className="text-xs font-[Alata] text-red-100">
+                                        ❌ Declined
+                                      </p>
                                     </div>
                                   )}
                                 </div>
@@ -719,7 +752,9 @@ export default function MessagesPage() {
                       className="w-12 h-12 border border-purple-300 rounded-[15px] bg-purple-50 flex items-center justify-center hover:bg-purple-100 transition-colors"
                       title="Test: Simulate incoming stake proposal"
                     >
-                      <span className="text-sm font-bold text-purple-600">TEST</span>
+                      <span className="text-sm font-bold text-purple-600">
+                        TEST
+                      </span>
                     </button>
                   </div>
                 </div>

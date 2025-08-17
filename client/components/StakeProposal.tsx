@@ -7,11 +7,11 @@ interface StakeProposalProps {
   recipientName: string;
 }
 
-export default function StakeProposal({ 
-  isOpen, 
-  onClose, 
-  onSubmit, 
-  recipientName 
+export default function StakeProposal({
+  isOpen,
+  onClose,
+  onSubmit,
+  recipientName,
 }: StakeProposalProps) {
   const [stakeAmount, setStakeAmount] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -39,9 +39,9 @@ export default function StakeProposal({
       <div
         className="bg-white rounded-[20px] p-6 w-full max-w-sm mx-auto shadow-2xl"
         style={{
-          animation: isOpen ? 'scaleIn 0.3s ease-out forwards' : 'none',
-          transform: 'scale(0.8)',
-          transformOrigin: 'center'
+          animation: isOpen ? "scaleIn 0.3s ease-out forwards" : "none",
+          transform: "scale(0.8)",
+          transformOrigin: "center",
         }}
       >
         {/* Header */}
@@ -74,7 +74,8 @@ export default function StakeProposal({
             Stake Your Commitment
           </h2>
           <p className="text-gray-600 font-[Alata] text-sm">
-            How much ETH are you willing to stake for an exclusive relationship with {recipientName}?
+            How much ETH are you willing to stake for an exclusive relationship
+            with {recipientName}?
           </p>
         </div>
 
@@ -98,7 +99,8 @@ export default function StakeProposal({
             />
           </div>
           <p className="text-xs text-gray-500 font-[Alata] mt-2">
-            This ETH amount will be held in escrow until both parties agree to the relationship terms.
+            This ETH amount will be held in escrow until both parties agree to
+            the relationship terms.
           </p>
         </div>
 
@@ -128,7 +130,9 @@ export default function StakeProposal({
           </button>
           <button
             onClick={handleSubmit}
-            disabled={!stakeAmount || parseFloat(stakeAmount) <= 0 || isSubmitting}
+            disabled={
+              !stakeAmount || parseFloat(stakeAmount) <= 0 || isSubmitting
+            }
             className="flex-1 h-12 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-[Alata] rounded-[15px] hover:from-purple-600 hover:to-pink-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? "Proposing..." : "Propose Stake"}
