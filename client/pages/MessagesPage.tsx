@@ -57,7 +57,7 @@ export default function MessagesPage() {
       // Mark messages as read when opening chat
       markMessagesAsRead(chatId);
     }
-  }, [searchParams, userData.conversations, userData.firstName, messages, markMessagesAsRead]);
+  }, [searchParams, userData.conversations, userData.firstName, userData.messages]);
 
   // Update chat messages when conversation changes
   useEffect(() => {
