@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import UserInfo from "../components/UserInfo";
+import { useUser } from "../contexts/UserContext";
 
 export default function UserInfoPage() {
   const navigate = useNavigate();
+  const { updateUserData } = useUser();
 
   const handleContinue = (userInfo: {
     firstName: string;
@@ -10,10 +12,8 @@ export default function UserInfoPage() {
     birthday: string;
   }) => {
     console.log("User info collected:", userInfo);
-    // TODO: Here you would typically:
-    // 1. Save user info to backend
-    // 2. Update user profile/state
-    // 3. Navigate to next step in onboarding
+    // Save user info to context
+    updateUserData(userInfo);
 
     // Navigate to gender selection
     navigate("/gender-selection");
