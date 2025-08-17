@@ -126,9 +126,19 @@ export default function LocationSelection({
     const city = suggestion.address.city || suggestion.address.town || suggestion.address.village || '';
     const country = suggestion.address.country || '';
 
-    // Extract street information from the full address
-    const addressParts = suggestion.display_name.split(',');
-    const street = addressParts[0] || ''; // First part is usually the street
+    // Build street address from API components
+    let street = '';
+    if (suggestion.address.house_number && suggestion.address.road) {
+      street = `${suggestion.address.house_number} ${suggestion.address.road}`;
+    } else if (suggestion.address.road) {
+      street = suggestion.address.road;
+    } else if (suggestion.address.street) {
+      street = suggestion.address.street;
+    } else {
+      // Fallback: extract from display name
+      const addressParts = suggestion.display_name.split(',');
+      street = addressParts[0] || '';
+    }
 
     setLocationData({
       street: street.trim(),
