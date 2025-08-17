@@ -106,7 +106,9 @@ export default function MatchingScreen() {
         
         <div className="text-center">
           <h1 className="text-2xl font-[Alata] font-normal text-black">Discover</h1>
-          <p className="text-xs font-[Alata] text-black/70">Chicago, IL</p>
+          <p className="text-xs font-[Alata] text-black/70">
+            {userData.location || "Your Location"}
+          </p>
         </div>
         
         <div className="w-[52px]"></div> {/* Spacer */}
