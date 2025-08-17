@@ -20,6 +20,26 @@ export default function MatchingScreen() {
   const [isBouncing, setIsBouncing] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
+  // Function to format location from stored JSON
+  const formatLocation = (locationString?: string): string => {
+    if (!locationString) return "Your Location";
+
+    try {
+      // Try to parse as JSON (new format)
+      const locationData = JSON.parse(locationString);
+      const parts = [];
+
+      if (locationData.street) parts.push(locationData.street);
+      if (locationData.city) parts.push(locationData.city);
+      if (locationData.country) parts.push(locationData.country);
+
+      return parts.length > 0 ? parts.join(", ") : "Your Location";
+    } catch {
+      // If parsing fails, it's probably the old string format
+      return locationString;
+    }
+  };
+
   // Generate profiles based on user data
   useEffect(() => {
     const userInterests = userData.personalInterests || [];
