@@ -25,18 +25,6 @@ export default function BottomNavigation() {
       ),
     },
     {
-      id: "saved",
-      label: "Saved",
-      path: "/saved",
-      icon: (
-        <div className="w-6 h-6 flex items-center justify-center">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M15 1H5C3.9 1 3 1.9 3 3V19L10 16L17 19V3C17 1.9 16.1 1 15 1Z" transform="scale(0.9) translate(1,1)"/>
-          </svg>
-        </div>
-      ),
-    },
-    {
       id: "messages",
       label: "Messages",
       path: "/messages",
