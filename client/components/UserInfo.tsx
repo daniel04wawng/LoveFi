@@ -264,7 +264,6 @@ export default function UserInfo({ onContinue, onBack }: UserInfoProps) {
                   </span>
                 </div>
               </div>
-
             </div>
           </div>
 

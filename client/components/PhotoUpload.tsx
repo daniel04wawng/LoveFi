@@ -46,10 +46,10 @@ export default function PhotoUpload() {
 
     try {
       // Send user data to backend
-      const response = await fetch('/api/profiles', {
-        method: 'POST',
+      const response = await fetch("/api/profiles", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ userData }),
       });
@@ -59,12 +59,12 @@ export default function PhotoUpload() {
       }
 
       const result = await response.json();
-      console.log('✅ Profile saved successfully:', result);
+      console.log("✅ Profile saved successfully:", result);
 
       // Navigate to matching screen
       navigate("/matching");
     } catch (error) {
-      console.error('❌ Failed to save profile:', error);
+      console.error("❌ Failed to save profile:", error);
 
       // Still navigate to matching for now, but log the error
       // In production, you might want to show an error message
