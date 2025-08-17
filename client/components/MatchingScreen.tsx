@@ -190,7 +190,7 @@ export default function MatchingScreen() {
             Discover
           </h1>
           <p className="text-xs font-[Alata] text-black/70">
-            {userData.location || "Your Location"}
+            {formatLocation(userData.location)}
           </p>
         </div>
       </div>
