@@ -104,10 +104,16 @@ export default function MessagesPage() {
   // Removed to prevent duplicate updates and potential loops
 
   const openChat = (profileId: string) => {
+    setIsAnimatingIn(true);
     setOpenChatId(profileId);
     setSearchParams({ chat: profileId });
     // Mark messages as read when user opens a chat
     markMessagesAsRead(profileId);
+
+    // Reset animation state after animation completes
+    setTimeout(() => {
+      setIsAnimatingIn(false);
+    }, 300);
   };
 
   const closeChat = () => {
