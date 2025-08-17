@@ -78,11 +78,14 @@ export default function LocationSelection({
             <div className="relative">
               <div className="relative">
                 <input
+                  id="location"
+                  name="location"
                   type="text"
                   value={location}
                   onChange={handleLocationChange}
                   className="w-full h-[58px] border border-lovefi-border rounded-2xl bg-white px-4 text-base font-alata font-normal text-gray-600 focus:outline-none focus:ring-2 focus:ring-lovefi-purple focus:border-transparent"
                   placeholder="Enter your location"
+                  autoComplete="address-line1"
                 />
 
                 {/* Floating Label */}
@@ -105,6 +108,8 @@ export default function LocationSelection({
               {/* Radius Slider */}
               <div className="relative">
                 <input
+                  id="search-radius"
+                  name="searchRadius"
                   type="range"
                   min="1"
                   max="50"

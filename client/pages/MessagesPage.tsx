@@ -127,6 +127,8 @@ export default function MessagesPage() {
               </svg>
             </div>
             <input
+              id="search-messages"
+              name="searchMessages"
               type="text"
               placeholder="Search"
               value={searchText}
@@ -384,6 +386,8 @@ export default function MessagesPage() {
                   <div className="flex items-center space-x-4">
                     <div className="flex-1 relative">
                       <input
+                        id="chat-message-input"
+                        name="chatMessage"
                         type="text"
                         placeholder="Your message"
                         value={messageText}

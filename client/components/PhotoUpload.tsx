@@ -170,6 +170,8 @@ export default function PhotoUpload() {
 
       {/* Hidden file input */}
       <input
+        id="photo-upload"
+        name="photoUpload"
         ref={fileInputRef}
         type="file"
         multiple

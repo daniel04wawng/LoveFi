@@ -88,11 +88,14 @@ export default function UserInfo({ onContinue, onBack }: UserInfoProps) {
             <div className="relative">
               <div className="relative">
                 <input
+                  id="first-name"
+                  name="firstName"
                   type="text"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                   className="w-full h-[58px] border border-lovefi-border rounded-2xl bg-white px-4 text-sm font-alata font-normal text-black focus:outline-none focus:ring-2 focus:ring-lovefi-purple focus:border-transparent"
                   placeholder="Enter your first name"
+                  autoComplete="given-name"
                 />
                 {/* Floating Label */}
                 <div className="absolute -top-[9px] left-5 bg-white px-2">
@@ -107,11 +110,14 @@ export default function UserInfo({ onContinue, onBack }: UserInfoProps) {
             <div className="relative">
               <div className="relative">
                 <input
+                  id="last-name"
+                  name="lastName"
                   type="text"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                   className="w-full h-[58px] border border-lovefi-border rounded-2xl bg-white px-4 text-sm font-alata font-normal text-black focus:outline-none focus:ring-2 focus:ring-lovefi-purple focus:border-transparent"
                   placeholder="Enter your last name"
+                  autoComplete="family-name"
                 />
                 {/* Floating Label */}
                 <div className="absolute -top-[9px] left-5 bg-white px-2">
@@ -221,10 +227,13 @@ export default function UserInfo({ onContinue, onBack }: UserInfoProps) {
               {showDatePicker && (
                 <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-lovefi-border rounded-2xl p-4 shadow-lg z-10">
                   <input
+                    id="birthday"
+                    name="birthday"
                     type="date"
                     value={birthday}
                     onChange={(e) => handleDateSelect(e.target.value)}
                     className="w-full p-2 border border-gray-200 rounded-lg font-alata text-sm focus:outline-none focus:ring-2 focus:ring-lovefi-purple"
+                    autoComplete="bday"
                   />
                 </div>
               )}
