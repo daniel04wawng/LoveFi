@@ -28,7 +28,7 @@ export default function MatchingScreen() {
   const currentProfile = profiles[currentProfileIndex];
 
   const handlePhotoChange = (direction: 'up' | 'down') => {
-    if (!currentProfile || isAnimating || isPhotoTransitioning) return;
+    if (!currentProfile || isAnimating || isPhotoTransitioning || isBouncing) return;
 
     let canChange = false;
     if (direction === 'up' && currentPhotoIndex < currentProfile.photos.length - 1) {
@@ -37,7 +37,12 @@ export default function MatchingScreen() {
       canChange = true;
     }
 
-    if (!canChange) return;
+    if (!canChange) {
+      // Show bounce animation for invalid swipes
+      setIsBouncing(true);
+      setTimeout(() => setIsBouncing(false), 200);
+      return;
+    }
 
     // Start photo transition animation
     setIsPhotoTransitioning(true);
