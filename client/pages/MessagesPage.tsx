@@ -685,7 +685,7 @@ export default function MessagesPage() {
                       </button>
                     </div>
 
-                    {/* Dollar Button */}
+                    {/* Stake Button */}
                     <button
                       onClick={handleDollarClick}
                       className="w-12 h-12 border border-[#E8E6EA] rounded-[15px] bg-white flex items-center justify-center hover:bg-gray-50 transition-colors"
@@ -711,6 +711,15 @@ export default function MessagesPage() {
                           </clipPath>
                         </defs>
                       </svg>
+                    </button>
+
+                    {/* Test Button - Simulate Incoming Stake */}
+                    <button
+                      onClick={simulateIncomingStake}
+                      className="w-12 h-12 border border-purple-300 rounded-[15px] bg-purple-50 flex items-center justify-center hover:bg-purple-100 transition-colors"
+                      title="Test: Simulate incoming stake proposal"
+                    >
+                      <span className="text-sm font-bold text-purple-600">TEST</span>
                     </button>
                   </div>
                 </div>
