@@ -158,6 +158,12 @@ export default function ProfilePage() {
                   {getGenderDisplay()}
                 </span>
               </div>
+              <div className="flex justify-between items-center py-3 border-b border-gray-100">
+                <span className="text-black font-[Alata]">Sexuality</span>
+                <span className="text-black/70 font-[Alata]">
+                  {getSexualityDisplay()}
+                </span>
+              </div>
             </div>
           </div>
 
