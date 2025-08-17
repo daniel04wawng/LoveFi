@@ -52,6 +52,10 @@ export default function MessagesPage() {
 
   const messages = userData.messages || [];
 
+  // Debug logging
+  console.log("MessagesPage - Current messages count:", messages.length);
+  console.log("MessagesPage - Messages:", messages.map(m => m.name));
+
   // Check for chat parameter in URL
   useEffect(() => {
     const chatId = searchParams.get('chat');
