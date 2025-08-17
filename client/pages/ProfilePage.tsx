@@ -285,33 +285,6 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        {/* Logout Confirmation Modal */}
-        {showLogoutConfirm && (
-          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-            <div className="bg-white rounded-[20px] p-6 max-w-sm w-full mx-auto">
-              <h3 className="text-xl font-[Alata] text-black mb-4 text-center">
-                Sign Out?
-              </h3>
-              <p className="text-black/70 font-[Alata] text-center mb-6">
-                Are you sure you want to sign out? You'll need to reconnect your wallet to sign back in.
-              </p>
-              <div className="flex space-x-3">
-                <button
-                  onClick={() => setShowLogoutConfirm(false)}
-                  className="flex-1 h-12 border border-gray-300 rounded-[15px] text-black font-[Alata] hover:bg-gray-50"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={handleLogout}
-                  className="flex-1 h-12 bg-red-600 rounded-[15px] text-white font-[Alata] hover:bg-red-700"
-                >
-                  Sign Out
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </AnimatedPageWrapper>
   );
