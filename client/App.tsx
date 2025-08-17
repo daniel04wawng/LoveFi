@@ -62,6 +62,7 @@ function AnimatedRoutes() {
           <Route path="/relationship-nft" element={<RelationshipNFTPage />} />
           <Route path="/couples-dashboard" element={<CouplesDashboardPage />} />
           <Route path="/milestones" element={<MilestonesPage />} />
+          <Route path="/challenges" element={<ChallengesPage />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
