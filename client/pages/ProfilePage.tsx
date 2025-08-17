@@ -83,40 +83,21 @@ export default function ProfilePage() {
             </div>
             {userData.photos && userData.photos.length > 0 ? (
               <div className="grid grid-cols-2 gap-3">
-                {userData.photos.slice(0, 4).map((photo, index) => {
-                  // Handle both File objects and serialized data
-                  let photoUrl: string;
-                  try {
-                    if (photo instanceof File) {
-                      photoUrl = URL.createObjectURL(photo);
-                    } else {
-                      // If it's serialized data, it might have a data URL or we skip it
-                      photoUrl = typeof photo === 'string' ? photo : '';
-                    }
-                  } catch (error) {
-                    console.warn('Could not create photo URL:', error);
-                    photoUrl = '';
-                  }
-
-                  if (!photoUrl) return null;
-
-                  return (
+                {userData.photos
+                  .slice(0, 4)
+                  .filter((photo) => photo instanceof File)
+                  .map((photo, index) => (
                     <div
                       key={index}
                       className="aspect-square rounded-[15px] overflow-hidden"
                     >
                       <img
-                        src={photoUrl}
+                        src={URL.createObjectURL(photo)}
                         alt={`Profile photo ${index + 1}`}
                         className="w-full h-full object-cover"
-                        onError={(e) => {
-                          // Hide broken images
-                          e.currentTarget.style.display = 'none';
-                        }}
                       />
                     </div>
-                  );
-                })}
+                  ))}
               </div>
             ) : (
               <div className="h-32 border-2 border-dashed border-gray-200 rounded-[15px] flex items-center justify-center">
