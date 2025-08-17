@@ -58,42 +58,63 @@ function AnimatedRoutes() {
             element={<PartnerPreferencesPage />}
           />
           <Route path="/photo-upload" element={<PhotoUploadPage />} />
-          <Route path="/matching" element={
-            <RouteGuard requireSingles={true}>
-              <MatchingPage />
-            </RouteGuard>
-          } />
-          <Route path="/messages" element={
-            <RouteGuard requireSingles={true}>
-              <MessagesPage />
-            </RouteGuard>
-          } />
-          <Route path="/profile" element={
-            <RouteGuard requireSingles={true}>
-              <ProfilePage />
-            </RouteGuard>
-          } />
+          <Route
+            path="/matching"
+            element={
+              <RouteGuard requireSingles={true}>
+                <MatchingPage />
+              </RouteGuard>
+            }
+          />
+          <Route
+            path="/messages"
+            element={
+              <RouteGuard requireSingles={true}>
+                <MessagesPage />
+              </RouteGuard>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <RouteGuard requireSingles={true}>
+                <ProfilePage />
+              </RouteGuard>
+            }
+          />
           <Route path="/relationship-nft" element={<RelationshipNFTPage />} />
-          <Route path="/couples-dashboard" element={
-            <RouteGuard requireCouples={true}>
-              <CouplesDashboardPage />
-            </RouteGuard>
-          } />
-          <Route path="/milestones" element={
-            <RouteGuard requireCouples={true}>
-              <MilestonesPage />
-            </RouteGuard>
-          } />
-          <Route path="/challenges" element={
-            <RouteGuard requireCouples={true}>
-              <ChallengesPage />
-            </RouteGuard>
-          } />
-          <Route path="/friends-predictions" element={
-            <RouteGuard requireCouples={true}>
-              <FriendsPredictionsPage />
-            </RouteGuard>
-          } />
+          <Route
+            path="/couples-dashboard"
+            element={
+              <RouteGuard requireCouples={true}>
+                <CouplesDashboardPage />
+              </RouteGuard>
+            }
+          />
+          <Route
+            path="/milestones"
+            element={
+              <RouteGuard requireCouples={true}>
+                <MilestonesPage />
+              </RouteGuard>
+            }
+          />
+          <Route
+            path="/challenges"
+            element={
+              <RouteGuard requireCouples={true}>
+                <ChallengesPage />
+              </RouteGuard>
+            }
+          />
+          <Route
+            path="/friends-predictions"
+            element={
+              <RouteGuard requireCouples={true}>
+                <FriendsPredictionsPage />
+              </RouteGuard>
+            }
+          />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
