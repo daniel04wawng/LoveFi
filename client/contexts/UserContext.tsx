@@ -33,6 +33,9 @@ interface UserData {
     options: string[];
     selected: number;
   }[];
+
+  // From personal interests
+  personalInterests?: string[];
 }
 
 interface UserContextType {
