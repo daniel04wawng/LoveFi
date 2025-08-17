@@ -254,25 +254,28 @@ export default function RelationshipNFTPage() {
           {mintComplete && (
             <div className="text-center">
               <div className="mb-6">
-                <div className="w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <svg
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    className="text-white"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M16.707 25.293l-6-6a1 1 0 0 0-1.414 1.414l6.707 6.707a1 1 0 0 0 1.414 0l14-14a1 1 0 0 0-1.414-1.414L16.707 25.293z"
-                    />
-                  </svg>
+                <div className="w-24 h-24 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full mx-auto mb-4 flex items-center justify-center animate-pulse shadow-lg">
+                  <div className="text-4xl">🎉</div>
                 </div>
-                <h3 className="text-lg font-[Alata] text-black mb-2">
-                  NFT Minted Successfully! ✨
-                </h3>
-                <p className="text-gray-600 font-[Alata] text-sm mb-4">
-                  Your relationship is now secured on the blockchain
+                <div className="animate-bounce mb-4">
+                  <h3 className="text-2xl font-[Alata] bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
+                    🎊 NFT Minted Successfully! 🎊
+                  </h3>
+                </div>
+                <p className="text-gray-700 font-[Alata] text-lg mb-4 font-medium">
+                  🎉 Your relationship is now secured on the blockchain! 🎉
                 </p>
+                <div className="flex justify-center gap-1 mb-4">
+                  {['🎊', '💍', '💎', '💍', '🎊'].map((emoji, i) => (
+                    <span
+                      key={i}
+                      className="text-2xl animate-bounce"
+                      style={{ animationDelay: `${i * 0.2}s` }}
+                    >
+                      {emoji}
+                    </span>
+                  ))}
+                </div>
                 <p className="text-xs font-[Alata] text-gray-500 bg-gray-100 rounded-lg p-2">
                   Token ID: {relationshipStatus.nftTokenId}
                 </p>
