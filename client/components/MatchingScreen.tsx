@@ -131,9 +131,9 @@ export default function MatchingScreen() {
 
       {/* Profile Card */}
       <div className="flex-1 px-10 pb-6">
-        <div className="relative w-full h-[450px] rounded-[15px] overflow-hidden">
-          {/* Background photo with opacity */}
-          <div className="absolute inset-0 opacity-30">
+        <div className="relative w-full h-[450px] rounded-[15px] overflow-hidden shadow-lg">
+          {/* Background photo with opacity - offset for depth effect */}
+          <div className="absolute top-4 left-8 right-0 bottom-0 opacity-30 rounded-[15px] overflow-hidden">
             <img
               src={currentProfile.photos[1] || currentProfile.photos[0]}
               alt=""
