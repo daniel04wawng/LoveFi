@@ -3,14 +3,14 @@ import { useNavigate, useLocation } from "react-router-dom";
 interface Tab {
   id: string;
   label: string;
-  icon: JSX.Element;
+  icon: string;
   path: string;
 }
 
 export default function BottomNavigation() {
   const navigate = useNavigate();
   const location = useLocation();
-
+  
   console.log("BottomNavigation rendering, current path:", location.pathname);
 
   const tabs: Tab[] = [
@@ -18,50 +18,31 @@ export default function BottomNavigation() {
       id: "matching",
       label: "Matching",
       path: "/matching",
-      icon: (
-        <div className="w-8 h-8 flex items-center justify-center text-2xl">
-          ♥
-        </div>
-      ),
+      icon: "♥",
     },
     {
-      id: "messages",
+      id: "messages", 
       label: "Messages",
       path: "/messages",
-      icon: (
-        <div className="w-8 h-8 flex items-center justify-center text-2xl">
-          💬
-        </div>
-      ),
+      icon: "💬",
     },
     {
       id: "profile",
-      label: "Profile",
+      label: "Profile", 
       path: "/profile",
-      icon: (
-        <div className="w-8 h-8 flex items-center justify-center text-2xl">
-          👤
-        </div>
-      ),
+      icon: "👤",
     },
   ];
 
   const handleTabClick = (tab: Tab) => {
-    console.log("Navigating to:", tab.path); // Debug log
+    console.log("Navigating to:", tab.path);
     navigate(tab.path);
   };
 
   return (
-    <div
-      className="fixed bottom-0 left-0 right-0 bg-white border-t border-[#E8E6EA] z-[9999] shadow-lg"
-      style={{
-        minHeight: '70px',
-        display: 'block !important',
-        visibility: 'visible !important'
-      }}
-    >
-      <div className="max-w-sm mx-auto">
-        <div className="flex items-center justify-around py-3">
+    <div className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-gray-300 shadow-xl z-[99999]">
+      <div className="w-full max-w-sm mx-auto">
+        <div className="grid grid-cols-3 gap-0 py-4 px-4">
           {tabs.map((tab) => {
             const isActive = location.pathname === tab.path;
 
@@ -69,20 +50,18 @@ export default function BottomNavigation() {
               <button
                 key={tab.id}
                 onClick={() => handleTabClick(tab)}
-                className={`flex flex-col items-center py-2 px-6 transition-all duration-200 min-w-[80px] ${
+                className={`flex flex-col items-center justify-center py-3 px-2 rounded-lg transition-all duration-200 ${
                   isActive
-                    ? "text-lovefi-purple"
-                    : "text-[#ADAFBB] hover:text-gray-700"
+                    ? "text-lovefi-purple bg-lovefi-purple/10"
+                    : "text-gray-600 hover:text-gray-800 hover:bg-gray-50"
                 }`}
-                style={{ 
-                  WebkitTapHighlightColor: 'transparent',
-                  touchAction: 'manipulation'
-                }}
               >
-                <div className="mb-1">
+                <div className="text-2xl mb-1 leading-none">
                   {tab.icon}
                 </div>
-                <span className="text-xs font-[Alata]">{tab.label}</span>
+                <span className="text-xs font-[Alata] font-medium text-center">
+                  {tab.label}
+                </span>
               </button>
             );
           })}
