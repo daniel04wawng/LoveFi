@@ -74,10 +74,26 @@ function AnimatedRoutes() {
             </RouteGuard>
           } />
           <Route path="/relationship-nft" element={<RelationshipNFTPage />} />
-          <Route path="/couples-dashboard" element={<CouplesDashboardPage />} />
-          <Route path="/milestones" element={<MilestonesPage />} />
-          <Route path="/challenges" element={<ChallengesPage />} />
-          <Route path="/friends-predictions" element={<FriendsPredictionsPage />} />
+          <Route path="/couples-dashboard" element={
+            <RouteGuard requireCouples={true}>
+              <CouplesDashboardPage />
+            </RouteGuard>
+          } />
+          <Route path="/milestones" element={
+            <RouteGuard requireCouples={true}>
+              <MilestonesPage />
+            </RouteGuard>
+          } />
+          <Route path="/challenges" element={
+            <RouteGuard requireCouples={true}>
+              <ChallengesPage />
+            </RouteGuard>
+          } />
+          <Route path="/friends-predictions" element={
+            <RouteGuard requireCouples={true}>
+              <FriendsPredictionsPage />
+            </RouteGuard>
+          } />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
