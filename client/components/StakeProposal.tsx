@@ -70,10 +70,10 @@ export default function StakeProposal({
               </defs>
             </svg>
           </div>
-          <h2 className="text-xl font-[Alata] text-black mb-1">
+          <h2 className="text-2xl font-[Alata] text-black mb-2">
             Stake Your Commitment
           </h2>
-          <p className="text-gray-600 font-[Alata] text-xs">
+          <p className="text-gray-600 font-[Alata] text-sm">
             How much ETH are you willing to stake for an exclusive relationship with {recipientName}?
           </p>
         </div>
