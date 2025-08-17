@@ -73,9 +73,6 @@ export default function MatchingScreen() {
     }
   };
 
-  const handleBack = () => {
-    navigate(-1);
-  };
 
   if (profiles.length === 0) {
     return (
