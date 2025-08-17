@@ -22,6 +22,11 @@ export default function PartnerPreferences({
   const { userData, updateUserData } = useUser();
   const location = useLocation();
 
+  // AI partner description state
+  const [partnerDescription, setPartnerDescription] = useState(
+    userData.partnerDescription || ""
+  );
+
   // Determine back route based on referrer or default flow
   const isFromProfile = location.state?.from === 'profile';
   const backRoute = isFromProfile ? '/profile' : '/location-selection';
