@@ -6,6 +6,19 @@ import React, {
   ReactNode,
 } from "react";
 
+export interface Profile {
+  id: string;
+  name: string;
+  age: number;
+  photos: string[];
+  distance: number;
+  matchPercentage: number;
+  cryptoTagline: string;
+  commonInterests: string[];
+  personalInterests: string[];
+  partnerPreferences: string[];
+}
+
 interface UserData {
   // From wallet connection
   wallet?: {
@@ -39,12 +52,18 @@ interface UserData {
 
   // From photo upload
   photos?: File[];
+
+  // Saved profiles
+  savedProfiles?: Profile[];
 }
 
 interface UserContextType {
   userData: UserData;
   updateUserData: (data: Partial<UserData>) => void;
   clearUserData: () => void;
+  saveProfile: (profile: Profile) => void;
+  removeSavedProfile: (profileId: string) => void;
+  isSaved: (profileId: string) => boolean;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -62,10 +81,44 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
     setUserData({});
   }, []);
 
+  const saveProfile = useCallback((profile: Profile) => {
+    setUserData((prev) => ({
+      ...prev,
+      savedProfiles: [...(prev.savedProfiles || []), profile],
+    }));
+  }, []);
+
+  const removeSavedProfile = useCallback((profileId: string) => {
+    setUserData((prev) => ({
+      ...prev,
+      savedProfiles: (prev.savedProfiles || []).filter(
+        (profile) => profile.id !== profileId
+      ),
+    }));
+  }, []);
+
+  const isSaved = useCallback(
+    (profileId: string) => {
+      return (userData.savedProfiles || []).some(
+        (profile) => profile.id === profileId
+      );
+    },
+    [userData.savedProfiles]
+  );
+
   // UserProvider is ready
 
   return (
-    <UserContext.Provider value={{ userData, updateUserData, clearUserData }}>
+    <UserContext.Provider
+      value={{
+        userData,
+        updateUserData,
+        clearUserData,
+        saveProfile,
+        removeSavedProfile,
+        isSaved,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );
