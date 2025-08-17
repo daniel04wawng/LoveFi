@@ -57,6 +57,9 @@ export default function PhotoUpload() {
     alert(
       "Profile completed! ✅\n\nUser data exported and ready for backend.\nCheck console for JSON output.",
     );
+
+    // Navigate to matching screen
+    navigate("/matching");
   };
 
   const handleBack = () => {
