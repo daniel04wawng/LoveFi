@@ -5,7 +5,7 @@ import { generateProfiles } from "../utils/profileData";
 
 export default function MatchingScreen() {
   const navigate = useNavigate();
-  const { userData, saveProfile, addToMessages } = useUser();
+  const { userData, saveProfile, addToMessages, sendMessage } = useUser();
   const [currentProfileIndex, setCurrentProfileIndex] = useState(0);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [profiles, setProfiles] = useState<Profile[]>([]);
