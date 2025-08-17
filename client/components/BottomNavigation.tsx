@@ -14,10 +14,10 @@ export default function BottomNavigation() {
 
   const tabs: Tab[] = [
     {
-      id: "matching",
-      label: "Matching",
-      path: "/matching",
-      icon: "♥",
+      id: "dashboard",
+      label: "Dashboard",
+      path: "/couples-dashboard",
+      icon: "💕",
     },
     {
       id: "messages",
