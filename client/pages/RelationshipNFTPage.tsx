@@ -56,6 +56,10 @@ export default function RelationshipNFTPage() {
       setIsMinting(false);
       setMintComplete(true);
 
+      // Trigger celebration confetti
+      setConfettiVisible(true);
+      setTimeout(() => setConfettiVisible(false), 4000);
+
       // Update user data with NFT status
       updateUserData({
         relationshipStatus: {
