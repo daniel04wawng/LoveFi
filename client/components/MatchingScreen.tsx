@@ -90,10 +90,15 @@ export default function MatchingScreen() {
         animateCardAndNext("left");
         break;
       case "message":
-        // Navigate to messaging (not implemented yet)
-        console.log("Navigate to messaging");
+        // Plane button: Add to messages and navigate instantly to chat
+        if (currentProfile) {
+          addToMessages(currentProfile);
+          // Navigate directly to chat page
+          navigate(`/chat/${currentProfile.id}`);
+        }
         break;
       case "save":
+        // Heart button: Save to messages list but don't navigate
         if (currentProfile) {
           saveProfile(currentProfile);
           addToMessages(currentProfile);
