@@ -11,6 +11,8 @@ export default function MatchingScreen() {
   const [profiles, setProfiles] = useState<Profile[]>([]);
   const [isAnimating, setIsAnimating] = useState(false);
   const [animationDirection, setAnimationDirection] = useState<'left' | 'right' | null>(null);
+  const [isPhotoTransitioning, setIsPhotoTransitioning] = useState(false);
+  const [photoTransitionDirection, setPhotoTransitionDirection] = useState<'up' | 'down' | null>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
   // Generate profiles based on user data
