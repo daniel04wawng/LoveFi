@@ -44,17 +44,12 @@ export default function PartnerPreferences({
     },
   ]);
 
-  // Load saved preferences from context
+  // Load saved preferences from context on component mount
   useEffect(() => {
     if (userData.partnerPreferences) {
       setPreferences(userData.partnerPreferences);
     }
-  }, [userData.partnerPreferences]);
-
-  // Update context when preferences change
-  useEffect(() => {
-    updateUserData({ partnerPreferences: preferences });
-  }, [preferences, updateUserData]);
+  }, []); // Only run on mount to avoid infinite loop
 
   const handleOptionSelect = (categoryIndex: number, optionIndex: number) => {
     setPreferences((prev) =>
