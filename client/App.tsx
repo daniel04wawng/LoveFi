@@ -52,6 +52,7 @@ function AnimatedRoutes() {
           />
           <Route path="/photo-upload" element={<PhotoUploadPage />} />
           <Route path="/matching" element={<MatchingPage />} />
+          <Route path="/matches" element={<MatchesPage />} />
           <Route path="/saved" element={<SavedPage />} />
           <Route path="/messages" element={<MessagesPage />} />
           <Route path="/profile" element={<ProfilePage />} />
