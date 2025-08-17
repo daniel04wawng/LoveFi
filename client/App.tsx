@@ -21,6 +21,7 @@ import PartnerPreferencesPage from "./pages/PartnerPreferencesPage";
 import PhotoUploadPage from "./pages/PhotoUploadPage";
 import MatchingPage from "./pages/MatchingPage";
 import MessagesPage from "./pages/MessagesPage";
+import ChatPage from "./pages/ChatPage";
 import ProfilePage from "./pages/ProfilePage";
 
 const queryClient = new QueryClient();
@@ -51,6 +52,7 @@ function AnimatedRoutes() {
           <Route path="/photo-upload" element={<PhotoUploadPage />} />
           <Route path="/matching" element={<MatchingPage />} />
           <Route path="/messages" element={<MessagesPage />} />
+          <Route path="/chat/:profileId" element={<ChatPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
