@@ -133,33 +133,6 @@ export default function MessagesPage() {
   return (
     <AnimatedPageWrapper>
       <div className="w-full min-h-screen bg-white relative max-w-sm mx-auto overflow-x-hidden">
-        {/* Status Bar */}
-        <div className="h-11 bg-white flex items-center justify-between px-5 pt-2">
-          <div className="text-sm font-semibold">4:20</div>
-          <div className="flex items-center space-x-1">
-            <div className="flex space-x-0.5">
-              <div className="w-1 h-3 bg-black rounded-full"></div>
-              <div className="w-1 h-3 bg-black rounded-full"></div>
-              <div className="w-1 h-3 bg-black rounded-full"></div>
-              <div className="w-1 h-3 bg-black rounded-full"></div>
-            </div>
-            <svg
-              width="15"
-              height="11"
-              viewBox="0 0 15 11"
-              className="text-black"
-            >
-              <path
-                fill="currentColor"
-                d="M5.44824 8.75745C6.7289 7.67518 8.60508 7.67518 9.88574 8.75745C9.95009 8.81566 9.98749 8.89827 9.98926 8.98499C9.99092 9.07162 9.95644 9.15475 9.89453 9.21545L7.88965 11.2379C7.83087 11.2973 7.7506 11.3307 7.66699 11.3307C7.5834 11.3307 7.5031 11.2973 7.44434 11.2379L5.43848 9.21545C5.37688 9.15475 5.34303 9.07141 5.34473 8.98499C5.34656 8.8983 5.3839 8.8156 5.44824 8.75745Z"
-              />
-            </svg>
-            <div className="w-6 h-3 border border-black rounded-sm opacity-35 relative">
-              <div className="w-4 h-1.5 bg-black rounded-sm absolute top-0.5 left-0.5"></div>
-              <div className="w-0.5 h-1 bg-black opacity-40 absolute -right-1 top-1"></div>
-            </div>
-          </div>
-        </div>
 
         {/* Header */}
         <div className="px-11 pt-4 pb-6">
