@@ -7,15 +7,19 @@ interface UserData {
     logo?: string;
     type?: string;
   };
-  
+
   // From user info
   firstName?: string;
   lastName?: string;
   birthday?: string;
-  
+
   // From gender selection
   gender?: 'woman' | 'man' | 'non-binary' | 'other';
   customGender?: string;
+
+  // From location selection
+  location?: string;
+  radius?: number;
 }
 
 interface UserContextType {
