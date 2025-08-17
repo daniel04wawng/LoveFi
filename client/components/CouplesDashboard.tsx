@@ -107,10 +107,10 @@ const CouplesDashboard = () => {
           </div>
 
           {/* Main Circle - Joint Wallet Display */}
-          <div className="px-5 py-8">
+          <div className="px-5 py-6">
             <div className="relative">
               {/* Outer Ring with Progress */}
-              <div className="relative w-64 h-64 mx-auto">
+              <div className="relative w-48 h-48 mx-auto">
                 <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
                   {/* Background circle */}
                   <circle
@@ -118,8 +118,8 @@ const CouplesDashboard = () => {
                     cy="50"
                     r="45"
                     fill="none"
-                    stroke="rgba(255,255,255,0.1)"
-                    strokeWidth="2"
+                    stroke="#E5E7EB"
+                    strokeWidth="3"
                   />
                   {/* Progress circle */}
                   <circle
@@ -128,7 +128,7 @@ const CouplesDashboard = () => {
                     r="45"
                     fill="none"
                     stroke="url(#gradient)"
-                    strokeWidth="3"
+                    strokeWidth="4"
                     strokeLinecap="round"
                     strokeDasharray={`${progressPercentage * 2.83} 283`}
                     className="transition-all duration-500"
@@ -142,21 +142,16 @@ const CouplesDashboard = () => {
                 </svg>
 
                 {/* Center Content */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <div className="text-xs text-white/60 mb-1">💰 Joint Balance</div>
-                  <div className="text-3xl font-alata font-bold mb-1">
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-white rounded-full mx-3 my-3 shadow-sm">
+                  <div className="text-xs text-gray-500 mb-1">💰 Joint Balance</div>
+                  <div className="text-2xl font-alata font-bold mb-1 text-gray-900">
                     {jointWalletBalance.toFixed(3)}
                   </div>
-                  <div className="text-sm text-white/80 mb-2">ETH</div>
-                  <div className="text-xs text-green-400 flex items-center gap-1">
+                  <div className="text-sm text-gray-600 mb-2">ETH</div>
+                  <div className="text-xs text-green-600 flex items-center gap-1">
                     ✓ Wedding Fund Active
                   </div>
                 </div>
-
-                {/* Floating action button */}
-                <button className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center border border-white/30">
-                  <span className="text-lg">⚡</span>
-                </button>
               </div>
             </div>
           </div>
