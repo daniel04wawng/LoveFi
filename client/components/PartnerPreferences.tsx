@@ -163,7 +163,7 @@ export default function PartnerPreferences({
           {/* Back Button */}
           <div className="flex-shrink-0 pt-4">
             <Link
-              to="/location-selection"
+              to={backRoute}
               onClick={onBack}
               className="inline-flex items-center justify-center w-[52px] h-[52px] rounded-2xl border border-lovefi-border bg-white hover:bg-gray-50 transition-colors"
             >
