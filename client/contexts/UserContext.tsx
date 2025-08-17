@@ -125,6 +125,8 @@ const UserContext = createContext<UserContextType>({
   sendMessage: () => {},
   getConversation: () => [],
   markMessagesAsRead: () => {},
+  sendStakeProposal: () => {},
+  respondToStakeProposal: () => {},
 });
 
 // Make UserContext displayName to help with debugging
