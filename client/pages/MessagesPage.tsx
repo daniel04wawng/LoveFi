@@ -405,7 +405,7 @@ export default function MessagesPage() {
               {/* Chat Container */}
               <div
                 className="flex-1 bg-white rounded-t-[24px] relative flex flex-col"
-                style={{ height: "calc(100vh - 100px)", minHeight: "80vh" }}
+                style={{ height: "calc(100vh - 80px)" }}
               >
                 {/* Pull indicator */}
                 <div className="absolute top-6 left-1/2 transform -translate-x-1/2 z-10">
