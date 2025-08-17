@@ -208,6 +208,51 @@ export default function PartnerPreferences({
                 {renderToggleButton(category, categoryIndex)}
               </div>
             ))}
+
+            {/* AI Partner Description */}
+            <div className="pt-4">
+              <div className="relative">
+                <textarea
+                  id="partner-description"
+                  name="partnerDescription"
+                  value={partnerDescription}
+                  onChange={(e) => setPartnerDescription(e.target.value)}
+                  rows={3}
+                  maxLength={300}
+                  className="w-full border border-lovefi-border rounded-2xl bg-white px-4 py-4 text-sm font-alata font-normal text-black focus:outline-none focus:ring-2 focus:ring-lovefi-purple focus:border-transparent resize-none"
+                  placeholder="Describe your ideal partner in 1-3 sentences (optional). This will help us create an AI-generated profile match for you."
+                />
+
+                {/* Floating Label */}
+                <div className="absolute -top-[9px] left-5 bg-white px-2">
+                  <span className="text-xs font-alata font-normal text-black text-opacity-40">
+                    AI Partner Description (Optional)
+                  </span>
+                </div>
+
+                {/* Character Counter */}
+                <div className="absolute -bottom-[20px] right-0">
+                  <span className="text-xs text-gray-400">
+                    {partnerDescription.length}/300
+                  </span>
+                </div>
+              </div>
+
+              {/* AI Note */}
+              <div className="mt-6 p-3 bg-gradient-to-r from-lovefi-purple-light/10 to-lovefi-purple-pink/10 rounded-xl border border-lovefi-purple/20">
+                <div className="flex items-start gap-2">
+                  <span className="text-lg">🤖</span>
+                  <div>
+                    <p className="text-xs font-alata text-lovefi-purple font-medium mb-1">
+                      AI-Generated Match
+                    </p>
+                    <p className="text-xs text-gray-600 font-alata">
+                      Our AI will create a perfect match profile with generated photos based on your description.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Continue Button */}
