@@ -68,7 +68,7 @@ export default function PhotoUpload() {
   };
 
   const handleBack = () => {
-    navigate("/personal-interests");
+    navigate(backRoute);
   };
 
   const removePhoto = (index: number) => {
