@@ -200,6 +200,29 @@ export default function LocationSelection({
 
           {/* Location Input Fields */}
           <div className="flex-grow">
+            {/* Street Address Input */}
+            <div className="relative mb-6">
+              <div className="relative">
+                <input
+                  id="street"
+                  name="street"
+                  type="text"
+                  value={locationData.street || ""}
+                  onChange={handleStreetChange}
+                  className="w-full h-[58px] border border-lovefi-border rounded-2xl bg-white px-4 text-base font-alata font-normal text-gray-600 focus:outline-none focus:ring-2 focus:ring-lovefi-purple focus:border-transparent"
+                  placeholder="Enter your street address (optional)"
+                  autoComplete="address-line1"
+                />
+
+                {/* Floating Label */}
+                <div className="absolute -top-[9px] left-5 bg-white px-2">
+                  <span className="text-xs font-alata font-normal text-black text-opacity-40">
+                    Street Address (Optional)
+                  </span>
+                </div>
+              </div>
+            </div>
+
             {/* City Input */}
             <div className="relative mb-6">
               <div className="relative">
