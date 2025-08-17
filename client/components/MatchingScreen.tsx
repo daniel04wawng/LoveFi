@@ -90,11 +90,11 @@ export default function MatchingScreen() {
         animateCardAndNext("left");
         break;
       case "message":
-        // Plane button: Add to messages and navigate instantly to chat
+        // Plane button: Add to messages and navigate to Messages tab with chat open
         if (currentProfile) {
           addToMessages(currentProfile);
-          // Navigate directly to chat page
-          navigate(`/chat/${currentProfile.id}`);
+          // Navigate to Messages page with chat modal open
+          navigate(`/messages?chat=${currentProfile.id}`);
         }
         break;
       case "save":
