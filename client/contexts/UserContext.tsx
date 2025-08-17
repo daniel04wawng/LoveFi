@@ -124,7 +124,11 @@ const loadFromStorage = (): UserData => {
 
 const saveToStorage = (data: UserData) => {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    // Create a copy of data without File objects (they can't be serialized)
+    const serializable = { ...data };
+    // Remove photos as they contain File objects that can't be serialized
+    delete serializable.photos;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(serializable));
   } catch (error) {
     console.error("Error saving user data to storage:", error);
   }
