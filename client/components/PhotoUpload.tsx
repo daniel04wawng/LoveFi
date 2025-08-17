@@ -1,14 +1,17 @@
 import { useState, useRef, ChangeEvent } from "react";
 import { useUser } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
-import { logUserDataToConsole, downloadUserDataAsJSON } from "../utils/dataExport";
+import {
+  logUserDataToConsole,
+  downloadUserDataAsJSON,
+} from "../utils/dataExport";
 
 export default function PhotoUpload() {
   const { userData, updateUserData } = useUser();
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [uploadedPhotos, setUploadedPhotos] = useState<File[]>(
-    userData.photos || []
+    userData.photos || [],
   );
   const [previewUrls, setPreviewUrls] = useState<string[]>([]);
 
@@ -44,14 +47,16 @@ export default function PhotoUpload() {
     const exportedData = logUserDataToConsole(userData);
 
     // Optionally download as JSON file for testing
-    if (process.env.NODE_ENV === 'development') {
+    if (process.env.NODE_ENV === "development") {
       downloadUserDataAsJSON(userData, `lovefi-user-${Date.now()}.json`);
     }
 
     // Here you would typically send the exportedData to your backend
     // Example: await sendToBackend(exportedData);
 
-    alert("Profile completed! ✅\n\nUser data exported and ready for backend.\nCheck console for JSON output.");
+    alert(
+      "Profile completed! ✅\n\nUser data exported and ready for backend.\nCheck console for JSON output.",
+    );
   };
 
   const handleBack = () => {
@@ -61,10 +66,10 @@ export default function PhotoUpload() {
   const removePhoto = (index: number) => {
     const updatedPhotos = uploadedPhotos.filter((_, i) => i !== index);
     const updatedPreviews = previewUrls.filter((_, i) => i !== index);
-    
+
     // Revoke the URL to prevent memory leaks
     URL.revokeObjectURL(previewUrls[index]);
-    
+
     setUploadedPhotos(updatedPhotos);
     setPreviewUrls(updatedPreviews);
     updateUserData({ photos: updatedPhotos });

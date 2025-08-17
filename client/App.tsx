@@ -45,10 +45,7 @@ function AnimatedRoutes() {
             path="/partner-preferences"
             element={<PartnerPreferencesPage />}
           />
-          <Route
-            path="/photo-upload"
-            element={<PhotoUploadPage />}
-          />
+          <Route path="/photo-upload" element={<PhotoUploadPage />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
