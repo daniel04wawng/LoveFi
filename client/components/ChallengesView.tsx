@@ -20,24 +20,26 @@ const ChallengesView = () => {
     {
       id: "1",
       title: "Picnic Date",
-      description: "Share a picnic selfie together in a park or outdoor setting",
+      description:
+        "Share a picnic selfie together in a park or outdoor setting",
       stake: 0.005,
       submittedBy: "Sarah M.",
       submittedByAvatar: "🙋‍♀️",
       status: "pending",
       dueDate: "2024-01-20",
-      reward: 0.005
+      reward: 0.005,
     },
     {
-      id: "2", 
+      id: "2",
       title: "Cook Together",
-      description: "Make dinner together and share a photo of the cooking process",
+      description:
+        "Make dinner together and share a photo of the cooking process",
       stake: 0.003,
       submittedBy: "Mike R.",
       submittedByAvatar: "🙋‍♂️",
-      status: "pending", 
+      status: "pending",
       dueDate: "2024-01-22",
-      reward: 0.003
+      reward: 0.003,
     },
     {
       id: "3",
@@ -49,40 +51,52 @@ const ChallengesView = () => {
       status: "submitted",
       dueDate: "2024-01-15",
       reward: 0.002,
-      proofUrl: "https://example.com/sunrise-photo"
+      proofUrl: "https://example.com/sunrise-photo",
     },
     {
       id: "4",
-      title: "Museum Visit", 
+      title: "Museum Visit",
       description: "Visit a local museum or art gallery together",
       stake: 0.004,
       submittedBy: "Alex T.",
       submittedByAvatar: "👨",
       status: "completed",
       dueDate: "2024-01-10",
-      reward: 0.004
-    }
+      reward: 0.004,
+    },
   ]);
 
-  const [selectedTab, setSelectedTab] = useState<"active" | "completed">("active");
+  const [selectedTab, setSelectedTab] = useState<"active" | "completed">(
+    "active",
+  );
   const [proofFile, setProofFile] = useState<File | null>(null);
   const [submittingProof, setSubmittingProof] = useState<string | null>(null);
 
-  const activeChallenges = challenges.filter(c => c.status === "pending" || c.status === "submitted");
-  const completedChallenges = challenges.filter(c => c.status === "completed" || c.status === "failed");
+  const activeChallenges = challenges.filter(
+    (c) => c.status === "pending" || c.status === "submitted",
+  );
+  const completedChallenges = challenges.filter(
+    (c) => c.status === "completed" || c.status === "failed",
+  );
 
   const handleProofSubmission = async (challengeId: string) => {
     if (!proofFile) return;
-    
+
     setSubmittingProof(challengeId);
-    
+
     // Simulate upload process
     setTimeout(() => {
-      setChallenges(prev => prev.map(c => 
-        c.id === challengeId 
-          ? { ...c, status: "submitted" as const, proofUrl: "https://example.com/proof" }
-          : c
-      ));
+      setChallenges((prev) =>
+        prev.map((c) =>
+          c.id === challengeId
+            ? {
+                ...c,
+                status: "submitted" as const,
+                proofUrl: "https://example.com/proof",
+              }
+            : c,
+        ),
+      );
       setSubmittingProof(null);
       setProofFile(null);
     }, 2000);
@@ -90,21 +104,31 @@ const ChallengesView = () => {
 
   const getStatusColor = (status: Challenge["status"]) => {
     switch (status) {
-      case "pending": return "bg-yellow-100 text-yellow-800 border-yellow-200";
-      case "submitted": return "bg-blue-100 text-blue-800 border-blue-200";
-      case "completed": return "bg-green-100 text-green-800 border-green-200";
-      case "failed": return "bg-red-100 text-red-800 border-red-200";
-      default: return "bg-gray-100 text-gray-800 border-gray-200";
+      case "pending":
+        return "bg-yellow-100 text-yellow-800 border-yellow-200";
+      case "submitted":
+        return "bg-blue-100 text-blue-800 border-blue-200";
+      case "completed":
+        return "bg-green-100 text-green-800 border-green-200";
+      case "failed":
+        return "bg-red-100 text-red-800 border-red-200";
+      default:
+        return "bg-gray-100 text-gray-800 border-gray-200";
     }
   };
 
   const getStatusText = (status: Challenge["status"]) => {
     switch (status) {
-      case "pending": return "Pending";
-      case "submitted": return "Awaiting Review";
-      case "completed": return "Completed";
-      case "failed": return "Failed";
-      default: return "Unknown";
+      case "pending":
+        return "Pending";
+      case "submitted":
+        return "Awaiting Review";
+      case "completed":
+        return "Completed";
+      case "failed":
+        return "Failed";
+      default:
+        return "Unknown";
     }
   };
 
@@ -135,8 +159,12 @@ const ChallengesView = () => {
                 </svg>
               </Link>
               <div>
-                <h1 className="text-2xl font-alata font-bold text-black">Challenges</h1>
-                <p className="text-sm text-gray-600">Complete tasks set by friends</p>
+                <h1 className="text-2xl font-alata font-bold text-black">
+                  Challenges
+                </h1>
+                <p className="text-sm text-gray-600">
+                  Complete tasks set by friends
+                </p>
               </div>
             </div>
 
@@ -167,30 +195,48 @@ const ChallengesView = () => {
 
           {/* Challenges List */}
           <div className="px-5 space-y-4 pb-24">
-            {(selectedTab === "active" ? activeChallenges : completedChallenges).map((challenge) => (
-              <div key={challenge.id} className="bg-white border-2 border-lovefi-border rounded-2xl p-4">
+            {(selectedTab === "active"
+              ? activeChallenges
+              : completedChallenges
+            ).map((challenge) => (
+              <div
+                key={challenge.id}
+                className="bg-white border-2 border-lovefi-border rounded-2xl p-4"
+              >
                 {/* Challenge Header */}
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-3">
-                    <span className="text-2xl">{challenge.submittedByAvatar}</span>
+                    <span className="text-2xl">
+                      {challenge.submittedByAvatar}
+                    </span>
                     <div>
-                      <h3 className="text-lg font-alata font-bold text-black">{challenge.title}</h3>
-                      <p className="text-sm text-gray-600">by {challenge.submittedBy}</p>
+                      <h3 className="text-lg font-alata font-bold text-black">
+                        {challenge.title}
+                      </h3>
+                      <p className="text-sm text-gray-600">
+                        by {challenge.submittedBy}
+                      </p>
                     </div>
                   </div>
-                  <div className={`px-3 py-1 rounded-full text-xs font-medium border ${getStatusColor(challenge.status)}`}>
+                  <div
+                    className={`px-3 py-1 rounded-full text-xs font-medium border ${getStatusColor(challenge.status)}`}
+                  >
                     {getStatusText(challenge.status)}
                   </div>
                 </div>
 
                 {/* Challenge Description */}
-                <p className="text-sm text-gray-700 mb-4">{challenge.description}</p>
+                <p className="text-sm text-gray-700 mb-4">
+                  {challenge.description}
+                </p>
 
                 {/* Challenge Details */}
                 <div className="flex items-center justify-between mb-4">
                   <div className="text-sm">
                     <span className="text-gray-600">Stake: </span>
-                    <span className="font-medium text-lovefi-purple">{challenge.stake} ETH</span>
+                    <span className="font-medium text-lovefi-purple">
+                      {challenge.stake} ETH
+                    </span>
                   </div>
                   <div className="text-sm">
                     <span className="text-gray-600">Due: </span>
@@ -205,7 +251,9 @@ const ChallengesView = () => {
                       <input
                         type="file"
                         accept="image/*"
-                        onChange={(e) => setProofFile(e.target.files?.[0] || null)}
+                        onChange={(e) =>
+                          setProofFile(e.target.files?.[0] || null)
+                        }
                         className="hidden"
                         id={`proof-${challenge.id}`}
                       />
@@ -216,16 +264,20 @@ const ChallengesView = () => {
                         📷 Upload Proof Photo
                       </label>
                       {proofFile && (
-                        <p className="text-sm text-gray-600 mt-2">{proofFile.name}</p>
+                        <p className="text-sm text-gray-600 mt-2">
+                          {proofFile.name}
+                        </p>
                       )}
                     </div>
-                    
+
                     <button
                       onClick={() => handleProofSubmission(challenge.id)}
                       disabled={!proofFile || submittingProof === challenge.id}
                       className="w-full py-3 bg-lovefi-purple text-white rounded-lg font-alata font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {submittingProof === challenge.id ? "Submitting..." : "Submit Proof"}
+                      {submittingProof === challenge.id
+                        ? "Submitting..."
+                        : "Submit Proof"}
                     </button>
                   </div>
                 )}
@@ -257,16 +309,19 @@ const ChallengesView = () => {
             ))}
 
             {/* Empty State */}
-            {(selectedTab === "active" ? activeChallenges : completedChallenges).length === 0 && (
+            {(selectedTab === "active" ? activeChallenges : completedChallenges)
+              .length === 0 && (
               <div className="text-center py-12">
                 <div className="text-6xl mb-4">
                   {selectedTab === "active" ? "🎯" : "🏆"}
                 </div>
                 <h3 className="text-lg font-alata font-bold text-gray-600 mb-2">
-                  {selectedTab === "active" ? "No Active Challenges" : "No Completed Challenges"}
+                  {selectedTab === "active"
+                    ? "No Active Challenges"
+                    : "No Completed Challenges"}
                 </h3>
                 <p className="text-sm text-gray-500">
-                  {selectedTab === "active" 
+                  {selectedTab === "active"
                     ? "Friends can create challenges for you to complete together!"
                     : "Complete challenges to see them here."}
                 </p>

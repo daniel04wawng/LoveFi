@@ -315,7 +315,8 @@ export default function RelationshipNFTPage() {
                 </button>
 
                 <p className="text-xs text-gray-500 font-[Alata]">
-                  Track milestones, manage challenges & build your future together
+                  Track milestones, manage challenges & build your future
+                  together
                 </p>
               </div>
             </div>

@@ -16,7 +16,7 @@ interface Milestone {
 
 const MilestonesView = () => {
   const [relationshipDays] = useState(127);
-  
+
   const milestones: Milestone[] = [
     {
       id: "1",
@@ -27,10 +27,10 @@ const MilestonesView = () => {
       nftMinted: true,
       date: "2024-01-01",
       requiredDays: 7,
-      nftReward: "🌱 New Love NFT"
+      nftReward: "🌱 New Love NFT",
     },
     {
-      id: "2", 
+      id: "2",
       name: "One Month Strong",
       period: "30 days",
       description: "A month of shared memories and growing stronger together.",
@@ -38,7 +38,7 @@ const MilestonesView = () => {
       nftMinted: true,
       date: "2024-01-24",
       requiredDays: 30,
-      nftReward: "🌸 Blooming Love NFT"
+      nftReward: "🌸 Blooming Love NFT",
     },
     {
       id: "3",
@@ -49,27 +49,28 @@ const MilestonesView = () => {
       nftMinted: true,
       date: "2024-03-24",
       requiredDays: 90,
-      nftReward: "🌳 Growing Love NFT"
+      nftReward: "🌳 Growing Love NFT",
     },
     {
       id: "4",
-      name: "Half Year Journey", 
+      name: "Half Year Journey",
       period: "6 months",
       description: "Six months of deepening connection and shared dreams.",
       completed: false,
       nftMinted: false,
       requiredDays: 180,
-      nftReward: "💎 Committed Love NFT"
+      nftReward: "💎 Committed Love NFT",
     },
     {
       id: "5",
       name: "One Year Anniversary",
-      period: "1 year", 
-      description: "A full year of love, growth, and building your future together.",
+      period: "1 year",
+      description:
+        "A full year of love, growth, and building your future together.",
       completed: false,
       nftMinted: false,
       requiredDays: 365,
-      nftReward: "👑 Eternal Love NFT"
+      nftReward: "👑 Eternal Love NFT",
     },
     {
       id: "6",
@@ -79,26 +80,26 @@ const MilestonesView = () => {
       completed: false,
       nftMinted: false,
       requiredDays: 730,
-      nftReward: "🏰 Fortress Love NFT"
-    }
+      nftReward: "🏰 Fortress Love NFT",
+    },
   ];
 
   const getProgressToNext = () => {
-    const nextMilestone = milestones.find(m => !m.completed);
+    const nextMilestone = milestones.find((m) => !m.completed);
     if (!nextMilestone) return 100;
-    
+
     const progress = (relationshipDays / nextMilestone.requiredDays) * 100;
     return Math.min(progress, 100);
   };
 
   const getDaysToNext = () => {
-    const nextMilestone = milestones.find(m => !m.completed);
+    const nextMilestone = milestones.find((m) => !m.completed);
     if (!nextMilestone) return 0;
-    
+
     return Math.max(0, nextMilestone.requiredDays - relationshipDays);
   };
 
-  const nextMilestone = milestones.find(m => !m.completed);
+  const nextMilestone = milestones.find((m) => !m.completed);
   const progressToNext = getProgressToNext();
   const daysToNext = getDaysToNext();
 
@@ -129,7 +130,9 @@ const MilestonesView = () => {
                 </svg>
               </Link>
               <div>
-                <h1 className="text-2xl font-alata font-bold text-black">Milestones</h1>
+                <h1 className="text-2xl font-alata font-bold text-black">
+                  Milestones
+                </h1>
                 <p className="text-sm text-gray-600">Track your love journey</p>
               </div>
             </div>
@@ -138,23 +141,27 @@ const MilestonesView = () => {
             {nextMilestone && (
               <div className="bg-gradient-to-r from-lovefi-purple-light to-lovefi-purple-pink rounded-2xl p-4 mb-6">
                 <div className="text-white mb-3">
-                  <div className="text-lg font-alata font-bold">Next: {nextMilestone.name}</div>
-                  <div className="text-white/90 text-sm">{nextMilestone.description}</div>
+                  <div className="text-lg font-alata font-bold">
+                    Next: {nextMilestone.name}
+                  </div>
+                  <div className="text-white/90 text-sm">
+                    {nextMilestone.description}
+                  </div>
                 </div>
-                
+
                 <div className="mb-3">
                   <div className="flex justify-between text-white/90 text-sm mb-1">
                     <span>{relationshipDays} days</span>
                     <span>{nextMilestone.requiredDays} days</span>
                   </div>
                   <div className="w-full bg-white/20 rounded-full h-3">
-                    <div 
+                    <div
                       className="bg-white rounded-full h-3 transition-all duration-500"
                       style={{ width: `${progressToNext}%` }}
                     />
                   </div>
                 </div>
-                
+
                 <div className="text-white/90 text-sm">
                   {daysToNext > 0 ? (
                     <span>🗓️ {daysToNext} days to go!</span>
@@ -175,8 +182,8 @@ const MilestonesView = () => {
                   milestone.completed
                     ? "bg-green-50 border-green-200"
                     : milestone.id === nextMilestone?.id
-                    ? "bg-lovefi-purple bg-opacity-5 border-lovefi-purple"
-                    : "bg-gray-50 border-gray-200"
+                      ? "bg-lovefi-purple bg-opacity-5 border-lovefi-purple"
+                      : "bg-gray-50 border-gray-200"
                 }`}
               >
                 {/* Milestone Number */}
@@ -186,8 +193,8 @@ const MilestonesView = () => {
                       milestone.completed
                         ? "bg-green-500 text-white"
                         : milestone.id === nextMilestone?.id
-                        ? "bg-lovefi-purple text-white"
-                        : "bg-gray-300 text-gray-600"
+                          ? "bg-lovefi-purple text-white"
+                          : "bg-gray-300 text-gray-600"
                     }`}
                   >
                     {milestone.completed ? "✓" : index + 1}
@@ -201,17 +208,25 @@ const MilestonesView = () => {
                       <h3 className="text-lg font-alata font-bold text-black">
                         {milestone.name}
                       </h3>
-                      <p className="text-sm text-gray-600">{milestone.period}</p>
+                      <p className="text-sm text-gray-600">
+                        {milestone.period}
+                      </p>
                     </div>
                     {milestone.completed && milestone.nftMinted && (
                       <div className="text-right">
-                        <div className="text-sm text-green-600 font-medium">NFT Minted</div>
-                        <div className="text-xs text-gray-500">{milestone.date}</div>
+                        <div className="text-sm text-green-600 font-medium">
+                          NFT Minted
+                        </div>
+                        <div className="text-xs text-gray-500">
+                          {milestone.date}
+                        </div>
                       </div>
                     )}
                   </div>
 
-                  <p className="text-sm text-gray-700 mb-3">{milestone.description}</p>
+                  <p className="text-sm text-gray-700 mb-3">
+                    {milestone.description}
+                  </p>
 
                   <div className="flex items-center justify-between">
                     <div className="text-sm text-lovefi-purple font-medium">
@@ -228,18 +243,20 @@ const MilestonesView = () => {
                       View NFT
                     </button>
                   )}
-                  
+
                   {milestone.completed && !milestone.nftMinted && (
                     <button className="mt-3 px-4 py-2 bg-lovefi-purple text-white text-sm rounded-lg font-medium">
                       Mint NFT
                     </button>
                   )}
 
-                  {!milestone.completed && milestone.id === nextMilestone?.id && daysToNext === 0 && (
-                    <button className="mt-3 px-4 py-2 bg-lovefi-purple text-white text-sm rounded-lg font-medium">
-                      Confirm Milestone
-                    </button>
-                  )}
+                  {!milestone.completed &&
+                    milestone.id === nextMilestone?.id &&
+                    daysToNext === 0 && (
+                      <button className="mt-3 px-4 py-2 bg-lovefi-purple text-white text-sm rounded-lg font-medium">
+                        Confirm Milestone
+                      </button>
+                    )}
                 </div>
 
                 {/* Connection Line */}
