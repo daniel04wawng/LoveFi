@@ -12,7 +12,7 @@ const sexualityOptions = [
   { id: "straight", label: "Straight", icon: "💕" },
   { id: "gay", label: "Gay", icon: "🌈" },
   { id: "lesbian", label: "Lesbian", icon: "💜" },
-  { id: "other", label: "Other", icon: "✨" }
+  { id: "other", label: "Other", icon: "✨" },
 ];
 
 export default function SexualitySelection({
@@ -21,20 +21,20 @@ export default function SexualitySelection({
 }: SexualitySelectionProps) {
   const { userData, updateUserData } = useUser();
   const location = useLocation();
-  
+
   const [selectedSexuality, setSelectedSexuality] = useState(
-    userData.sexuality || ""
+    userData.sexuality || "",
   );
   const [customSexuality, setCustomSexuality] = useState(
-    userData.customSexuality || ""
+    userData.customSexuality || "",
   );
   const [showCustomInput, setShowCustomInput] = useState(
-    userData.sexuality === "other"
+    userData.sexuality === "other",
   );
 
   // Determine back route based on referrer or default flow
-  const isFromProfile = location.state?.from === 'profile';
-  const backRoute = isFromProfile ? '/profile' : '/location-selection';
+  const isFromProfile = location.state?.from === "profile";
+  const backRoute = isFromProfile ? "/profile" : "/location-selection";
 
   const handleSexualitySelect = (sexuality: string) => {
     setSelectedSexuality(sexuality);
@@ -48,11 +48,11 @@ export default function SexualitySelection({
 
   const handleContinue = () => {
     // Save sexuality data to context
-    updateUserData({ 
+    updateUserData({
       sexuality: selectedSexuality,
-      customSexuality: selectedSexuality === "other" ? customSexuality : ""
+      customSexuality: selectedSexuality === "other" ? customSexuality : "",
     });
-    
+
     if (onContinue) {
       onContinue();
     }
@@ -65,8 +65,10 @@ export default function SexualitySelection({
     return "[Name]";
   };
 
-  const canContinue = selectedSexuality && 
-    (selectedSexuality !== "other" || (selectedSexuality === "other" && customSexuality.trim()));
+  const canContinue =
+    selectedSexuality &&
+    (selectedSexuality !== "other" ||
+      (selectedSexuality === "other" && customSexuality.trim()));
 
   return (
     <AnimatedPageWrapper direction="left">
@@ -100,7 +102,9 @@ export default function SexualitySelection({
           <div className="pt-12 pb-8">
             <h1 className="text-lg font-alata font-normal leading-[150%] text-black">
               Perfect, {getDisplayName()}! What's your{" "}
-              <span className="text-lovefi-text-secondary">sexual orientation?</span>
+              <span className="text-lovefi-text-secondary">
+                sexual orientation?
+              </span>
             </h1>
           </div>
 
@@ -175,7 +179,7 @@ export default function SexualitySelection({
                   : "opacity-50 cursor-not-allowed"
               }`}
               style={{
-                background: canContinue 
+                background: canContinue
                   ? "linear-gradient(90deg, #8F7CFF 0%, #AC6DFF 100%)"
                   : "#E5E5E5",
               }}

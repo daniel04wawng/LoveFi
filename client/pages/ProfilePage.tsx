@@ -44,7 +44,9 @@ export default function ProfilePage() {
     if (userData.sexuality === "other" && userData.customSexuality) {
       return userData.customSexuality;
     }
-    return userData.sexuality.charAt(0).toUpperCase() + userData.sexuality.slice(1);
+    return (
+      userData.sexuality.charAt(0).toUpperCase() + userData.sexuality.slice(1)
+    );
   };
 
   const getPartnerPreferencesDisplay = () => {
@@ -267,9 +269,7 @@ export default function ProfilePage() {
                 Wallet
               </h2>
               <button
-                onClick={() =>
-                  navigate("/", { state: { from: "profile" } })
-                }
+                onClick={() => navigate("/", { state: { from: "profile" } })}
                 className="text-lovefi-purple font-[Alata] text-sm hover:underline"
               >
                 Edit
