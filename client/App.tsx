@@ -37,6 +37,10 @@ function AnimatedRoutes() {
             element={<LocationSelectionPage />}
           />
           <Route
+            path="/personal-interests"
+            element={<PersonalInterestsPage />}
+          />
+          <Route
             path="/partner-preferences"
             element={<PartnerPreferencesPage />}
           />
