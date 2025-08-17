@@ -51,15 +51,18 @@ export default function MessagesPage() {
         {/* Search Bar */}
         <div className="px-10 pb-6">
           <div className="relative">
-            <div className="absolute left-5 top-3.5 text-gray-400">
-              🔍
+            <div className="absolute left-5 top-3.5 text-gray-400 pointer-events-none">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="9.16667" cy="9.16667" r="7.5" stroke="currentColor" strokeWidth="1.5"/>
+                <path d="M15.5 15.5L19.5 19.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
             </div>
             <input
               type="text"
               placeholder="Search"
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
-              className="w-full h-12 pl-13 pr-4 border border-gray-200 rounded-[15px] bg-white text-sm font-normal placeholder-gray-400 focus:outline-none focus:border-lovefi-purple"
+              className="w-full h-12 pl-12 pr-4 border border-[#E8E6EA] rounded-[15px] bg-white text-sm font-normal placeholder-black placeholder-opacity-40 focus:outline-none focus:border-lovefi-purple"
             />
           </div>
         </div>
