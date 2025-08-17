@@ -35,11 +35,13 @@ export default function StakeProposal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 z-[60] flex items-end justify-center">
+    <div className="fixed inset-0 bg-black/50 z-[60] flex items-center justify-center p-4">
       <div
-        className="bg-white rounded-t-[24px] p-6 w-full max-w-sm mx-auto"
+        className="bg-white rounded-[20px] p-6 w-full max-w-sm mx-auto shadow-2xl"
         style={{
-          animation: 'slideUp 0.3s ease-out forwards'
+          animation: isOpen ? 'scaleIn 0.3s ease-out forwards' : 'none',
+          transform: 'scale(0.8)',
+          transformOrigin: 'center'
         }}
       >
         {/* Header */}
