@@ -108,7 +108,7 @@ export default function BottomNavigation() {
     >
       <div className="w-full max-w-sm mx-auto bg-white">
         <div
-          className={`grid ${isInCouplesFlow ? "grid-cols-3" : "grid-cols-3"} gap-0 py-4 px-4 bg-white`}
+          className={`grid ${isInCouplesFlow ? "grid-cols-4" : "grid-cols-3"} gap-0 py-4 px-4 bg-white`}
           style={{ backgroundColor: "white" }}
         >
           {tabs.map((tab) => {
