@@ -68,7 +68,7 @@ export default function GenderSelection({
           {/* Header Text */}
           <div className="pt-12 pb-8">
             <h1 className="text-lg font-alata font-normal leading-[150%] text-black">
-              Great! Nice to meet you, {getDisplayName()} Who are{" "}
+              Great! Nice to meet you, {getDisplayName()}. Who are{" "}
               <span className="text-lovefi-text-secondary">you?</span>
             </h1>
           </div>
