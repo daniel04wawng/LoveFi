@@ -240,6 +240,11 @@ export default function MatchingScreen() {
                 />
               </div>
             )}
+
+            {/* Transition overlay */}
+            {isPhotoTransitioning && (
+              <div className="absolute inset-0 bg-black/10 backdrop-blur-[1px] z-10 transition-all duration-150" />
+            )}
           </div>
 
           {/* Distance indicator */}
