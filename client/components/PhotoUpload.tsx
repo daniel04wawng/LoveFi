@@ -40,27 +40,36 @@ export default function PhotoUpload() {
     fileInputRef.current?.click();
   };
 
-  const handleStartMatching = () => {
-    // Update photos in context before export
+  const handleStartMatching = async () => {
+    // Update photos in context before sending to backend
     updateUserData({ photos: uploadedPhotos });
 
-    // Export user data using the utility function
-    const exportedData = logUserDataToConsole(userData);
+    try {
+      // Send user data to backend
+      const response = await fetch('/api/profiles', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userData }),
+      });
 
-    // Optionally download as JSON file for testing
-    if (process.env.NODE_ENV === "development") {
-      downloadUserDataAsJSON(userData, `lovefi-user-${Date.now()}.json`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log('✅ Profile saved successfully:', result);
+
+      // Navigate to matching screen
+      navigate("/matching");
+    } catch (error) {
+      console.error('❌ Failed to save profile:', error);
+
+      // Still navigate to matching for now, but log the error
+      // In production, you might want to show an error message
+      navigate("/matching");
     }
-
-    // Here you would typically send the exportedData to your backend
-    // Example: await sendToBackend(exportedData);
-
-    alert(
-      "Profile completed! ✅\n\nUser data exported and ready for backend.\nCheck console for JSON output.",
-    );
-
-    // Navigate to matching screen
-    navigate("/matching");
   };
 
   const handleBack = () => {
