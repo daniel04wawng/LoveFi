@@ -71,6 +71,7 @@ export default function MessagesPage() {
   );
   const [isAnimatingIn, setIsAnimatingIn] = useState(false);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
+  const [isStakeModalOpen, setIsStakeModalOpen] = useState(false);
 
   const messages = userData.messages || [];
 
