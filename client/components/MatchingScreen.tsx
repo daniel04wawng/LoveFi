@@ -200,14 +200,27 @@ export default function MatchingScreen() {
             </div>
           )}
 
-          {/* Bottom overlay with profile info */}
-          <div className="absolute bottom-0 left-0 right-0 h-[83px] bg-black/80 rounded-b-[15px] flex flex-col justify-center px-4">
-            <h2 className="text-white text-2xl font-[Alata] font-normal">
-              {currentProfile.name}, {currentProfile.age}
-            </h2>
-            <p className="text-white text-sm font-[Alata] mt-1">
-              [{currentProfile.cryptoTagline}]
-            </p>
+          {/* Bottom overlay with blurred background and profile info */}
+          <div className="absolute bottom-0 left-0 right-0 h-[83px] rounded-b-[15px] overflow-hidden">
+            {/* Blurred background */}
+            <div className="absolute inset-0">
+              <img
+                src={currentProfile.photos[currentPhotoIndex]}
+                alt=""
+                className="w-full h-full object-cover filter blur-[12px] scale-110"
+              />
+              <div className="absolute inset-0 bg-black/60"></div>
+            </div>
+
+            {/* Profile info */}
+            <div className="relative z-10 flex flex-col justify-center h-full px-4">
+              <h2 className="text-white text-2xl font-[Alata] font-normal">
+                {currentProfile.name}, {currentProfile.age}
+              </h2>
+              <p className="text-white text-sm font-[Alata] mt-1">
+                [{currentProfile.cryptoTagline}]
+              </p>
+            </div>
           </div>
         </div>
 
