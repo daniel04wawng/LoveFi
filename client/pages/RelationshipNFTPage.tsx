@@ -12,7 +12,7 @@ export default function RelationshipNFTPage() {
 
   const relationshipStatus = userData.relationshipStatus;
   const partnerProfile = userData.messages?.find(
-    (profile) => profile.id === relationshipStatus?.partnerId
+    (profile) => profile.id === relationshipStatus?.partnerId,
   );
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function RelationshipNFTPage() {
     setTimeout(() => {
       setIsMinting(false);
       setMintComplete(true);
-      
+
       // Update user data with NFT status
       updateUserData({
         relationshipStatus: {
@@ -90,10 +90,15 @@ export default function RelationshipNFTPage() {
               <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center mr-4">
                 <span className="text-white font-[Alata] text-lg">You</span>
               </div>
-              
+
               {/* Heart icon */}
               <div className="mx-3">
-                <svg width="24" height="24" viewBox="0 0 24 24" className="text-red-500">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  className="text-red-500"
+                >
                   <path
                     fill="currentColor"
                     d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
@@ -110,7 +115,7 @@ export default function RelationshipNFTPage() {
                 />
               </div>
             </div>
-            
+
             <h2 className="text-xl font-[Alata] text-black mb-2">
               You & {partnerProfile.name}
             </h2>
@@ -118,7 +123,8 @@ export default function RelationshipNFTPage() {
               Stake: {relationshipStatus.stakeAmount} ETH
             </p>
             <p className="text-gray-500 font-[Alata] text-xs">
-              Committed since {new Date(relationshipStatus.startDate!).toLocaleDateString()}
+              Committed since{" "}
+              {new Date(relationshipStatus.startDate!).toLocaleDateString()}
             </p>
           </div>
 
@@ -128,10 +134,11 @@ export default function RelationshipNFTPage() {
                 Create Your Relationship NFT
               </h3>
               <p className="text-gray-600 font-[Alata] text-sm mb-6">
-                This NFT represents your committed relationship on the blockchain. 
-                It will hold your staked ETH and can only be dissolved by mutual agreement.
+                This NFT represents your committed relationship on the
+                blockchain. It will hold your staked ETH and can only be
+                dissolved by mutual agreement.
               </p>
-              
+
               <button
                 onClick={handleMintNFT}
                 className="w-full h-12 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-[Alata] rounded-[15px] hover:from-purple-600 hover:to-pink-600 transition-all"
@@ -145,7 +152,12 @@ export default function RelationshipNFTPage() {
             <div className="text-center">
               <div className="mb-6">
                 <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full mx-auto mb-4 flex items-center justify-center animate-pulse">
-                  <svg width="40" height="40" viewBox="0 0 40 40" className="text-white">
+                  <svg
+                    width="40"
+                    height="40"
+                    viewBox="0 0 40 40"
+                    className="text-white"
+                  >
                     <path
                       fill="currentColor"
                       d="M20 2L2 7l3 3v10c0 10.55 6.84 20.74 15 23 8.16-2.26 15-12.45 15-23V10l3-3L20 2z"
@@ -177,7 +189,12 @@ export default function RelationshipNFTPage() {
             <div className="text-center">
               <div className="mb-6">
                 <div className="w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <svg width="40" height="40" viewBox="0 0 40 40" className="text-white">
+                  <svg
+                    width="40"
+                    height="40"
+                    viewBox="0 0 40 40"
+                    className="text-white"
+                  >
                     <path
                       fill="currentColor"
                       d="M16.707 25.293l-6-6a1 1 0 0 0-1.414 1.414l6.707 6.707a1 1 0 0 0 1.414 0l14-14a1 1 0 0 0-1.414-1.414L16.707 25.293z"
@@ -201,7 +218,7 @@ export default function RelationshipNFTPage() {
                     🔒 Your relationship is now locked and secured
                   </p>
                 </div>
-                
+
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
                   <p className="text-blue-800 font-[Alata] text-sm">
                     💎 {relationshipStatus.stakeAmount} ETH held in escrow
