@@ -1,46 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
-interface Profile {
-  id: string;
-  name: string;
-  age: number;
-  photos: string[];
-  distance: number;
-  matchPercentage: number;
-  cryptoTagline: string;
-  commonInterests: string[];
-}
-
-// Sample profile data
-const sampleProfiles: Profile[] = [
-  {
-    id: "1",
-    name: "Jessica Parker",
-    age: 23,
-    photos: [
-      "https://api.builder.io/api/v1/image/assets/TEMP/af8f73f4142b1ef8e6d592d18b85241000f6502f?width=590",
-      "https://api.builder.io/api/v1/image/assets/TEMP/6cabb3dad76cb51b24764256d4f4bd8801bd4295?width=462",
-      "https://api.builder.io/api/v1/image/assets/TEMP/434a85bde041459edbb784f0e83f407bd7633083?width=590",
-    ],
-    distance: 1,
-    matchPercentage: 80,
-    cryptoTagline: "Insert Quirky Crypto Meme",
-    commonInterests: ["looking for a rich sugar daddy/mommy", "very into the crypto memes", "blockchain enthusiast"],
-  },
-  {
-    id: "2", 
-    name: "Alex Chen",
-    age: 26,
-    photos: [
-      "https://api.builder.io/api/v1/image/assets/TEMP/af8f73f4142b1ef8e6d592d18b85241000f6502f?width=590",
-    ],
-    distance: 3,
-    matchPercentage: 92,
-    cryptoTagline: "To the moon and beyond 🚀",
-    commonInterests: ["DeFi trading", "NFT collector", "Web3 gaming"],
-  },
-];
+import { useUser } from "../contexts/UserContext";
+import { generateProfiles, Profile } from "../utils/profileData";
 
 export default function MatchingScreen() {
   const navigate = useNavigate();
