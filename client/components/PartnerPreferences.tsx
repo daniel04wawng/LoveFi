@@ -62,6 +62,8 @@ export default function PartnerPreferences({
   };
 
   const handleContinue = () => {
+    // Save preferences to context when continuing
+    updateUserData({ partnerPreferences: preferences });
     if (onContinue) {
       onContinue();
     }
