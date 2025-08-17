@@ -187,18 +187,6 @@ const CouplesDashboard = () => {
                 ))}
               </div>
             </button>
-
-            {/* Days Together Card */}
-            <div className="bg-white rounded-2xl p-4 border border-gray-100">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="text-gray-900 font-alata font-medium mb-1">Days Together</h3>
-                  <div className="text-2xl font-bold text-lovefi-purple">{relationshipDays}</div>
-                  <div className="text-xs text-gray-500">Keep the streak going! 💕</div>
-                </div>
-                <div className="text-3xl">😍</div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
