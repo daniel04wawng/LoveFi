@@ -159,6 +159,8 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     saveProfile,
     removeSavedProfile,
     isSaved,
+    addToMessages,
+    removeFromMessages,
   };
 
   return (
