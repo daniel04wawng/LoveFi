@@ -1,4 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 interface Tab {
   id: string;
@@ -11,8 +12,6 @@ export default function BottomNavigation() {
   const navigate = useNavigate();
   const location = useLocation();
   
-  console.log("BottomNavigation rendering, current path:", location.pathname);
-
   const tabs: Tab[] = [
     {
       id: "matching",
@@ -34,32 +33,80 @@ export default function BottomNavigation() {
     },
   ];
 
-  const handleTabClick = (tab: Tab) => {
-    console.log("Navigating to:", tab.path);
-    navigate(tab.path);
+  const handleTabClick = (path: string) => {
+    console.log("Navigation clicked, going to:", path);
+    // Force navigation
+    window.location.hash = '';
+    navigate(path, { replace: false });
   };
 
+  // Ensure navigation is always visible
+  useEffect(() => {
+    const navElement = document.querySelector('[data-nav="bottom-navigation"]');
+    if (navElement) {
+      (navElement as HTMLElement).style.display = 'block';
+      (navElement as HTMLElement).style.visibility = 'visible';
+      (navElement as HTMLElement).style.position = 'fixed';
+      (navElement as HTMLElement).style.bottom = '0';
+      (navElement as HTMLElement).style.zIndex = '999999';
+    }
+  }, [location.pathname]);
+
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-gray-300 shadow-xl z-[99999]">
-      <div className="w-full max-w-sm mx-auto">
-        <div className="grid grid-cols-3 gap-0 py-4 px-4">
+    <div 
+      data-nav="bottom-navigation"
+      className="fixed bottom-0 left-0 right-0 bg-white border-t-4 border-gray-400 shadow-2xl"
+      style={{
+        position: 'fixed !important',
+        bottom: '0 !important',
+        left: '0 !important',
+        right: '0 !important',
+        zIndex: 999999,
+        display: 'block !important',
+        visibility: 'visible !important',
+        minHeight: '80px',
+        backgroundColor: 'white',
+        borderTop: '4px solid #9CA3AF'
+      }}
+    >
+      <div className="w-full max-w-sm mx-auto bg-white">
+        <div 
+          className="grid grid-cols-3 gap-0 py-4 px-4 bg-white"
+          style={{ backgroundColor: 'white' }}
+        >
           {tabs.map((tab) => {
             const isActive = location.pathname === tab.path;
 
             return (
               <button
                 key={tab.id}
-                onClick={() => handleTabClick(tab)}
-                className={`flex flex-col items-center justify-center py-3 px-2 rounded-lg transition-all duration-200 ${
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  handleTabClick(tab.path);
+                }}
+                className={`flex flex-col items-center justify-center py-3 px-2 rounded-lg transition-all duration-200 cursor-pointer ${
                   isActive
-                    ? "text-lovefi-purple bg-lovefi-purple/10"
-                    : "text-gray-600 hover:text-gray-800 hover:bg-gray-50"
+                    ? "text-purple-600 bg-purple-100"
+                    : "text-gray-700 hover:text-gray-900 hover:bg-gray-100"
                 }`}
+                style={{
+                  minHeight: '60px',
+                  cursor: 'pointer',
+                  touchAction: 'manipulation',
+                  userSelect: 'none'
+                }}
               >
-                <div className="text-2xl mb-1 leading-none">
+                <div 
+                  className="text-2xl mb-1 leading-none"
+                  style={{ fontSize: '24px', lineHeight: '1' }}
+                >
                   {tab.icon}
                 </div>
-                <span className="text-xs font-[Alata] font-medium text-center">
+                <span 
+                  className="text-xs font-medium text-center"
+                  style={{ fontSize: '11px' }}
+                >
                   {tab.label}
                 </span>
               </button>
