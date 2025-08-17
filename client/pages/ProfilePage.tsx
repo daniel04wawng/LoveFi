@@ -86,7 +86,7 @@ export default function ProfilePage() {
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-normal text-black font-[Alata]">Photos</h2>
               <button
-                onClick={() => navigate('/photo-upload')}
+                onClick={() => navigate('/photo-upload', { state: { from: 'profile' } })}
                 className="text-lovefi-purple font-[Alata] text-sm hover:underline"
               >
                 Edit
@@ -116,7 +116,7 @@ export default function ProfilePage() {
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-normal text-black font-[Alata]">Basic Information</h2>
               <button
-                onClick={() => navigate('/user-info')}
+                onClick={() => navigate('/user-info', { state: { from: 'profile' } })}
                 className="text-lovefi-purple font-[Alata] text-sm hover:underline"
               >
                 Edit
@@ -157,7 +157,7 @@ export default function ProfilePage() {
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-normal text-black font-[Alata]">Location & Search</h2>
               <button
-                onClick={() => navigate('/location-selection')}
+                onClick={() => navigate('/location-selection', { state: { from: 'profile' } })}
                 className="text-lovefi-purple font-[Alata] text-sm hover:underline"
               >
                 Edit
@@ -184,7 +184,7 @@ export default function ProfilePage() {
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-normal text-black font-[Alata]">Partner Preferences</h2>
               <button
-                onClick={() => navigate('/partner-preferences')}
+                onClick={() => navigate('/partner-preferences', { state: { from: 'profile' } })}
                 className="text-lovefi-purple font-[Alata] text-sm hover:underline"
               >
                 Edit
@@ -202,7 +202,7 @@ export default function ProfilePage() {
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-normal text-black font-[Alata]">Personal Interests</h2>
               <button
-                onClick={() => navigate('/personal-interests')}
+                onClick={() => navigate('/personal-interests', { state: { from: 'profile' } })}
                 className="text-lovefi-purple font-[Alata] text-sm hover:underline"
               >
                 Edit
@@ -231,7 +231,7 @@ export default function ProfilePage() {
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-normal text-black font-[Alata]">Wallet</h2>
               <button
-                onClick={() => navigate('/wallet-connect')}
+                onClick={() => navigate('/wallet-connect', { state: { from: 'profile' } })}
                 className="text-lovefi-purple font-[Alata] text-sm hover:underline"
               >
                 Edit
