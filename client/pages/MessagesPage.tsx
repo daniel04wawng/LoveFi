@@ -140,7 +140,14 @@ export default function MessagesPage() {
   };
 
   const handleDollarClick = () => {
-    console.log("Dollar button clicked");
+    setIsStakeModalOpen(true);
+  };
+
+  const handleStakeSubmit = (amount: number) => {
+    if (openChatId) {
+      sendStakeProposal(openChatId, amount);
+    }
+    setIsStakeModalOpen(false);
   };
 
   const currentChatProfile = openChatId
@@ -355,7 +362,7 @@ export default function MessagesPage() {
               onClick={() => (window.location.href = "/messages")}
               className="flex flex-col items-center justify-center py-4 px-2 rounded-lg text-purple-600 bg-purple-100"
             >
-              <div className="text-3xl mb-2">💬</div>
+              <div className="text-3xl mb-2">���</div>
               <span className="text-sm font-medium">Messages</span>
             </button>
             <button
