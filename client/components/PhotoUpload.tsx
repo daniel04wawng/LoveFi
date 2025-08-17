@@ -7,7 +7,18 @@ import {
 } from "../utils/dataExport";
 
 export default function PhotoUpload() {
-  const { userData, updateUserData } = useUser();
+  // Defensive check for context availability
+  let userData, updateUserData;
+  try {
+    const userContext = useUser();
+    userData = userContext.userData;
+    updateUserData = userContext.updateUserData;
+  } catch (error) {
+    console.error("PhotoUpload: UserContext not available:", error);
+    // Fallback values
+    userData = {};
+    updateUserData = () => {};
+  }
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [uploadedPhotos, setUploadedPhotos] = useState<File[]>(
