@@ -9,7 +9,12 @@ import {
 export default function PhotoUpload() {
   const { userData, updateUserData } = useUser();
   const navigate = useNavigate();
+  const location = useLocation();
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Determine back route based on referrer or default flow
+  const isFromProfile = location.state?.from === 'profile';
+  const backRoute = isFromProfile ? '/profile' : '/personal-interests';
   const [uploadedPhotos, setUploadedPhotos] = useState<File[]>(
     userData.photos || [],
   );
