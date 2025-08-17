@@ -52,7 +52,10 @@ export default function ProfileCard({
         {/* Remove button */}
         {showRemoveButton && onRemove && (
           <button
-            onClick={() => onRemove(profile.id)}
+            onClick={(e) => {
+              e.stopPropagation();
+              onRemove(profile.id);
+            }}
             className="absolute top-3 right-3 w-8 h-8 bg-white/90 rounded-full flex items-center justify-center shadow-md hover:bg-white transition-colors"
           >
             <svg
