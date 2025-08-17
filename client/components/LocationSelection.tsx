@@ -307,9 +307,12 @@ export default function LocationSelection({
           <div className="flex-shrink-0 pb-8">
             <button
               onClick={handleContinue}
-              className="w-full h-14 rounded-2xl text-white font-alata font-normal text-base transition-all hover:opacity-90"
+              disabled={!canContinue}
+              className="w-full h-14 rounded-2xl text-white font-alata font-normal text-base transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
               style={{
-                background: "linear-gradient(90deg, #8F7CFF 0%, #AC6DFF 100%)",
+                background: canContinue
+                  ? "linear-gradient(90deg, #8F7CFF 0%, #AC6DFF 100%)"
+                  : "#E5E5E5",
               }}
             >
               Continue
