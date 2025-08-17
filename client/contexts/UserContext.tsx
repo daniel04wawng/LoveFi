@@ -67,6 +67,8 @@ interface UserContextType {
   saveProfile: (profile: Profile) => void;
   removeSavedProfile: (profileId: string) => void;
   isSaved: (profileId: string) => boolean;
+  addToMessages: (profile: Profile) => void;
+  removeFromMessages: (profileId: string) => void;
 }
 
 // Create context with a default value to prevent undefined errors
