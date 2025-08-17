@@ -9,6 +9,8 @@ export default function RelationshipNFTPage() {
   const [isMinting, setIsMinting] = useState(false);
   const [mintComplete, setMintComplete] = useState(false);
   const [mintProgress, setMintProgress] = useState(0);
+  const [showCelebration, setShowCelebration] = useState(true);
+  const [confettiVisible, setConfettiVisible] = useState(false);
 
   const relationshipStatus = userData.relationshipStatus;
   const partnerProfile = userData.messages?.find(
