@@ -101,16 +101,16 @@ export default function StakeProposal({
         </div>
 
         {/* Preset Amounts */}
-        <div className="mb-8">
+        <div className="mb-6">
           <p className="text-sm font-[Alata] text-black mb-3">Quick amounts:</p>
           <div className="grid grid-cols-3 gap-2">
-            {[100, 500, 1000].map((amount) => (
+            {[0.01, 0.05, 0.1].map((amount) => (
               <button
                 key={amount}
                 onClick={() => setStakeAmount(amount.toString())}
                 className="h-10 border border-[#E8E6EA] rounded-[10px] bg-white text-sm font-[Alata] text-black hover:border-lovefi-purple hover:bg-purple-50 transition-colors"
               >
-                ${amount}
+                {amount} ETH
               </button>
             ))}
           </div>
