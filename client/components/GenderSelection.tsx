@@ -157,7 +157,6 @@ export default function GenderSelection({
                 />
               </svg>
             </button>
-
           </div>
 
           {/* Continue Button */}

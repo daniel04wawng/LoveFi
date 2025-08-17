@@ -55,7 +55,7 @@ export default function LocationSelection({
           country: parsed.country,
           fullAddress: parsed.fullAddress,
           latitude: parsed.latitude,
-          longitude: parsed.longitude
+          longitude: parsed.longitude,
         };
       }
     } catch {
@@ -67,7 +67,7 @@ export default function LocationSelection({
   };
 
   const [locationData, setLocationData] = useState<LocationData>(
-    parseLocationData(userData.location)
+    parseLocationData(userData.location),
   );
   const [radius, setRadius] = useState(userData.radius || 10);
   const [suggestions, setSuggestions] = useState<NominatimResult[]>([]);
@@ -75,8 +75,8 @@ export default function LocationSelection({
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   // Determine back route based on referrer or default flow
-  const isFromProfile = locationState.state?.from === 'profile';
-  const backRoute = isFromProfile ? '/profile' : '/gender-selection';
+  const isFromProfile = locationState.state?.from === "profile";
+  const backRoute = isFromProfile ? "/profile" : "/gender-selection";
 
   // Debounced search function
   useEffect(() => {
@@ -99,8 +99,8 @@ export default function LocationSelection({
     };
 
     if (showSuggestions) {
-      document.addEventListener('click', handleClickOutside);
-      return () => document.removeEventListener('click', handleClickOutside);
+      document.addEventListener("click", handleClickOutside);
+      return () => document.removeEventListener("click", handleClickOutside);
     }
   }, [showSuggestions]);
 
@@ -108,13 +108,13 @@ export default function LocationSelection({
     setIsSearching(true);
     try {
       const response = await fetch(
-        `https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=5&q=${encodeURIComponent(query)}`
+        `https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=5&q=${encodeURIComponent(query)}`,
       );
       const results: NominatimResult[] = await response.json();
       setSuggestions(results);
       setShowSuggestions(results.length > 0);
     } catch (error) {
-      console.error('Geocoding search failed:', error);
+      console.error("Geocoding search failed:", error);
       setSuggestions([]);
       setShowSuggestions(false);
     } finally {
@@ -123,11 +123,15 @@ export default function LocationSelection({
   };
 
   const handleSuggestionSelect = (suggestion: NominatimResult) => {
-    const city = suggestion.address.city || suggestion.address.town || suggestion.address.village || '';
-    const country = suggestion.address.country || '';
+    const city =
+      suggestion.address.city ||
+      suggestion.address.town ||
+      suggestion.address.village ||
+      "";
+    const country = suggestion.address.country || "";
 
     // Build street address from API components
-    let street = '';
+    let street = "";
     if (suggestion.address.house_number && suggestion.address.road) {
       street = `${suggestion.address.house_number} ${suggestion.address.road}`;
     } else if (suggestion.address.road) {
@@ -136,8 +140,8 @@ export default function LocationSelection({
       street = suggestion.address.street;
     } else {
       // Fallback: extract from display name
-      const addressParts = suggestion.display_name.split(',');
-      street = addressParts[0] || '';
+      const addressParts = suggestion.display_name.split(",");
+      street = addressParts[0] || "";
     }
 
     setLocationData({
@@ -146,7 +150,7 @@ export default function LocationSelection({
       country,
       fullAddress: suggestion.display_name,
       latitude: parseFloat(suggestion.lat),
-      longitude: parseFloat(suggestion.lon)
+      longitude: parseFloat(suggestion.lon),
     });
 
     setShowSuggestions(false);
@@ -169,15 +173,15 @@ export default function LocationSelection({
   };
 
   const handleStreetChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLocationData(prev => ({ ...prev, street: e.target.value }));
+    setLocationData((prev) => ({ ...prev, street: e.target.value }));
   };
 
   const handleCityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLocationData(prev => ({ ...prev, city: e.target.value }));
+    setLocationData((prev) => ({ ...prev, city: e.target.value }));
   };
 
   const handleCountryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLocationData(prev => ({ ...prev, country: e.target.value }));
+    setLocationData((prev) => ({ ...prev, country: e.target.value }));
   };
 
   const canContinue = locationData.city.trim() && locationData.country.trim();
@@ -283,7 +287,9 @@ export default function LocationSelection({
                       className="w-full px-4 py-3 text-left text-sm hover:bg-gray-50 border-b border-gray-100 last:border-b-0"
                     >
                       <div className="font-medium text-gray-900">
-                        {suggestion.address.city || suggestion.address.town || suggestion.address.village}
+                        {suggestion.address.city ||
+                          suggestion.address.town ||
+                          suggestion.address.village}
                       </div>
                       <div className="text-xs text-gray-500 truncate">
                         {suggestion.display_name}
