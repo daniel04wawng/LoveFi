@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../contexts/UserContext";
-import { generateProfiles, Profile } from "../utils/profileData";
+import { useUser, Profile } from "../contexts/UserContext";
+import { generateProfiles } from "../utils/profileData";
 
 export default function MatchingScreen() {
   const navigate = useNavigate();
-  const { userData } = useUser();
+  const { userData, saveProfile } = useUser();
   const [currentProfileIndex, setCurrentProfileIndex] = useState(0);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [profiles, setProfiles] = useState<Profile[]>([]);
@@ -94,6 +94,9 @@ export default function MatchingScreen() {
         console.log("Navigate to messaging");
         break;
       case "save":
+        if (currentProfile) {
+          saveProfile(currentProfile);
+        }
         animateCardAndNext("right");
         break;
     }
