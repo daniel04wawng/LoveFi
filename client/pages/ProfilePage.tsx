@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import AnimatedPageWrapper from "../components/AnimatedPageWrapper";
 
 export default function ProfilePage() {
-  const { userData, clearUserData } = useUser();
-  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+  const { userData } = useUser();
+  const navigate = useNavigate();
 
   const calculateAge = (birthday: string) => {
     if (!birthday) return "Not set";
