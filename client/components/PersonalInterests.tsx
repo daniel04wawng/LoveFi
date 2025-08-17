@@ -160,7 +160,7 @@ export default function PersonalInterests() {
 
   const handleContinue = () => {
     updateUserData({ personalInterests: selectedInterests });
-    navigate("/partner-preferences");
+    navigate("/photo-upload");
   };
 
   const handleBack = () => {
