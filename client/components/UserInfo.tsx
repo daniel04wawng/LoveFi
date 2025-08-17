@@ -244,6 +244,42 @@ export default function UserInfo({ onContinue, onBack }: UserInfoProps) {
                 </div>
               )}
             </div>
+
+            {/* zkProof Input */}
+            <div className="relative">
+              <div className="relative">
+                <input
+                  id="zk-proof"
+                  name="zkProof"
+                  type="text"
+                  value={zkProof}
+                  onChange={(e) => setZkProof(e.target.value)}
+                  className="w-full h-[58px] border border-lovefi-border rounded-2xl bg-white px-4 text-sm font-alata font-normal text-black focus:outline-none focus:ring-2 focus:ring-lovefi-purple focus:border-transparent"
+                  placeholder="Enter your zkProof (optional)"
+                />
+                {/* Floating Label */}
+                <div className="absolute -top-[9px] left-5 bg-white px-2">
+                  <span className="text-xs font-alata font-normal text-black text-opacity-40">
+                    zkProof (Optional)
+                  </span>
+                </div>
+              </div>
+
+              {/* zkProof Info */}
+              <div className="mt-2 p-3 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl border border-blue-200/50">
+                <div className="flex items-start gap-2">
+                  <span className="text-sm">🔒</span>
+                  <div>
+                    <p className="text-xs font-alata text-blue-700 font-medium mb-1">
+                      Zero-Knowledge Proof
+                    </p>
+                    <p className="text-xs text-blue-600 font-alata">
+                      Optional cryptographic proof for enhanced privacy and verification without revealing personal data.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Continue Button */}
