@@ -12,6 +12,10 @@ export default function SavedPage() {
 
   const handleRemoveProfile = (profileId: string) => {
     removeSavedProfile(profileId);
+    // Close modal if the removed profile was being viewed
+    if (selectedProfile?.id === profileId) {
+      setSelectedProfile(null);
+    }
   };
 
   const handleProfileClick = (profile: Profile) => {
