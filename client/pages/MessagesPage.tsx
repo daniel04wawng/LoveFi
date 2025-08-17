@@ -20,7 +20,7 @@ export default function MessagesPage() {
 
   return (
     <AnimatedPageWrapper>
-      <div className="w-full min-h-screen bg-white relative max-w-sm mx-auto">
+      <div className="w-full min-h-screen bg-white relative max-w-sm mx-auto overflow-x-hidden">
         {/* Status Bar */}
         <div className="h-11 bg-white flex items-center justify-between px-5 pt-2">
           <div className="text-sm font-semibold">4:20</div>
