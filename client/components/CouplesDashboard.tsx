@@ -157,22 +157,25 @@ const CouplesDashboard = () => {
           </div>
 
           {/* Weekly Progress */}
-          <div className="px-5 mb-6">
-            <div className="flex justify-between items-center gap-2">
-              {getWeekProgress().map((day, index) => (
-                <div key={index} className="flex flex-col items-center gap-2">
-                  <span className="text-xs text-white/60">{day.day}</span>
-                  <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                      day.completed
-                        ? "bg-gradient-to-r from-orange-400 to-yellow-400"
-                        : "bg-white/10"
-                    }`}
-                  >
-                    {day.completed && <span className="text-white text-sm">✓</span>}
+          <div className="px-5 mb-8">
+            <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+              <h3 className="text-sm font-alata font-medium text-gray-700 mb-3">This Week's Progress</h3>
+              <div className="flex justify-between items-center gap-2">
+                {getWeekProgress().map((day, index) => (
+                  <div key={index} className="flex flex-col items-center gap-2">
+                    <span className="text-xs text-gray-500">{day.day}</span>
+                    <div
+                      className={`w-7 h-7 rounded-full flex items-center justify-center ${
+                        day.completed
+                          ? "bg-gradient-to-r from-orange-400 to-yellow-400"
+                          : "bg-gray-100"
+                      }`}
+                    >
+                      {day.completed && <span className="text-white text-xs">✓</span>}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
