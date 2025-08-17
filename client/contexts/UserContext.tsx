@@ -116,6 +116,7 @@ interface UserContextType {
     profileId: string,
     messageId: string,
     accept: boolean,
+    onAccepted?: () => void,
   ) => void;
 }
 
