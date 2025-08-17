@@ -185,16 +185,12 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   );
 
   const addToMessages = useCallback((profile: Profile) => {
-    console.log("Adding profile to messages:", profile.name, profile.id);
     setUserData((prev) => {
       const existingMessages = prev.messages || [];
       const existingConversations = prev.conversations || [];
 
-      console.log("Existing messages count:", existingMessages.length);
-
       // Check if profile is already in messages
       if (existingMessages.some((p) => p.id === profile.id)) {
-        console.log("Profile already exists in messages, not adding duplicate");
         return prev; // Profile already in messages, don't add duplicate
       }
 
@@ -211,7 +207,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         }];
       }
 
-      console.log("Adding profile, new messages count:", updatedMessages.length);
       const newData = {
         ...prev,
         messages: updatedMessages,
