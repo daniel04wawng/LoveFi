@@ -72,16 +72,11 @@ const App = () => (
 
 const rootElement = document.getElementById("root")!;
 
-// Prevent duplicate root creation in development
+// Fix for development hot reload context issues
 if (import.meta.hot) {
-  // In development with hot reload, check if root already exists
-  if (!(rootElement as any)._reactRootContainer) {
-    const root = createRoot(rootElement);
-    (rootElement as any)._reactRootContainer = root;
-    root.render(<App />);
-  } else {
-    (rootElement as any)._reactRootContainer.render(<App />);
-  }
+  // Always create a fresh root during hot reload to prevent context issues
+  const root = createRoot(rootElement);
+  root.render(<App />);
 } else {
   // In production, create root normally
   const root = createRoot(rootElement);
