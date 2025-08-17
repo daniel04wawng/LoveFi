@@ -69,6 +69,7 @@ export default function MessagesPage() {
     [],
   );
   const [isAnimatingIn, setIsAnimatingIn] = useState(false);
+  const [isAnimatingOut, setIsAnimatingOut] = useState(false);
 
   const messages = userData.messages || [];
 
@@ -364,15 +365,15 @@ export default function MessagesPage() {
           <div className="fixed inset-0 bg-black/60 z-50 flex flex-col">
             <div
               className={`flex-1 bg-white relative w-full ${
-                isAnimatingIn ? "" : ""
+                isAnimatingIn
+                  ? ''
+                  : ''
               }`}
               style={{
-                transform: isAnimatingIn ? "translateY(100%)" : "translateY(0)",
-                animation: isAnimatingIn
-                  ? "slideUp 0.4s cubic-bezier(0.4, 0.0, 0.2, 1) forwards"
-                  : "none",
-                maxWidth: "100vw",
-                borderRadius: isAnimatingIn ? "0" : "24px 24px 0 0",
+                transform: isAnimatingIn ? 'translateY(100%)' : 'translateY(0)',
+                animation: isAnimatingIn ? 'slideUp 0.4s cubic-bezier(0.4, 0.0, 0.2, 1) forwards' : 'none',
+                maxWidth: '100vw',
+                borderRadius: isAnimatingIn ? '0' : '24px 24px 0 0'
               }}
             >
               {/* Header with Back Button */}
