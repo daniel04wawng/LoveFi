@@ -198,7 +198,7 @@ export default function MessagesPage() {
                     }
                   : messageData;
 
-                const hasUnread = conversation.some(msg => !msg.isFromUser && !msg.isRead);
+                const hasUnread = conversationMessages.some(msg => !msg.isFromUser && !msg.isRead);
                 const isOnline = index < 2; // First two are "online"
                 
                 return (
