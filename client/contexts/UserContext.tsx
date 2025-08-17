@@ -52,6 +52,7 @@ interface UserData {
   firstName?: string;
   lastName?: string;
   birthday?: string;
+  zkProof?: string;
 
   // From gender selection
   gender?: "woman" | "man" | "non-binary" | "other";
