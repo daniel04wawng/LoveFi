@@ -43,8 +43,8 @@ export default function StakeProposal({
         }}
       >
         {/* Header */}
-        <div className="text-center mb-6">
-          <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+        <div className="text-center mb-4">
+          <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full mx-auto mb-3 flex items-center justify-center">
             <svg
               width="32"
               height="32"
