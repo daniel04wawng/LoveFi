@@ -68,6 +68,7 @@ export default function MessagesPage() {
   const [currentChatMessages, setCurrentChatMessages] = useState<ChatMessage[]>(
     [],
   );
+  const [isAnimatingIn, setIsAnimatingIn] = useState(false);
 
   const messages = userData.messages || [];
 
