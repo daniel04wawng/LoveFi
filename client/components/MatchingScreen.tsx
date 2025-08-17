@@ -25,12 +25,12 @@ export default function MatchingScreen() {
   const currentProfile = profiles[currentProfileIndex];
 
   const handlePhotoChange = (direction: 'up' | 'down') => {
-    if (!currentProfile) return;
-    
-    if (direction === 'up' && currentPhotoIndex > 0) {
-      setCurrentPhotoIndex(currentPhotoIndex - 1);
-    } else if (direction === 'down' && currentPhotoIndex < currentProfile.photos.length - 1) {
+    if (!currentProfile || isAnimating) return;
+
+    if (direction === 'up' && currentPhotoIndex < currentProfile.photos.length - 1) {
       setCurrentPhotoIndex(currentPhotoIndex + 1);
+    } else if (direction === 'down' && currentPhotoIndex > 0) {
+      setCurrentPhotoIndex(currentPhotoIndex - 1);
     }
   };
 
