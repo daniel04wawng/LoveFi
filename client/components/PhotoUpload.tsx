@@ -1,6 +1,6 @@
 import { useState, useRef, ChangeEvent } from "react";
 import { useUser } from "../contexts/UserContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   logUserDataToConsole,
   downloadUserDataAsJSON,
