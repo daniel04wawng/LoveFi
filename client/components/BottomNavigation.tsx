@@ -1,5 +1,6 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { useUser } from "../contexts/UserContext";
 
 interface Tab {
   id: string;
@@ -11,13 +12,39 @@ interface Tab {
 export default function BottomNavigation() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { userData } = useUser();
 
-  const tabs: Tab[] = [
+  // Check if user is in a committed relationship with NFT minted
+  const isInCouplesFlow = userData.relationshipStatus?.isInRelationship && userData.relationshipStatus?.nftMinted;
+
+  // Different tab sets for different user states
+  const couplesTabs: Tab[] = [
     {
       id: "dashboard",
       label: "Dashboard",
       path: "/couples-dashboard",
       icon: "💕",
+    },
+    {
+      id: "milestones",
+      label: "Milestones",
+      path: "/milestones",
+      icon: "🏆",
+    },
+    {
+      id: "challenges",
+      label: "Challenges",
+      path: "/challenges",
+      icon: "🎯",
+    },
+  ];
+
+  const singlesTabs: Tab[] = [
+    {
+      id: "matching",
+      label: "Matching",
+      path: "/matching",
+      icon: "♥",
     },
     {
       id: "messages",
@@ -32,6 +59,8 @@ export default function BottomNavigation() {
       icon: "👤",
     },
   ];
+
+  const tabs = isInCouplesFlow ? couplesTabs : singlesTabs;
 
   const handleTabClick = (path: string) => {
     console.log("Navigation clicked, going to:", path);
