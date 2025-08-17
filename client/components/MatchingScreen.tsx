@@ -258,10 +258,15 @@ export default function MatchingScreen() {
                 {currentProfile.photos.map((_, index) => (
                   <div
                     key={index}
-                    className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
                       index === currentPhotoIndex
-                        ? 'bg-white scale-125'
+                        ? 'bg-white scale-125 shadow-lg'
                         : 'bg-white/50 hover:bg-white/75'
+                    } ${
+                      isPhotoTransitioning && (
+                        (photoTransitionDirection === 'up' && index === currentPhotoIndex + 1) ||
+                        (photoTransitionDirection === 'down' && index === currentPhotoIndex - 1)
+                      ) ? 'bg-white/80 scale-110' : ''
                     }`}
                   />
                 ))}
