@@ -109,15 +109,41 @@ const UserContext = createContext<UserContextType>({
 // Make UserContext displayName to help with debugging
 UserContext.displayName = "UserContext";
 
+// Local storage helpers
+const STORAGE_KEY = 'lovefi-user-data';
+
+const loadFromStorage = (): UserData => {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return stored ? JSON.parse(stored) : {};
+  } catch (error) {
+    console.error('Error loading user data from storage:', error);
+    return {};
+  }
+};
+
+const saveToStorage = (data: UserData) => {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  } catch (error) {
+    console.error('Error saving user data to storage:', error);
+  }
+};
+
 export const UserProvider = ({ children }: { children: ReactNode }) => {
-  const [userData, setUserData] = useState<UserData>({});
+  const [userData, setUserData] = useState<UserData>(loadFromStorage);
 
   const updateUserData = useCallback((data: Partial<UserData>) => {
-    setUserData((prev) => ({ ...prev, ...data }));
+    setUserData((prev) => {
+      const newData = { ...prev, ...data };
+      saveToStorage(newData);
+      return newData;
+    });
   }, []);
 
   const clearUserData = useCallback(() => {
     setUserData({});
+    localStorage.removeItem(STORAGE_KEY);
   }, []);
 
   const saveProfile = useCallback((profile: Profile) => {
@@ -127,20 +153,26 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       if (existingProfiles.some((p) => p.id === profile.id)) {
         return prev; // Profile already saved, don't add duplicate
       }
-      return {
+      const newData = {
         ...prev,
         savedProfiles: [...existingProfiles, profile],
       };
+      saveToStorage(newData);
+      return newData;
     });
   }, []);
 
   const removeSavedProfile = useCallback((profileId: string) => {
-    setUserData((prev) => ({
-      ...prev,
-      savedProfiles: (prev.savedProfiles || []).filter(
-        (profile) => profile.id !== profileId,
-      ),
-    }));
+    setUserData((prev) => {
+      const newData = {
+        ...prev,
+        savedProfiles: (prev.savedProfiles || []).filter(
+          (profile) => profile.id !== profileId,
+        ),
+      };
+      saveToStorage(newData);
+      return newData;
+    });
   }, []);
 
   const isSaved = useCallback(
@@ -180,24 +212,30 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       }
 
       console.log("Adding profile, new messages count:", updatedMessages.length);
-      return {
+      const newData = {
         ...prev,
         messages: updatedMessages,
         conversations: updatedConversations,
       };
+      saveToStorage(newData);
+      return newData;
     });
   }, []);
 
   const removeFromMessages = useCallback((profileId: string) => {
-    setUserData((prev) => ({
-      ...prev,
-      messages: (prev.messages || []).filter(
-        (profile) => profile.id !== profileId,
-      ),
-      conversations: (prev.conversations || []).filter(
-        (conv) => conv.profileId !== profileId,
-      ),
-    }));
+    setUserData((prev) => {
+      const newData = {
+        ...prev,
+        messages: (prev.messages || []).filter(
+          (profile) => profile.id !== profileId,
+        ),
+        conversations: (prev.conversations || []).filter(
+          (conv) => conv.profileId !== profileId,
+        ),
+      };
+      saveToStorage(newData);
+      return newData;
+    });
   }, []);
 
   const sendMessage = useCallback((profileId: string, text: string) => {
@@ -224,10 +262,12 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         return conv;
       });
 
-      return {
+      const newData = {
         ...prev,
         conversations: updatedConversations,
       };
+      saveToStorage(newData);
+      return newData;
     });
   }, []);
 
@@ -250,10 +290,12 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         return conv;
       });
 
-      return {
+      const newData = {
         ...prev,
         conversations: updatedConversations,
       };
+      saveToStorage(newData);
+      return newData;
     });
   }, []);
 
