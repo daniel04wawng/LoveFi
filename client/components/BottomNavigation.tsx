@@ -17,12 +17,11 @@ export default function BottomNavigation() {
       label: "Matching",
       path: "/matching",
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-            fill="currentColor"
-          />
-        </svg>
+        <div className="w-6 h-6 flex items-center justify-center">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10 18l-1.45-1.32C5.4 13.36 2 10.28 2 6.5 2 3.42 4.42 1 7.5 1c1.74 0 3.41.81 4.5 2.09C13.09 1.81 14.76 1 16.5 1 19.58 1 22 3.42 22 6.5c0 3.78-3.4 6.86-8.55 11.54L10 18z" transform="scale(0.9) translate(1,1)"/>
+          </svg>
+        </div>
       ),
     },
     {
@@ -30,12 +29,11 @@ export default function BottomNavigation() {
       label: "Saved",
       path: "/saved",
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M17 3H7C5.9 3 5 3.9 5 5V21L12 18L19 21V5C19 3.9 18.1 3 17 3Z"
-            fill="currentColor"
-          />
-        </svg>
+        <div className="w-6 h-6 flex items-center justify-center">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M15 1H5C3.9 1 3 1.9 3 3V19L10 16L17 19V3C17 1.9 16.1 1 15 1Z" transform="scale(0.9) translate(1,1)"/>
+          </svg>
+        </div>
       ),
     },
     {
@@ -43,15 +41,14 @@ export default function BottomNavigation() {
       label: "Messages",
       path: "/messages",
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H5.17L4 17.17V4H20V16Z"
-            fill="currentColor"
-          />
-          <circle cx="8" cy="10" r="1" fill="currentColor"/>
-          <circle cx="12" cy="10" r="1" fill="currentColor"/>
-          <circle cx="16" cy="10" r="1" fill="currentColor"/>
-        </svg>
+        <div className="w-6 h-6 flex items-center justify-center">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M18 0H2C0.9 0 0 0.9 0 2V20L4 16H18C19.1 16 20 15.1 20 14V2C20 0.9 19.1 0 18 0Z" transform="scale(0.9) translate(1,1)"/>
+            <circle cx="6" cy="8" r="1"/>
+            <circle cx="10" cy="8" r="1"/>
+            <circle cx="14" cy="8" r="1"/>
+          </svg>
+        </div>
       ),
     },
     {
@@ -59,12 +56,12 @@ export default function BottomNavigation() {
       label: "Profile",
       path: "/profile",
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM12 7C13.1 7 14 7.9 14 9C14 10.1 13.1 11 12 11C10.9 11 10 10.1 10 9C10 7.9 10.9 7 12 7ZM12 12C15.31 12 18 14.69 18 18V20H6V18C6 14.69 8.69 12 12 12Z"
-            fill="currentColor"
-          />
-        </svg>
+        <div className="w-6 h-6 flex items-center justify-center">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <circle cx="10" cy="5" r="3"/>
+            <path d="M10 11c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4z" transform="translate(0,1)"/>
+          </svg>
+        </div>
       ),
     },
   ];
@@ -74,9 +71,9 @@ export default function BottomNavigation() {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50 shadow-lg">
+    <div className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-gray-300 z-50 shadow-xl">
       <div className="max-w-sm mx-auto">
-        <div className="flex items-center justify-around py-3">
+        <div className="flex items-center justify-around py-4 px-2">
           {tabs.map((tab) => {
             const isActive = location.pathname === tab.path;
 
@@ -84,14 +81,16 @@ export default function BottomNavigation() {
               <button
                 key={tab.id}
                 onClick={() => handleTabClick(tab)}
-                className={`flex flex-col items-center py-2 px-3 transition-colors duration-200 min-w-[60px] ${
+                className={`flex flex-col items-center py-2 px-4 transition-all duration-200 rounded-lg min-w-[65px] ${
                   isActive
-                    ? "text-lovefi-purple"
-                    : "text-gray-600 hover:text-gray-800"
+                    ? "text-lovefi-purple bg-lovefi-purple/10"
+                    : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                 }`}
               >
-                <div className="mb-1">{tab.icon}</div>
-                <span className="text-xs font-[Alata]">{tab.label}</span>
+                <div className="mb-1 transform transition-transform duration-200 hover:scale-110">
+                  {tab.icon}
+                </div>
+                <span className="text-xs font-[Alata] font-medium">{tab.label}</span>
               </button>
             );
           })}
