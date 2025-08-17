@@ -178,8 +178,24 @@ export default function MessagesPage() {
           ) : (
             <div className="space-y-0">
               {messages.map((profile, index) => {
+                const conversation = getConversation(profile.id);
+                const lastMessage = conversation.length > 0
+                  ? conversation[conversation.length - 1]
+                  : null;
+
+                // Use sample data if no real conversation exists
                 const messageData = sampleMessages[index % sampleMessages.length];
-                const hasUnread = messageData.unread > 0;
+                const displayMessage = lastMessage
+                  ? {
+                      lastMessage: lastMessage.isFromUser
+                        ? `You: ${lastMessage.text}`
+                        : lastMessage.text,
+                      time: lastMessage.timestamp,
+                      isFromUser: lastMessage.isFromUser
+                    }
+                  : messageData;
+
+                const hasUnread = conversation.some(msg => !msg.isFromUser && !msg.isRead);
                 const isOnline = index < 2; // First two are "online"
                 
                 return (
@@ -206,19 +222,19 @@ export default function MessagesPage() {
                             {profile.name}
                           </h3>
                           <span className="text-xs text-gray-400 font-[Alata] ml-2">
-                            {messageData.time}
+                            {displayMessage.time}
                           </span>
                         </div>
                         <p className="text-sm text-black font-normal leading-[150%] truncate">
                           {messageData.isTyping ? (
-                            <span className="text-black">{messageData.lastMessage}</span>
-                          ) : messageData.isFromUser ? (
+                            <span className="text-black">{displayMessage.lastMessage}</span>
+                          ) : displayMessage.isFromUser ? (
                             <>
                               <span className="text-black opacity-40">You: </span>
-                              <span className="text-black">{messageData.lastMessage.replace('You: ', '')}</span>
+                              <span className="text-black">{displayMessage.lastMessage.replace('You: ', '')}</span>
                             </>
                           ) : (
-                            <span className="text-black">{messageData.lastMessage}</span>
+                            <span className="text-black">{displayMessage.lastMessage}</span>
                           )}
                         </p>
                       </div>
@@ -228,7 +244,7 @@ export default function MessagesPage() {
                         <div className="ml-3">
                           <div className="w-5 h-5 bg-lovefi-purple rounded-full flex items-center justify-center">
                             <span className="text-white text-xs font-normal font-[Alata]">
-                              {messageData.unread}
+                              {conversation.filter(msg => !msg.isFromUser && !msg.isRead).length}
                             </span>
                           </div>
                         </div>
