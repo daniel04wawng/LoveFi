@@ -536,13 +536,13 @@ export default function MessagesPage() {
                                   {message.stakeData?.status === "pending" && !message.isFromUser && (
                                     <div className="flex gap-2 mt-3">
                                       <button
-                                        onClick={() => userData.sendStakeProposal && userData.respondToStakeProposal(openChatId!, message.id, true)}
+                                        onClick={() => openChatId && respondToStakeProposal(openChatId, message.id, true)}
                                         className="flex-1 bg-white/20 hover:bg-white/30 text-white border border-white/30 rounded-lg py-2 px-3 text-xs font-[Alata] transition-colors"
                                       >
                                         Accept
                                       </button>
                                       <button
-                                        onClick={() => userData.sendStakeProposal && userData.respondToStakeProposal(openChatId!, message.id, false)}
+                                        onClick={() => openChatId && respondToStakeProposal(openChatId, message.id, false)}
                                         className="flex-1 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-lg py-2 px-3 text-xs font-[Alata] transition-colors"
                                       >
                                         Decline
