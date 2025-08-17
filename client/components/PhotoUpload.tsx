@@ -1,9 +1,14 @@
 import { useState, useRef, ChangeEvent } from "react";
 import { useUser } from "../contexts/UserContext";
+import { useAuth } from "../contexts/AuthContext";
 import { useNavigate, useLocation } from "react-router-dom";
+import { nftMintingService, MintingProgress } from "../lib/nftMinting";
+import { useProfileContract } from "../lib/contracts";
 
 export default function PhotoUpload() {
   const { userData, updateUserData } = useUser();
+  const { user, primaryWallet } = useAuth();
+  const { contractService, getSigner, isConnected } = useProfileContract();
   const navigate = useNavigate();
   const location = useLocation();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -15,6 +20,11 @@ export default function PhotoUpload() {
     userData.photos || [],
   );
   const [previewUrls, setPreviewUrls] = useState<string[]>([]);
+  
+  // NFT minting state
+  const [isMinting, setIsMinting] = useState(false);
+  const [mintingProgress, setMintingProgress] = useState<MintingProgress | null>(null);
+  const [mintingError, setMintingError] = useState<string | null>(null);
 
   const handleFileSelect = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
@@ -41,34 +51,102 @@ export default function PhotoUpload() {
   };
 
   const handleStartMatching = async () => {
-    // Update photos in context before sending to backend
-    updateUserData({ photos: uploadedPhotos });
+    // Reset error state
+    setMintingError(null);
+    setMintingProgress(null);
+
+    // Validate that user is connected
+    if (!isConnected || !primaryWallet || !user) {
+      setMintingError("Please connect your wallet first");
+      return;
+    }
+
+    // Validate user data
+    const validation = nftMintingService.validateUserData(userData);
+    if (!validation.isValid) {
+      setMintingError(`Please complete your profile: ${validation.errors.join(", ")}`);
+      return;
+    }
+
+    // Check if user already has a profile
+    try {
+      const walletAddress = primaryWallet.address;
+      const hasProfile = await nftMintingService.hasExistingProfile(walletAddress);
+      
+      if (hasProfile) {
+        setMintingError("You already have a profile NFT");
+        // Navigate to matching anyway since they have a profile
+        navigate("/matching");
+        return;
+      }
+    } catch (error) {
+      console.error("Error checking existing profile:", error);
+    }
+
+    // Require at least one photo
+    if (uploadedPhotos.length === 0) {
+      setMintingError("Please upload at least one photo");
+      return;
+    }
+
+    setIsMinting(true);
 
     try {
-      // Send user data to backend
-      const response = await fetch("/api/profiles", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userData }),
-      });
+      // Update photos in context
+      updateUserData({ photos: uploadedPhotos });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+      // Get signer
+      const signer = await getSigner();
+      const walletAddress = await signer.getAddress();
+
+      // Start NFT minting process
+      const result = await nftMintingService.mintProfileNFT(
+        userData,
+        uploadedPhotos,
+        walletAddress,
+        signer,
+        (progress) => {
+          setMintingProgress(progress);
+        }
+      );
+
+      if (result.success) {
+        console.log("✅ Profile NFT minted successfully:", result);
+        
+        // Update user data with NFT info
+        updateUserData({ 
+          nftTokenId: result.tokenId,
+          nftContractAddress: import.meta.env.VITE_PROFILE_NFT_CONTRACT_ADDRESS || '0x34d89a5471251ab8925cAa95eEd901335e7E93D7',
+          transactionHash: result.transactionHash,
+          metadataURI: result.metadataURI
+        });
+
+        // Navigate to matching screen after successful minting
+        navigate("/matching");
+      } else {
+        throw new Error(result.error || "Failed to mint profile NFT");
       }
-
-      const result = await response.json();
-      console.log("✅ Profile saved successfully:", result);
-
-      // Navigate to matching screen
-      navigate("/matching");
-    } catch (error) {
-      console.error("❌ Failed to save profile:", error);
-
-      // Still navigate to matching for now, but log the error
-      // In production, you might want to show an error message
-      navigate("/matching");
+    } catch (error: any) {
+      console.error("❌ Failed to mint profile NFT:", error);
+      
+      // Provide more specific error messages for common issues
+      let errorMessage = "Failed to mint profile NFT";
+      
+      if (error?.code === 'PGRST205') {
+        errorMessage = "Database not set up. Please create the profiles table in Supabase.";
+      } else if (error?.message?.includes('profiles')) {
+        errorMessage = "Database table missing. Please run the database schema in Supabase.";
+      } else if (error?.message?.includes('wallet')) {
+        errorMessage = "Wallet connection error. Please reconnect your wallet.";
+      } else if (error?.message?.includes('IPFS')) {
+        errorMessage = "Photo upload failed. Please check your internet connection.";
+      } else if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+      
+      setMintingError(errorMessage);
+    } finally {
+      setIsMinting(false);
     }
   };
 
@@ -190,16 +268,74 @@ export default function PhotoUpload() {
         className="hidden"
       />
 
+      {/* Error display */}
+      {mintingError && (
+        <div className="px-5 pb-4">
+          <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+            <p className="text-red-600 text-sm font-[Alata]">{mintingError}</p>
+          </div>
+        </div>
+      )}
+
+      {/* Progress display */}
+      {mintingProgress && (
+        <div className="px-5 pb-4">
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <div className="flex items-center justify-between mb-2">
+              <p className="text-blue-800 text-sm font-[Alata]">{mintingProgress.message}</p>
+              <span className="text-blue-600 text-xs font-[Alata]">{Math.round(mintingProgress.progress)}%</span>
+            </div>
+            <div className="w-full bg-blue-200 rounded-full h-2">
+              <div 
+                className="bg-blue-500 h-2 rounded-full transition-all duration-300"
+                style={{ width: `${mintingProgress.progress}%` }}
+              />
+            </div>
+            {mintingProgress.step === 'minting_nft' && (
+              <p className="text-blue-600 text-xs font-[Alata] mt-2">
+                This may take a few minutes. Please don't close this window.
+              </p>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* Start matching button */}
       <div className="p-5 pt-6">
         <button
           onClick={handleStartMatching}
-          className="w-full h-14 bg-lovefi-purple rounded-[15px] flex items-center justify-center"
+          disabled={isMinting}
+          className={`w-full h-14 rounded-[15px] flex items-center justify-center transition-all duration-200 ${
+            isMinting 
+              ? "bg-gray-400 cursor-not-allowed" 
+              : "bg-lovefi-purple hover:opacity-90"
+          }`}
         >
-          <span className="text-white text-base font-normal leading-[150%] font-[Alata]">
-            Start matching!
-          </span>
+          {isMinting ? (
+            <div className="flex items-center">
+              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+              <span className="text-white text-base font-normal leading-[150%] font-[Alata]">
+                {mintingProgress?.step === 'uploading_images' && 'Uploading photos...'}
+                {mintingProgress?.step === 'creating_metadata' && 'Creating metadata...'}
+                {mintingProgress?.step === 'uploading_metadata' && 'Uploading to IPFS...'}
+                {mintingProgress?.step === 'saving_to_db' && 'Saving profile...'}
+                {mintingProgress?.step === 'minting_nft' && 'Minting NFT...'}
+                {mintingProgress?.step === 'completed' && 'Complete! 🎉'}
+                {!mintingProgress?.step && 'Processing...'}
+              </span>
+            </div>
+          ) : (
+            <span className="text-white text-base font-normal leading-[150%] font-[Alata]">
+              Start matching!
+            </span>
+          )}
         </button>
+        
+        {!isMinting && (
+          <p className="text-xs text-gray-500 text-center mt-3 font-[Alata]">
+            This will create your Profile NFT on the blockchain
+          </p>
+        )}
       </div>
     </div>
   );
