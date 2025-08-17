@@ -19,6 +19,8 @@ export default function LocationSelection({
   const [radius, setRadius] = useState(userData.radius || 10);
 
   const handleContinue = () => {
+    // Save location and radius to context when continuing
+    updateUserData({ location, radius });
     if (onContinue) {
       onContinue();
     }
