@@ -152,8 +152,8 @@ export default function MatchingScreen() {
 
           {/* Distance indicator */}
           <div className="absolute top-9 left-4">
-            <div className="bg-white/15 rounded-[7px] px-3 py-2 flex items-center">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="mr-2">
+            <div className="bg-white/15 rounded-[7px] w-[76px] h-[34px] flex items-center justify-center">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="mr-1">
                 <path d="M6.99996 0.583374C9.73838 0.583374 11.9583 2.80329 11.9583 5.54171C11.9583 7.28329 11.1546 9.04441 9.81092 10.7629C9.33404 11.3728 8.81541 11.9415 8.28408 12.4594C8.24031 12.5021 8.19727 12.5436 8.155 12.5841L7.9112 12.8127L7.68865 13.0133L7.48987 13.185L7.36847 13.2856C7.15544 13.4592 6.85014 13.4606 6.63555 13.2889L6.50862 13.1838L6.31075 13.0129L6.08861 12.8126L5.84491 12.5841L5.71583 12.4594C5.18451 11.9415 4.66588 11.3728 4.189 10.7629C2.84534 9.04441 2.04163 7.28329 2.04163 5.54171C2.04163 2.80329 4.26154 0.583374 6.99996 0.583374Z" fill="white"/>
               </svg>
               <span className="text-white text-xs font-[Alata]">{currentProfile.distance} km</span>
@@ -162,7 +162,7 @@ export default function MatchingScreen() {
 
           {/* Match percentage */}
           <div className="absolute top-9 right-4">
-            <div className="bg-white/15 rounded-[7px] px-3 py-2">
+            <div className="bg-white/15 rounded-[7px] w-[76px] h-[34px] flex items-center justify-center">
               <span className="text-white text-xs font-[Alata]">{currentProfile.matchPercentage}% Match</span>
             </div>
           </div>
