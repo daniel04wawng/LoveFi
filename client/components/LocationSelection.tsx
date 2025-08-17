@@ -295,7 +295,7 @@ export default function LocationSelection({
             </div>
 
             {/* Country Input */}
-            <div className="relative">
+            <div className="relative mb-6">
               <div className="relative">
                 <input
                   id="country"
@@ -318,7 +318,7 @@ export default function LocationSelection({
             </div>
 
             {/* Radius Slider Section */}
-            <div className="mt-8">
+            <div className="mb-8">
               <div className="mb-4">
                 <h3 className="text-base font-alata font-normal text-black mb-2">
                   Search Radius: {radius} km
