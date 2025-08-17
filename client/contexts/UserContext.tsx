@@ -6,6 +6,14 @@ import React, {
   ReactNode,
 } from "react";
 
+export interface ChatMessage {
+  id: string;
+  text: string;
+  timestamp: string;
+  isFromUser: boolean;
+  isRead?: boolean;
+}
+
 export interface Profile {
   id: string;
   name: string;
@@ -17,6 +25,12 @@ export interface Profile {
   commonInterests: string[];
   personalInterests: string[];
   partnerPreferences: string[];
+}
+
+export interface ChatConversation {
+  profileId: string;
+  messages: ChatMessage[];
+  lastActivity: string;
 }
 
 interface UserData {
@@ -58,6 +72,9 @@ interface UserData {
 
   // Messages - profiles that were liked and are available for messaging
   messages?: Profile[];
+
+  // Chat conversations with message history
+  conversations?: ChatConversation[];
 }
 
 interface UserContextType {
@@ -69,6 +86,9 @@ interface UserContextType {
   isSaved: (profileId: string) => boolean;
   addToMessages: (profile: Profile) => void;
   removeFromMessages: (profileId: string) => void;
+  sendMessage: (profileId: string, text: string) => void;
+  getConversation: (profileId: string) => ChatMessage[];
+  markMessagesAsRead: (profileId: string) => void;
 }
 
 // Create context with a default value to prevent undefined errors
@@ -81,6 +101,9 @@ const UserContext = createContext<UserContextType>({
   isSaved: () => false,
   addToMessages: () => {},
   removeFromMessages: () => {},
+  sendMessage: () => {},
+  getConversation: () => [],
+  markMessagesAsRead: () => {},
 });
 
 // Make UserContext displayName to help with debugging
@@ -133,17 +156,34 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     console.log("Adding profile to messages:", profile.name, profile.id);
     setUserData((prev) => {
       const existingMessages = prev.messages || [];
+      const existingConversations = prev.conversations || [];
+
       console.log("Existing messages count:", existingMessages.length);
+
       // Check if profile is already in messages
       if (existingMessages.some((p) => p.id === profile.id)) {
         console.log("Profile already exists in messages, not adding duplicate");
         return prev; // Profile already in messages, don't add duplicate
       }
+
+      // Add profile to messages list
       const updatedMessages = [...existingMessages, profile];
+
+      // Initialize empty conversation if not exists
+      let updatedConversations = existingConversations;
+      if (!existingConversations.some(conv => conv.profileId === profile.id)) {
+        updatedConversations = [...existingConversations, {
+          profileId: profile.id,
+          messages: [],
+          lastActivity: new Date().toISOString()
+        }];
+      }
+
       console.log("Adding profile, new messages count:", updatedMessages.length);
       return {
         ...prev,
         messages: updatedMessages,
+        conversations: updatedConversations,
       };
     });
   }, []);
@@ -154,7 +194,67 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       messages: (prev.messages || []).filter(
         (profile) => profile.id !== profileId,
       ),
+      conversations: (prev.conversations || []).filter(
+        (conv) => conv.profileId !== profileId,
+      ),
     }));
+  }, []);
+
+  const sendMessage = useCallback((profileId: string, text: string) => {
+    setUserData((prev) => {
+      const conversations = prev.conversations || [];
+      const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+      const newMessage: ChatMessage = {
+        id: Date.now().toString(),
+        text,
+        timestamp,
+        isFromUser: true,
+        isRead: false
+      };
+
+      const updatedConversations = conversations.map(conv => {
+        if (conv.profileId === profileId) {
+          return {
+            ...conv,
+            messages: [...conv.messages, newMessage],
+            lastActivity: new Date().toISOString()
+          };
+        }
+        return conv;
+      });
+
+      return {
+        ...prev,
+        conversations: updatedConversations,
+      };
+    });
+  }, []);
+
+  const getConversation = useCallback((profileId: string): ChatMessage[] => {
+    const conversations = userData.conversations || [];
+    const conversation = conversations.find(conv => conv.profileId === profileId);
+    return conversation ? conversation.messages : [];
+  }, [userData.conversations]);
+
+  const markMessagesAsRead = useCallback((profileId: string) => {
+    setUserData((prev) => {
+      const conversations = prev.conversations || [];
+      const updatedConversations = conversations.map(conv => {
+        if (conv.profileId === profileId) {
+          return {
+            ...conv,
+            messages: conv.messages.map(msg => ({ ...msg, isRead: true }))
+          };
+        }
+        return conv;
+      });
+
+      return {
+        ...prev,
+        conversations: updatedConversations,
+      };
+    });
   }, []);
 
   const contextValue = {
@@ -166,6 +266,9 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     isSaved,
     addToMessages,
     removeFromMessages,
+    sendMessage,
+    getConversation,
+    markMessagesAsRead,
   };
 
   return (
