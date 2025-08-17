@@ -8,16 +8,58 @@ interface LocationSelectionProps {
   onBack?: () => void;
 }
 
+interface LocationData {
+  city: string;
+  country: string;
+  fullAddress?: string;
+  latitude?: number;
+  longitude?: number;
+}
+
+interface NominatimResult {
+  display_name: string;
+  lat: string;
+  lon: string;
+  address: {
+    city?: string;
+    town?: string;
+    village?: string;
+    country?: string;
+    country_code?: string;
+  };
+}
+
 export default function LocationSelection({
   onContinue,
   onBack,
 }: LocationSelectionProps) {
   const { userData, updateUserData } = useUser();
   const locationState = useLocation();
-  const [location, setLocation] = useState(
-    userData.location || "1083 Western Rd",
+
+  // Parse existing location data
+  const parseLocationData = (location?: string): LocationData => {
+    if (!location) return { city: "", country: "" };
+
+    try {
+      const parsed = JSON.parse(location);
+      if (parsed.city && parsed.country) {
+        return parsed;
+      }
+    } catch {
+      // If it's not JSON, treat as legacy string format
+      return { city: location, country: "" };
+    }
+
+    return { city: location, country: "" };
+  };
+
+  const [locationData, setLocationData] = useState<LocationData>(
+    parseLocationData(userData.location)
   );
   const [radius, setRadius] = useState(userData.radius || 10);
+  const [suggestions, setSuggestions] = useState<NominatimResult[]>([]);
+  const [isSearching, setIsSearching] = useState(false);
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   // Determine back route based on referrer or default flow
   const isFromProfile = locationState.state?.from === 'profile';
