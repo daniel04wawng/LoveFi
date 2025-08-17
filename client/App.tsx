@@ -25,6 +25,7 @@ import ProfilePage from "./pages/ProfilePage";
 import RelationshipNFTPage from "./pages/RelationshipNFTPage";
 import CouplesDashboardPage from "./pages/CouplesDashboardPage";
 import MilestonesPage from "./pages/MilestonesPage";
+import ChallengesPage from "./pages/ChallengesPage";
 
 const queryClient = new QueryClient();
 
