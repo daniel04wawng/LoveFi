@@ -33,7 +33,7 @@ export default function MatchesPage() {
       <div className="w-full min-h-screen bg-white relative max-w-sm mx-auto">
         {/* Header */}
         <div className="px-10 pt-11 pb-6">
-          <h1 className="text-[34px] font-bold text-black leading-[150%] font-[Sk-Modernist]">
+          <h1 className="text-[34px] font-bold text-black leading-[150%] font-sans">
             Matches
           </h1>
         </div>
