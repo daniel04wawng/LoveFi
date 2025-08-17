@@ -174,25 +174,77 @@ export default function LocationSelection({
             </h1>
           </div>
 
-          {/* Location Input Field */}
+          {/* Location Input Fields */}
           <div className="flex-grow">
-            <div className="relative">
+            {/* City Input */}
+            <div className="relative mb-6">
               <div className="relative">
                 <input
-                  id="location"
-                  name="location"
+                  id="city"
+                  name="city"
                   type="text"
-                  value={location}
-                  onChange={handleLocationChange}
+                  value={locationData.city}
+                  onChange={handleCityChange}
+                  onFocus={() => setShowSuggestions(suggestions.length > 0)}
                   className="w-full h-[58px] border border-lovefi-border rounded-2xl bg-white px-4 text-base font-alata font-normal text-gray-600 focus:outline-none focus:ring-2 focus:ring-lovefi-purple focus:border-transparent"
-                  placeholder="Enter your location"
-                  autoComplete="address-line1"
+                  placeholder="Enter your city"
+                  autoComplete="address-level2"
                 />
 
                 {/* Floating Label */}
                 <div className="absolute -top-[9px] left-5 bg-white px-2">
                   <span className="text-xs font-alata font-normal text-black text-opacity-40">
-                    Location
+                    City
+                  </span>
+                </div>
+
+                {/* Search indicator */}
+                {isSearching && (
+                  <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-lovefi-purple"></div>
+                  </div>
+                )}
+              </div>
+
+              {/* Location Suggestions */}
+              {showSuggestions && suggestions.length > 0 && (
+                <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-lovefi-border rounded-2xl shadow-lg z-10 max-h-48 overflow-y-auto">
+                  {suggestions.map((suggestion, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleSuggestionSelect(suggestion)}
+                      className="w-full px-4 py-3 text-left text-sm hover:bg-gray-50 border-b border-gray-100 last:border-b-0"
+                    >
+                      <div className="font-medium text-gray-900">
+                        {suggestion.address.city || suggestion.address.town || suggestion.address.village}
+                      </div>
+                      <div className="text-xs text-gray-500 truncate">
+                        {suggestion.display_name}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Country Input */}
+            <div className="relative">
+              <div className="relative">
+                <input
+                  id="country"
+                  name="country"
+                  type="text"
+                  value={locationData.country}
+                  onChange={handleCountryChange}
+                  className="w-full h-[58px] border border-lovefi-border rounded-2xl bg-white px-4 text-base font-alata font-normal text-gray-600 focus:outline-none focus:ring-2 focus:ring-lovefi-purple focus:border-transparent"
+                  placeholder="Enter your country"
+                  autoComplete="country"
+                />
+
+                {/* Floating Label */}
+                <div className="absolute -top-[9px] left-5 bg-white px-2">
+                  <span className="text-xs font-alata font-normal text-black text-opacity-40">
+                    Country
                   </span>
                 </div>
               </div>
