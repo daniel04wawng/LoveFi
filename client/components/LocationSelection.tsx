@@ -75,32 +75,13 @@ export default function LocationSelection({ onContinue, onBack }: LocationSelect
           <div className="flex-grow">
             <div className="relative">
               <div className="relative">
-                <div className="w-full h-[58px] border border-lovefi-border rounded-2xl bg-white flex items-center px-4 gap-3">
-                  {/* Location Icon */}
-                  <div className="flex-shrink-0">
-                    <svg 
-                      width="29" 
-                      height="29" 
-                      viewBox="0 0 29 29" 
-                      fill="none" 
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle cx="14.5" cy="14.5" r="14.5" fill="black"/>
-                      <circle cx="14.5" cy="11.5" r="3.5" fill="white"/>
-                      <path d="M14.5 8C12.567 8 11 9.567 11 11.5C11 13.433 12.567 15 14.5 15C16.433 15 18 13.433 18 11.5C18 9.567 16.433 8 14.5 8Z" fill="black"/>
-                      <path d="M14.5 19C14.5 19 9.5 14.5 9.5 11.5C9.5 8.462 11.962 6 14.5 6C17.038 6 19.5 8.462 19.5 11.5C19.5 14.5 14.5 19 14.5 19Z" fill="black"/>
-                    </svg>
-                  </div>
-                  
-                  {/* Location Input */}
-                  <input
-                    type="text"
-                    value={location}
-                    onChange={handleLocationChange}
-                    className="flex-1 text-base font-alata font-normal text-gray-600 bg-transparent focus:outline-none"
-                    placeholder="Enter your location"
-                  />
-                </div>
+                <input
+                  type="text"
+                  value={location}
+                  onChange={handleLocationChange}
+                  className="w-full h-[58px] border border-lovefi-border rounded-2xl bg-white px-4 text-base font-alata font-normal text-gray-600 focus:outline-none focus:ring-2 focus:ring-lovefi-purple focus:border-transparent"
+                  placeholder="Enter your location"
+                />
                 
                 {/* Floating Label */}
                 <div className="absolute -top-[9px] left-5 bg-white px-2">
