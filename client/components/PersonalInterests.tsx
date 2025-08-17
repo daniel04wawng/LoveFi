@@ -310,9 +310,14 @@ const interests: Interest[] = [
 export default function PersonalInterests() {
   const { userData, updateUserData } = useUser();
   const navigate = useNavigate();
+  const location = useLocation();
   const [selectedInterests, setSelectedInterests] = useState<string[]>(
     userData.personalInterests || [],
   );
+
+  // Determine back route based on referrer or default flow
+  const isFromProfile = location.state?.from === 'profile';
+  const backRoute = isFromProfile ? '/profile' : '/partner-preferences';
 
   const toggleInterest = (interestId: string) => {
     setSelectedInterests((prev) => {
