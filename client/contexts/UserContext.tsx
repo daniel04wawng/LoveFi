@@ -108,6 +108,8 @@ interface UserContextType {
   sendMessage: (profileId: string, text: string) => void;
   getConversation: (profileId: string) => ChatMessage[];
   markMessagesAsRead: (profileId: string) => void;
+  sendStakeProposal: (profileId: string, amount: number) => void;
+  respondToStakeProposal: (profileId: string, messageId: string, accept: boolean) => void;
 }
 
 // Create context with a default value to prevent undefined errors
