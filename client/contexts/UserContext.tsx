@@ -461,6 +461,8 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     sendMessage,
     getConversation,
     markMessagesAsRead,
+    sendStakeProposal,
+    respondToStakeProposal,
   };
 
   return (
