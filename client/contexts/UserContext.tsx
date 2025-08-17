@@ -36,6 +36,9 @@ interface UserData {
 
   // From personal interests
   personalInterests?: string[];
+
+  // From photo upload
+  photos?: File[];
 }
 
 interface UserContextType {
