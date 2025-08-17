@@ -101,7 +101,7 @@ export default function StakeProposal({
         </div>
 
         {/* Preset Amounts */}
-        <div className="mb-6">
+        <div className="mb-4">
           <p className="text-sm font-[Alata] text-black mb-3">Quick amounts:</p>
           <div className="grid grid-cols-3 gap-2">
             {[0.01, 0.05, 0.1].map((amount) => (
