@@ -122,13 +122,30 @@ export default function RelationshipNFTPage() {
           </div>
         )}
         {/* Header */}
-        <div className="px-8 pt-8 pb-6 text-center">
-          <h1 className="text-3xl font-[Alata] text-black mb-2">
-            Relationship Confirmed! 💕
-          </h1>
-          <p className="text-gray-600 font-[Alata] text-sm">
-            Time to mint your relationship NFT
-          </p>
+        <div className="px-8 pt-8 pb-6 text-center relative">
+          <div className="animate-bounce">
+            <h1 className="text-4xl font-[Alata] bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-3">
+              🎉 Relationship Confirmed! 🎉
+            </h1>
+          </div>
+          <div className="flex justify-center items-center gap-2 mb-2">
+            <span className="text-2xl animate-pulse">💕</span>
+            <p className="text-gray-700 font-[Alata] text-lg font-medium">
+              Time to celebrate & mint your NFT!
+            </p>
+            <span className="text-2xl animate-pulse">💕</span>
+          </div>
+          <div className="flex justify-center gap-1 mt-2">
+            {['🎊', '💎', '🥳', '💎', '🎊'].map((emoji, i) => (
+              <span
+                key={i}
+                className="text-xl animate-bounce"
+                style={{ animationDelay: `${i * 0.1}s` }}
+              >
+                {emoji}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Relationship Info Card */}
