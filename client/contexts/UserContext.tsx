@@ -72,6 +72,7 @@ interface UserData {
     options: string[];
     selected: number;
   }[];
+  partnerDescription?: string;
 
   // From personal interests
   personalInterests?: string[];
