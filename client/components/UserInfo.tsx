@@ -20,9 +20,8 @@ export default function UserInfo({ onContinue, onBack }: UserInfoProps) {
   const [showDatePicker, setShowDatePicker] = useState(false);
 
   // Update context when local state changes
-  useEffect(() => {
-    updateUserData({ firstName, lastName, birthday });
-  }, [firstName, lastName, birthday, updateUserData]);
+  // Remove automatic context updates to prevent infinite loops
+  // Data will be saved when user clicks Continue
 
   const handleContinue = () => {
     if (onContinue) {
