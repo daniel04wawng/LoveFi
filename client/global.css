@@ -46,6 +46,15 @@
   }
 }
 
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
 .animate-slide-up {
   animation: slide-up 0.3s ease-out forwards;
 }
