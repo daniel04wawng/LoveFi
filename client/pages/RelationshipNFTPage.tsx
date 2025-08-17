@@ -23,6 +23,17 @@ export default function RelationshipNFTPage() {
       navigate("/messages");
       return;
     }
+
+    // Trigger celebration on page load
+    setConfettiVisible(true);
+    setTimeout(() => {
+      setShowCelebration(false);
+    }, 1000);
+
+    // Hide confetti after celebration
+    setTimeout(() => {
+      setConfettiVisible(false);
+    }, 4000);
   }, [relationshipStatus, navigate]);
 
   const handleMintNFT = async () => {
