@@ -15,6 +15,7 @@ import Privacy from "./pages/Privacy";
 import UserInfoPage from "./pages/UserInfoPage";
 import GenderSelectionPage from "./pages/GenderSelectionPage";
 import LocationSelectionPage from "./pages/LocationSelectionPage";
+import SexualitySelectionPage from "./pages/SexualitySelectionPage";
 import PersonalInterestsPage from "./pages/PersonalInterestsPage";
 import PartnerPreferencesPage from "./pages/PartnerPreferencesPage";
 import PhotoUploadPage from "./pages/PhotoUploadPage";
