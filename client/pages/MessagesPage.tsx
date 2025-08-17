@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useUser } from "../contexts/UserContext";
+import { useUser, ChatMessage } from "../contexts/UserContext";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import BottomNavigation from "../components/BottomNavigation";
 import AnimatedPageWrapper from "../components/AnimatedPageWrapper";
@@ -13,42 +13,24 @@ const sampleMessages = [
   { profileId: "", lastMessage: "You: Great I will write later..", time: "1 hour", unread: 0, isTyping: false, isFromUser: true },
 ];
 
-const chatMessages = [
+// Default messages for demonstration - these will be replaced by actual chat messages
+const getDefaultMessages = (profileName: string): ChatMessage[] => [
   {
-    id: "1",
-    text: "Hi Jake, how are you? I saw on the app that we've crossed paths several times this week 😄",
+    id: "demo-1",
+    text: `Hi! Nice to meet you ${profileName}! I saw on the app that we've crossed paths several times this week 😄`,
     timestamp: "2:55 PM",
     isFromUser: false,
-  },
-  {
-    id: "2", 
-    text: "Haha truly! Nice to meet you Grace! What about a cup of coffee today evening? ☕️",
-    timestamp: "3:02 PM",
-    isFromUser: true,
-    isRead: true,
-  },
-  {
-    id: "3",
-    text: "Sure, let's do it! 😊",
-    timestamp: "3:10 PM", 
-    isFromUser: false,
-  },
-  {
-    id: "4",
-    text: "Great I will write later the exact time and place. See you soon!",
-    timestamp: "3:12 PM",
-    isFromUser: true,
-    isRead: true,
   },
 ];
 
 export default function MessagesPage() {
-  const { userData } = useUser();
+  const { userData, sendMessage, getConversation, markMessagesAsRead } = useUser();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchText, setSearchText] = useState("");
   const [openChatId, setOpenChatId] = useState<string | null>(null);
   const [messageText, setMessageText] = useState("");
+  const [currentChatMessages, setCurrentChatMessages] = useState<ChatMessage[]>([]);
 
   const messages = userData.messages || [];
 
@@ -56,13 +38,38 @@ export default function MessagesPage() {
   console.log("MessagesPage - Current messages count:", messages.length);
   console.log("MessagesPage - Messages:", messages.map(m => m.name));
 
-  // Check for chat parameter in URL
+  // Check for chat parameter in URL and load conversation
   useEffect(() => {
     const chatId = searchParams.get('chat');
     if (chatId) {
       setOpenChatId(chatId);
+      const conversation = getConversation(chatId);
+
+      // If no conversation exists, start with default demo messages
+      if (conversation.length === 0) {
+        const profile = messages.find(p => p.id === chatId);
+        if (profile) {
+          const userName = userData.firstName || "there";
+          setCurrentChatMessages(getDefaultMessages(userName));
+        }
+      } else {
+        setCurrentChatMessages(conversation);
+      }
+
+      // Mark messages as read when opening chat
+      markMessagesAsRead(chatId);
     }
-  }, [searchParams]);
+  }, [searchParams, getConversation, markMessagesAsRead, userData.firstName]);
+
+  // Update chat messages when conversation changes
+  useEffect(() => {
+    if (openChatId) {
+      const conversation = getConversation(openChatId);
+      if (conversation.length > 0) {
+        setCurrentChatMessages(conversation);
+      }
+    }
+  }, [openChatId, getConversation, userData.conversations]);
 
   const openChat = (profileId: string) => {
     setOpenChatId(profileId);
@@ -72,11 +79,12 @@ export default function MessagesPage() {
   const closeChat = () => {
     setOpenChatId(null);
     setSearchParams({});
+    setCurrentChatMessages([]); // Clear current chat when closing
   };
 
   const handleSendMessage = () => {
-    if (messageText.trim()) {
-      console.log("Sending message:", messageText);
+    if (messageText.trim() && openChatId) {
+      sendMessage(openChatId, messageText.trim());
       setMessageText("");
     }
   };
@@ -352,13 +360,13 @@ export default function MessagesPage() {
 
                   {/* Message List */}
                   <div className="space-y-4">
-                    {chatMessages.map((message) => (
+                    {currentChatMessages.map((message) => (
                       <div key={message.id} className={`flex ${message.isFromUser ? 'justify-end' : 'justify-start'}`}>
                         <div className={`max-w-[250px] ${message.isFromUser ? 'mr-0 ml-6' : 'ml-0 mr-6'}`}>
-                          <div 
+                          <div
                             className={`rounded-[15px] p-4 ${
-                              message.isFromUser 
-                                ? 'bg-[#F3F3F3] rounded-br-none' 
+                              message.isFromUser
+                                ? 'bg-[#F3F3F3] rounded-br-none'
                                 : 'bg-[#E94057]/7 rounded-bl-none'
                             }`}
                           >
