@@ -50,7 +50,14 @@ export default function BottomNavigation() {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-[#E8E6EA] z-[9999] shadow-lg">
+    <div
+      className="fixed bottom-0 left-0 right-0 bg-white border-t border-[#E8E6EA] z-[9999] shadow-lg"
+      style={{
+        minHeight: '70px',
+        display: 'block !important',
+        visibility: 'visible !important'
+      }}
+    >
       <div className="max-w-sm mx-auto">
         <div className="flex items-center justify-around py-3">
           {tabs.map((tab) => {
