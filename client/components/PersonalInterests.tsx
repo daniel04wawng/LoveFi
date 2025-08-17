@@ -335,7 +335,7 @@ export default function PersonalInterests() {
   };
 
   const handleBack = () => {
-    navigate("/partner-preferences");
+    navigate(backRoute);
   };
 
   return (
