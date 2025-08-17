@@ -91,8 +91,10 @@ export default function RelationshipNFTPage() {
       <div
         className="w-full min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 relative max-w-sm mx-auto overflow-hidden"
         style={{
-          transform: showCelebration ? 'scale(0.8)' : 'scale(1)',
-          animation: showCelebration ? 'celebrationScale 1s ease-out forwards' : 'none'
+          transform: showCelebration ? "scale(0.8)" : "scale(1)",
+          animation: showCelebration
+            ? "celebrationScale 1s ease-out forwards"
+            : "none",
         }}
       >
         {/* Confetti Animation */}
@@ -110,12 +112,14 @@ export default function RelationshipNFTPage() {
               >
                 <div
                   className={`w-2 h-2 ${
-                    ['bg-pink-400', 'bg-purple-400', 'bg-yellow-400', 'bg-blue-400', 'bg-green-400'][
-                      Math.floor(Math.random() * 5)
-                    ]
-                  } ${
-                    Math.random() > 0.5 ? 'rounded-full' : 'rotate-45'
-                  }`}
+                    [
+                      "bg-pink-400",
+                      "bg-purple-400",
+                      "bg-yellow-400",
+                      "bg-blue-400",
+                      "bg-green-400",
+                    ][Math.floor(Math.random() * 5)]
+                  } ${Math.random() > 0.5 ? "rounded-full" : "rotate-45"}`}
                 />
               </div>
             ))}
@@ -136,7 +140,7 @@ export default function RelationshipNFTPage() {
             <span className="text-2xl animate-pulse">💕</span>
           </div>
           <div className="flex justify-center gap-1 mt-2">
-            {['🎊', '💎', '🥳', '💎', '🎊'].map((emoji, i) => (
+            {["🎊", "💎", "🥳", "💎", "🎊"].map((emoji, i) => (
               <span
                 key={i}
                 className="text-xl animate-bounce"
@@ -266,7 +270,7 @@ export default function RelationshipNFTPage() {
                   🎉 Your relationship is now secured on the blockchain! 🎉
                 </p>
                 <div className="flex justify-center gap-1 mb-4">
-                  {['🎊', '💍', '💎', '💍', '🎊'].map((emoji, i) => (
+                  {["🎊", "💍", "💎", "💍", "🎊"].map((emoji, i) => (
                     <span
                       key={i}
                       className="text-2xl animate-bounce"
@@ -290,7 +294,8 @@ export default function RelationshipNFTPage() {
 
                 <div className="bg-gradient-to-r from-blue-50 to-cyan-50 border-2 border-blue-300 rounded-lg p-4 animate-pulse">
                   <p className="text-blue-800 font-[Alata] text-base font-medium">
-                    💎 {relationshipStatus.stakeAmount} ETH safely held in escrow! 💎
+                    💎 {relationshipStatus.stakeAmount} ETH safely held in
+                    escrow! 💎
                   </p>
                 </div>
 
