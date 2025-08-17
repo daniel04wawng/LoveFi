@@ -164,7 +164,7 @@ export default function PersonalInterests() {
   };
 
   const handleBack = () => {
-    navigate(-1);
+    navigate("/partner-preferences");
   };
 
   return (
