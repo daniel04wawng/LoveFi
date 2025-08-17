@@ -5,9 +5,19 @@ import { generateProfiles, Profile } from "../utils/profileData";
 
 export default function MatchingScreen() {
   const navigate = useNavigate();
+  const { userData } = useUser();
   const [currentProfileIndex, setCurrentProfileIndex] = useState(0);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
-  const [profiles, setProfiles] = useState(sampleProfiles);
+  const [profiles, setProfiles] = useState<Profile[]>([]);
+
+  // Generate profiles based on user data
+  useEffect(() => {
+    const userInterests = userData.personalInterests || [];
+    const userPreferences = userData.partnerPreferences?.map(pref => pref.options[pref.selected]).filter(Boolean) || [];
+
+    const generatedProfiles = generateProfiles(10, userInterests, userPreferences);
+    setProfiles(generatedProfiles);
+  }, [userData]);
 
   const currentProfile = profiles[currentProfileIndex];
 
