@@ -79,6 +79,18 @@ export default function LocationSelection({
     return () => clearTimeout(searchTimer);
   }, [locationData.city]);
 
+  // Close suggestions when clicking outside
+  useEffect(() => {
+    const handleClickOutside = () => {
+      setShowSuggestions(false);
+    };
+
+    if (showSuggestions) {
+      document.addEventListener('click', handleClickOutside);
+      return () => document.removeEventListener('click', handleClickOutside);
+    }
+  }, [showSuggestions]);
+
   const searchLocations = async (query: string) => {
     setIsSearching(true);
     try {
