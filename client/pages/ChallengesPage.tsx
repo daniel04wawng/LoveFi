@@ -1,5 +1,11 @@
 import ChallengesView from "../components/ChallengesView";
+import BottomNavigation from "../components/BottomNavigation";
 
 export default function ChallengesPage() {
-  return <ChallengesView />;
+  return (
+    <div className="relative">
+      <ChallengesView />
+      <BottomNavigation />
+    </div>
+  );
 }
