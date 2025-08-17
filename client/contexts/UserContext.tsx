@@ -82,10 +82,17 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
   }, []);
 
   const saveProfile = useCallback((profile: Profile) => {
-    setUserData((prev) => ({
-      ...prev,
-      savedProfiles: [...(prev.savedProfiles || []), profile],
-    }));
+    setUserData((prev) => {
+      const existingProfiles = prev.savedProfiles || [];
+      // Check if profile is already saved
+      if (existingProfiles.some((p) => p.id === profile.id)) {
+        return prev; // Profile already saved, don't add duplicate
+      }
+      return {
+        ...prev,
+        savedProfiles: [...existingProfiles, profile],
+      };
+    });
   }, []);
 
   const removeSavedProfile = useCallback((profileId: string) => {
