@@ -150,6 +150,48 @@ export default function MessagesPage() {
     setIsStakeModalOpen(false);
   };
 
+  // Test function to simulate receiving a stake proposal
+  const simulateIncomingStake = () => {
+    if (!openChatId) return;
+
+    const conversations = userData.conversations || [];
+    const timestamp = new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
+    const testAmount = 0.05; // Test with 0.05 ETH
+    const incomingStakeMessage = {
+      id: Date.now().toString(),
+      text: `Proposed a stake of ${testAmount} ETH for an exclusive relationship`,
+      timestamp,
+      isFromUser: false, // This makes it an incoming proposal
+      isRead: false,
+      type: "stake_proposal" as const,
+      stakeData: {
+        amount: testAmount,
+        status: "pending" as const,
+        proposerId: openChatId,
+        responderId: "current_user",
+      },
+    };
+
+    // Manually add the message to test receiving stakes
+    const updatedConversations = conversations.map((conv) => {
+      if (conv.profileId === openChatId) {
+        return {
+          ...conv,
+          messages: [...conv.messages, incomingStakeMessage],
+          lastActivity: new Date().toISOString(),
+        };
+      }
+      return conv;
+    });
+
+    // Update user data with the simulated incoming message
+    updateUserData({ conversations: updatedConversations });
+  };
+
   const currentChatProfile = openChatId
     ? messages.find((p) => p.id === openChatId)
     : null;
