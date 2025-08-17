@@ -20,7 +20,6 @@ import PersonalInterestsPage from "./pages/PersonalInterestsPage";
 import PartnerPreferencesPage from "./pages/PartnerPreferencesPage";
 import PhotoUploadPage from "./pages/PhotoUploadPage";
 import MatchingPage from "./pages/MatchingPage";
-import SavedPage from "./pages/SavedPage";
 import MessagesPage from "./pages/MessagesPage";
 import ProfilePage from "./pages/ProfilePage";
 
@@ -51,7 +50,6 @@ function AnimatedRoutes() {
           />
           <Route path="/photo-upload" element={<PhotoUploadPage />} />
           <Route path="/matching" element={<MatchingPage />} />
-          <Route path="/saved" element={<SavedPage />} />
           <Route path="/messages" element={<MessagesPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/terms" element={<Terms />} />
