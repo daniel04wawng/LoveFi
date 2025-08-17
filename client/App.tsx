@@ -27,6 +27,7 @@ import CouplesDashboardPage from "./pages/CouplesDashboardPage";
 import MilestonesPage from "./pages/MilestonesPage";
 import ChallengesPage from "./pages/ChallengesPage";
 import FriendsPredictionsPage from "./pages/FriendsPredictionsPage";
+import RouteGuard from "./components/RouteGuard";
 
 const queryClient = new QueryClient();
 
@@ -64,10 +65,7 @@ function AnimatedRoutes() {
           <Route path="/couples-dashboard" element={<CouplesDashboardPage />} />
           <Route path="/milestones" element={<MilestonesPage />} />
           <Route path="/challenges" element={<ChallengesPage />} />
-          <Route
-            path="/friends-predictions"
-            element={<FriendsPredictionsPage />}
-          />
+          <Route path="/friends-predictions" element={<FriendsPredictionsPage />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
