@@ -27,13 +27,35 @@ export default function MatchingScreen() {
   const currentProfile = profiles[currentProfileIndex];
 
   const handlePhotoChange = (direction: 'up' | 'down') => {
-    if (!currentProfile || isAnimating) return;
+    if (!currentProfile || isAnimating || isPhotoTransitioning) return;
 
+    let canChange = false;
     if (direction === 'up' && currentPhotoIndex < currentProfile.photos.length - 1) {
-      setCurrentPhotoIndex(currentPhotoIndex + 1);
+      canChange = true;
     } else if (direction === 'down' && currentPhotoIndex > 0) {
-      setCurrentPhotoIndex(currentPhotoIndex - 1);
+      canChange = true;
     }
+
+    if (!canChange) return;
+
+    // Start photo transition animation
+    setIsPhotoTransitioning(true);
+    setPhotoTransitionDirection(direction);
+
+    // Change photo after a brief delay to allow animation
+    setTimeout(() => {
+      if (direction === 'up' && currentPhotoIndex < currentProfile.photos.length - 1) {
+        setCurrentPhotoIndex(currentPhotoIndex + 1);
+      } else if (direction === 'down' && currentPhotoIndex > 0) {
+        setCurrentPhotoIndex(currentPhotoIndex - 1);
+      }
+
+      // End transition after photo changes
+      setTimeout(() => {
+        setIsPhotoTransitioning(false);
+        setPhotoTransitionDirection(null);
+      }, 150);
+    }, 150);
   };
 
   const handleAction = (action: 'decline' | 'message' | 'save') => {
