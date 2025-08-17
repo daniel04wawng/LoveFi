@@ -14,10 +14,5 @@ export default function GenderSelectionPage() {
     navigate("/user-info");
   };
 
-  return (
-    <GenderSelection
-      onContinue={handleContinue}
-      onBack={handleBack}
-    />
-  );
+  return <GenderSelection onContinue={handleContinue} onBack={handleBack} />;
 }

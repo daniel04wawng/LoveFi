@@ -48,8 +48,8 @@ export default function WalletConnect({
       wallet: {
         name: walletInfo.name,
         logo: walletInfo.logo,
-        type: walletInfo.type
-      }
+        type: walletInfo.type,
+      },
     });
   }, [walletInfo.name, walletInfo.logo, walletInfo.type, updateUserData]);
 

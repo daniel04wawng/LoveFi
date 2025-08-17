@@ -14,10 +14,5 @@ export default function LocationSelectionPage() {
     navigate("/gender-selection");
   };
 
-  return (
-    <LocationSelection
-      onContinue={handleContinue}
-      onBack={handleBack}
-    />
-  );
+  return <LocationSelection onContinue={handleContinue} onBack={handleBack} />;
 }

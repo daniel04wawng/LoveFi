@@ -8,9 +8,14 @@ interface LocationSelectionProps {
   onBack?: () => void;
 }
 
-export default function LocationSelection({ onContinue, onBack }: LocationSelectionProps) {
+export default function LocationSelection({
+  onContinue,
+  onBack,
+}: LocationSelectionProps) {
   const { userData, updateUserData } = useUser();
-  const [location, setLocation] = useState(userData.location || "1083 Western Rd");
+  const [location, setLocation] = useState(
+    userData.location || "1083 Western Rd",
+  );
   const [radius, setRadius] = useState(userData.radius || 10);
 
   // Update context when location changes
@@ -46,17 +51,17 @@ export default function LocationSelection({ onContinue, onBack }: LocationSelect
               onClick={onBack}
               className="inline-flex items-center justify-center w-[52px] h-[52px] rounded-2xl border border-lovefi-border bg-white hover:bg-gray-50 transition-colors"
             >
-              <svg 
-                width="24" 
-                height="24" 
-                viewBox="0 0 24 24" 
-                fill="none" 
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path 
-                  fillRule="evenodd" 
-                  clipRule="evenodd" 
-                  d="M15.2071 18.7071C14.8166 19.0976 14.1834 19.0976 13.7929 18.7071L7.79289 12.7071C7.40237 12.3166 7.40237 11.6834 7.79289 11.2929L13.7929 5.29289C14.1834 4.90237 14.8166 4.90237 15.2071 5.29289C15.5976 5.68342 15.5976 6.31658 15.2071 6.70711L9.91421 12L15.2071 17.2929C15.5976 17.6834 15.5976 18.3166 15.2071 18.7071Z" 
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M15.2071 18.7071C14.8166 19.0976 14.1834 19.0976 13.7929 18.7071L7.79289 12.7071C7.40237 12.3166 7.40237 11.6834 7.79289 11.2929L13.7929 5.29289C14.1834 4.90237 14.8166 4.90237 15.2071 5.29289C15.5976 5.68342 15.5976 6.31658 15.2071 6.70711L9.91421 12L15.2071 17.2929C15.5976 17.6834 15.5976 18.3166 15.2071 18.7071Z"
                   fill="#9D74FF"
                 />
               </svg>
@@ -82,7 +87,7 @@ export default function LocationSelection({ onContinue, onBack }: LocationSelect
                   className="w-full h-[58px] border border-lovefi-border rounded-2xl bg-white px-4 text-base font-alata font-normal text-gray-600 focus:outline-none focus:ring-2 focus:ring-lovefi-purple focus:border-transparent"
                   placeholder="Enter your location"
                 />
-                
+
                 {/* Floating Label */}
                 <div className="absolute -top-[9px] left-5 bg-white px-2">
                   <span className="text-xs font-alata font-normal text-black text-opacity-40">
@@ -99,7 +104,7 @@ export default function LocationSelection({ onContinue, onBack }: LocationSelect
                   Search Radius: {radius} km
                 </h3>
               </div>
-              
+
               {/* Radius Slider */}
               <div className="relative">
                 <input
@@ -110,7 +115,7 @@ export default function LocationSelection({ onContinue, onBack }: LocationSelect
                   onChange={(e) => setRadius(Number(e.target.value))}
                   className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
                   style={{
-                    background: `linear-gradient(to right, #8F7CFF 0%, #8F7CFF ${(radius / 50) * 100}%, #E5E5E5 ${(radius / 50) * 100}%, #E5E5E5 100%)`
+                    background: `linear-gradient(to right, #8F7CFF 0%, #8F7CFF ${(radius / 50) * 100}%, #E5E5E5 ${(radius / 50) * 100}%, #E5E5E5 100%)`,
                   }}
                 />
                 <style jsx>{`
@@ -119,7 +124,7 @@ export default function LocationSelection({ onContinue, onBack }: LocationSelect
                     height: 20px;
                     width: 20px;
                     border-radius: 50%;
-                    background: #8F7CFF;
+                    background: #8f7cff;
                     cursor: pointer;
                     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                   }
@@ -127,14 +132,14 @@ export default function LocationSelection({ onContinue, onBack }: LocationSelect
                     height: 20px;
                     width: 20px;
                     border-radius: 50%;
-                    background: #8F7CFF;
+                    background: #8f7cff;
                     cursor: pointer;
                     border: none;
                     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                   }
                 `}</style>
               </div>
-              
+
               {/* Slider Labels */}
               <div className="flex justify-between mt-2 text-xs font-alata text-gray-500">
                 <span>1 km</span>
@@ -149,7 +154,7 @@ export default function LocationSelection({ onContinue, onBack }: LocationSelect
               onClick={handleContinue}
               className="w-full h-14 rounded-2xl text-white font-alata font-normal text-base transition-all hover:opacity-90"
               style={{
-                background: "linear-gradient(90deg, #8F7CFF 0%, #AC6DFF 100%)"
+                background: "linear-gradient(90deg, #8F7CFF 0%, #AC6DFF 100%)",
               }}
             >
               Continue

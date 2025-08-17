@@ -1,4 +1,10 @@
-import { createContext, useContext, useState, useCallback, ReactNode } from 'react';
+import {
+  createContext,
+  useContext,
+  useState,
+  useCallback,
+  ReactNode,
+} from "react";
 
 interface UserData {
   // From wallet connection
@@ -14,7 +20,7 @@ interface UserData {
   birthday?: string;
 
   // From gender selection
-  gender?: 'woman' | 'man' | 'non-binary' | 'other';
+  gender?: "woman" | "man" | "non-binary" | "other";
   customGender?: string;
 
   // From location selection
@@ -41,7 +47,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const [userData, setUserData] = useState<UserData>({});
 
   const updateUserData = useCallback((data: Partial<UserData>) => {
-    setUserData(prev => ({ ...prev, ...data }));
+    setUserData((prev) => ({ ...prev, ...data }));
   }, []);
 
   const clearUserData = useCallback(() => {
@@ -58,7 +64,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
 export function useUser() {
   const context = useContext(UserContext);
   if (context === undefined) {
-    throw new Error('useUser must be used within a UserProvider');
+    throw new Error("useUser must be used within a UserProvider");
   }
   return context;
 }

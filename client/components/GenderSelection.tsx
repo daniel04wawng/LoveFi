@@ -8,11 +8,16 @@ interface GenderSelectionProps {
   onBack?: () => void;
 }
 
-type GenderOption = 'woman' | 'man' | 'non-binary' | 'other';
+type GenderOption = "woman" | "man" | "non-binary" | "other";
 
-export default function GenderSelection({ onContinue, onBack }: GenderSelectionProps) {
+export default function GenderSelection({
+  onContinue,
+  onBack,
+}: GenderSelectionProps) {
   const { userData, updateUserData } = useUser();
-  const [selectedGender, setSelectedGender] = useState<GenderOption | null>(userData.gender || null);
+  const [selectedGender, setSelectedGender] = useState<GenderOption | null>(
+    userData.gender || null,
+  );
 
   const handleGenderSelect = (gender: GenderOption) => {
     setSelectedGender(gender);
@@ -43,17 +48,17 @@ export default function GenderSelection({ onContinue, onBack }: GenderSelectionP
               onClick={onBack}
               className="inline-flex items-center justify-center w-[52px] h-[52px] rounded-2xl border border-lovefi-border bg-white hover:bg-gray-50 transition-colors"
             >
-              <svg 
-                width="24" 
-                height="24" 
-                viewBox="0 0 24 24" 
-                fill="none" 
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path 
-                  fillRule="evenodd" 
-                  clipRule="evenodd" 
-                  d="M15.2071 18.7071C14.8166 19.0976 14.1834 19.0976 13.7929 18.7071L7.79289 12.7071C7.40237 12.3166 7.40237 11.6834 7.79289 11.2929L13.7929 5.29289C14.1834 4.90237 14.8166 4.90237 15.2071 5.29289C15.5976 5.68342 15.5976 6.31658 15.2071 6.70711L9.91421 12L15.2071 17.2929C15.5976 17.6834 15.5976 18.3166 15.2071 18.7071Z" 
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M15.2071 18.7071C14.8166 19.0976 14.1834 19.0976 13.7929 18.7071L7.79289 12.7071C7.40237 12.3166 7.40237 11.6834 7.79289 11.2929L13.7929 5.29289C14.1834 4.90237 14.8166 4.90237 15.2071 5.29289C15.5976 5.68342 15.5976 6.31658 15.2071 6.70711L9.91421 12L15.2071 17.2929C15.5976 17.6834 15.5976 18.3166 15.2071 18.7071Z"
                   fill="#9D74FF"
                 />
               </svg>
@@ -72,26 +77,26 @@ export default function GenderSelection({ onContinue, onBack }: GenderSelectionP
           <div className="flex-grow space-y-4">
             {/* Woman Option */}
             <button
-              onClick={() => handleGenderSelect('woman')}
+              onClick={() => handleGenderSelect("woman")}
               className={`w-full h-[58px] rounded-2xl flex items-center justify-between px-5 transition-all ${
-                selectedGender === 'woman'
-                  ? 'bg-lovefi-purple text-white'
-                  : 'bg-white border border-lovefi-border text-black hover:bg-gray-50'
+                selectedGender === "woman"
+                  ? "bg-lovefi-purple text-white"
+                  : "bg-white border border-lovefi-border text-black hover:bg-gray-50"
               }`}
             >
               <span className="text-base font-alata font-normal">Woman</span>
-              <svg 
-                width="20" 
-                height="20" 
-                viewBox="0 0 20 20" 
-                fill="none" 
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path 
-                  d="M4.16667 10L8.33333 14.1667L16.6667 5.83334" 
-                  stroke={selectedGender === 'woman' ? 'white' : '#ADAFBB'} 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
+                <path
+                  d="M4.16667 10L8.33333 14.1667L16.6667 5.83334"
+                  stroke={selectedGender === "woman" ? "white" : "#ADAFBB"}
+                  strokeWidth="2"
+                  strokeLinecap="round"
                   strokeLinejoin="round"
                 />
               </svg>
@@ -99,26 +104,26 @@ export default function GenderSelection({ onContinue, onBack }: GenderSelectionP
 
             {/* Man Option */}
             <button
-              onClick={() => handleGenderSelect('man')}
+              onClick={() => handleGenderSelect("man")}
               className={`w-full h-[58px] rounded-2xl flex items-center justify-between px-5 transition-all ${
-                selectedGender === 'man'
-                  ? 'bg-lovefi-purple text-white'
-                  : 'bg-white border border-lovefi-border text-black hover:bg-gray-50'
+                selectedGender === "man"
+                  ? "bg-lovefi-purple text-white"
+                  : "bg-white border border-lovefi-border text-black hover:bg-gray-50"
               }`}
             >
               <span className="text-base font-alata font-normal">Man</span>
-              <svg 
-                width="20" 
-                height="20" 
-                viewBox="0 0 20 20" 
-                fill="none" 
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path 
-                  d="M4.16667 10L8.33333 14.1667L16.6667 5.83334" 
-                  stroke={selectedGender === 'man' ? 'white' : '#ADAFBB'} 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
+                <path
+                  d="M4.16667 10L8.33333 14.1667L16.6667 5.83334"
+                  stroke={selectedGender === "man" ? "white" : "#ADAFBB"}
+                  strokeWidth="2"
+                  strokeLinecap="round"
                   strokeLinejoin="round"
                 />
               </svg>
@@ -126,26 +131,28 @@ export default function GenderSelection({ onContinue, onBack }: GenderSelectionP
 
             {/* Non-binary Option */}
             <button
-              onClick={() => handleGenderSelect('non-binary')}
+              onClick={() => handleGenderSelect("non-binary")}
               className={`w-full h-[58px] rounded-2xl flex items-center justify-between px-5 transition-all ${
-                selectedGender === 'non-binary'
-                  ? 'bg-lovefi-purple text-white'
-                  : 'bg-white border border-lovefi-border text-black hover:bg-gray-50'
+                selectedGender === "non-binary"
+                  ? "bg-lovefi-purple text-white"
+                  : "bg-white border border-lovefi-border text-black hover:bg-gray-50"
               }`}
             >
-              <span className="text-base font-alata font-normal">Non-binary</span>
-              <svg 
-                width="20" 
-                height="20" 
-                viewBox="0 0 20 20" 
-                fill="none" 
+              <span className="text-base font-alata font-normal">
+                Non-binary
+              </span>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path 
-                  d="M4.16667 10L8.33333 14.1667L16.6667 5.83334" 
-                  stroke={selectedGender === 'non-binary' ? 'white' : '#ADAFBB'} 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
+                <path
+                  d="M4.16667 10L8.33333 14.1667L16.6667 5.83334"
+                  stroke={selectedGender === "non-binary" ? "white" : "#ADAFBB"}
+                  strokeWidth="2"
+                  strokeLinecap="round"
                   strokeLinejoin="round"
                 />
               </svg>
@@ -153,26 +160,28 @@ export default function GenderSelection({ onContinue, onBack }: GenderSelectionP
 
             {/* Choose Another Option */}
             <button
-              onClick={() => handleGenderSelect('other')}
+              onClick={() => handleGenderSelect("other")}
               className={`w-full h-[58px] rounded-2xl flex items-center justify-between px-5 transition-all ${
-                selectedGender === 'other'
-                  ? 'bg-lovefi-purple text-white'
-                  : 'bg-white border border-lovefi-border text-black hover:bg-gray-50'
+                selectedGender === "other"
+                  ? "bg-lovefi-purple text-white"
+                  : "bg-white border border-lovefi-border text-black hover:bg-gray-50"
               }`}
             >
-              <span className="text-base font-alata font-normal">Choose another</span>
-              <svg 
-                width="20" 
-                height="20" 
-                viewBox="0 0 20 20" 
-                fill="none" 
+              <span className="text-base font-alata font-normal">
+                Choose another
+              </span>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path 
-                  fillRule="evenodd" 
-                  clipRule="evenodd" 
-                  d="M7.32741 4.41073C7.65285 4.0853 8.18049 4.0853 8.50592 4.41073L13.5059 9.41073C13.8314 9.73617 13.8314 10.2638 13.5059 10.5892L8.50592 15.5892C8.18049 15.9147 7.65285 15.9147 7.32741 15.5892C7.00197 15.2638 7.00197 14.7362 7.32741 14.4107L11.7382 9.99999L7.32741 5.58925C7.00197 5.26381 7.00197 4.73617 7.32741 4.41073Z" 
-                  fill={selectedGender === 'other' ? 'white' : '#ADAFBB'}
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M7.32741 4.41073C7.65285 4.0853 8.18049 4.0853 8.50592 4.41073L13.5059 9.41073C13.8314 9.73617 13.8314 10.2638 13.5059 10.5892L8.50592 15.5892C8.18049 15.9147 7.65285 15.9147 7.32741 15.5892C7.00197 15.2638 7.00197 14.7362 7.32741 14.4107L11.7382 9.99999L7.32741 5.58925C7.00197 5.26381 7.00197 4.73617 7.32741 4.41073Z"
+                  fill={selectedGender === "other" ? "white" : "#ADAFBB"}
                 />
               </svg>
             </button>
@@ -185,7 +194,7 @@ export default function GenderSelection({ onContinue, onBack }: GenderSelectionP
               disabled={!selectedGender}
               className="w-full h-14 rounded-2xl text-white font-alata font-normal text-base transition-all hover:opacity-90 disabled:opacity-50"
               style={{
-                background: "linear-gradient(90deg, #8F7CFF 0%, #BE62FF 100%)"
+                background: "linear-gradient(90deg, #8F7CFF 0%, #BE62FF 100%)",
               }}
             >
               Continue

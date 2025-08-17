@@ -31,8 +31,14 @@ function AnimatedRoutes() {
           <Route path="/wallet-connect" element={<WalletConnectPage />} />
           <Route path="/user-info" element={<UserInfoPage />} />
           <Route path="/gender-selection" element={<GenderSelectionPage />} />
-          <Route path="/location-selection" element={<LocationSelectionPage />} />
-          <Route path="/partner-preferences" element={<PartnerPreferencesPage />} />
+          <Route
+            path="/location-selection"
+            element={<LocationSelectionPage />}
+          />
+          <Route
+            path="/partner-preferences"
+            element={<PartnerPreferencesPage />}
+          />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

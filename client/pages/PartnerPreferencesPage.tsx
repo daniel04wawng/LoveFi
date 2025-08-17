@@ -14,10 +14,5 @@ export default function PartnerPreferencesPage() {
     navigate("/location-selection");
   };
 
-  return (
-    <PartnerPreferences
-      onContinue={handleContinue}
-      onBack={handleBack}
-    />
-  );
+  return <PartnerPreferences onContinue={handleContinue} onBack={handleBack} />;
 }
