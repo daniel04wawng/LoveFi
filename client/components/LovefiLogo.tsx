@@ -11,7 +11,7 @@ export default function LovefiLogo({
     <div className={`flex flex-col items-center ${className}`}>
       {/* Logo Icon */}
       <img
-        src="https://cdn.builder.io/api/v1/image/assets%2F8c18a9488b6848ba863d1cffa2cdf555%2F34aa54eac6d743b39381aa71967c265f?format=webp&width=800"
+        src="https://cdn.builder.io/api/v1/image/assets%2F8c18a9488b6848ba863d1cffa2cdf555%2F48432ed087254ac697ebf59cd465f8be?format=webp&width=800"
         alt="LoveFi Logo"
         width={size}
         height={size}
