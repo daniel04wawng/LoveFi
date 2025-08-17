@@ -4,9 +4,9 @@ import BottomNavigation from "../components/BottomNavigation";
 export default function MatchingPage() {
   return (
     <div className="w-full h-screen bg-white relative">
-      <div className="pb-20">
+      <div className="pb-32">
         {" "}
-        {/* Add padding bottom for fixed navigation */}
+        {/* Add padding bottom for inline navigation */}
         <MatchingScreen />
       </div>
       {/* Inline Bottom Navigation */}
