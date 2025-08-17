@@ -265,21 +265,6 @@ export default function UserInfo({ onContinue, onBack }: UserInfoProps) {
                 </div>
               </div>
 
-              {/* zkProof Info */}
-              <div className="mt-2 p-3 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl border border-blue-200/50">
-                <div className="flex items-start gap-2">
-                  <span className="text-sm">🔒</span>
-                  <div>
-                    <p className="text-xs font-alata text-blue-700 font-medium mb-1">
-                      Zero-Knowledge Proof
-                    </p>
-                    <p className="text-xs text-blue-600 font-alata">
-                      Optional cryptographic proof for enhanced privacy and
-                      verification without revealing personal data.
-                    </p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
