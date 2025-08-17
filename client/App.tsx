@@ -32,7 +32,6 @@ function AnimatedRoutes() {
       <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Index />} />
-          <Route path="/wallet-connect" element={<WalletConnectPage />} />
           <Route path="/user-info" element={<UserInfoPage />} />
           <Route path="/gender-selection" element={<GenderSelectionPage />} />
           <Route
