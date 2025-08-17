@@ -39,33 +39,38 @@ export default function MessagesPage() {
     const chatId = searchParams.get('chat');
     if (chatId) {
       setOpenChatId(chatId);
-      const conversation = getConversation(chatId);
+      const conversations = userData.conversations || [];
+      const conversation = conversations.find(conv => conv.profileId === chatId);
+      const conversationMessages = conversation ? conversation.messages : [];
 
       // If no conversation exists, start with default demo messages
-      if (conversation.length === 0) {
+      if (conversationMessages.length === 0) {
         const profile = messages.find(p => p.id === chatId);
         if (profile) {
           const userName = userData.firstName || "there";
           setCurrentChatMessages(getDefaultMessages(userName));
         }
       } else {
-        setCurrentChatMessages(conversation);
+        setCurrentChatMessages(conversationMessages);
       }
 
       // Mark messages as read when opening chat
       markMessagesAsRead(chatId);
     }
-  }, [searchParams, getConversation, markMessagesAsRead, userData.firstName]);
+  }, [searchParams, userData.conversations, userData.firstName, messages, markMessagesAsRead]);
 
   // Update chat messages when conversation changes
   useEffect(() => {
     if (openChatId) {
-      const conversation = getConversation(openChatId);
-      if (conversation.length > 0) {
-        setCurrentChatMessages(conversation);
+      const conversations = userData.conversations || [];
+      const conversation = conversations.find(conv => conv.profileId === openChatId);
+      const conversationMessages = conversation ? conversation.messages : [];
+
+      if (conversationMessages.length > 0) {
+        setCurrentChatMessages(conversationMessages);
       }
     }
-  }, [openChatId, getConversation, userData.conversations]);
+  }, [openChatId, userData.conversations]);
 
   const openChat = (profileId: string) => {
     setOpenChatId(profileId);
