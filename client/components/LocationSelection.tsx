@@ -13,10 +13,15 @@ export default function LocationSelection({
   onBack,
 }: LocationSelectionProps) {
   const { userData, updateUserData } = useUser();
+  const locationState = useLocation();
   const [location, setLocation] = useState(
     userData.location || "1083 Western Rd",
   );
   const [radius, setRadius] = useState(userData.radius || 10);
+
+  // Determine back route based on referrer or default flow
+  const isFromProfile = locationState.state?.from === 'profile';
+  const backRoute = isFromProfile ? '/profile' : '/gender-selection';
 
   const handleContinue = () => {
     // Save location and radius to context when continuing
