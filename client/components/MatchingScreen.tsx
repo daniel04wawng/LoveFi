@@ -98,10 +98,12 @@ export default function MatchingScreen() {
         }
         break;
       case "save":
-        // Heart button: Save to messages list but don't navigate
+        // Heart button: Save to messages list and send heart emoji
         if (currentProfile) {
           saveProfile(currentProfile);
           addToMessages(currentProfile);
+          // Send a heart emoji to start the conversation
+          sendMessage(currentProfile.id, "❤️");
         }
         animateCardAndNext("right");
         break;
