@@ -370,16 +370,15 @@ export default function MessagesPage() {
         {openChatId && currentChatProfile && (
           <div className="fixed inset-0 bg-black/60 z-50 flex flex-col">
             <div
-              className={`flex-1 bg-white relative w-full ${
-                isAnimatingIn
-                  ? ''
-                  : ''
-              }`}
+              className="bg-white relative max-w-sm mx-auto w-full"
               style={{
-                transform: isAnimatingIn ? 'translateY(100%)' : 'translateY(0)',
-                animation: isAnimatingIn ? 'slideUp 0.4s cubic-bezier(0.4, 0.0, 0.2, 1) forwards' : 'none',
-                maxWidth: '100vw',
-                borderRadius: isAnimatingIn ? '0' : '24px 24px 0 0'
+                height: '100vh',
+                transform: isAnimatingOut ? 'translateY(100%)' : (isAnimatingIn ? 'translateY(100%)' : 'translateY(0)'),
+                animation: isAnimatingIn
+                  ? 'slideUp 0.4s cubic-bezier(0.4, 0.0, 0.2, 1) forwards'
+                  : isAnimatingOut
+                    ? 'slideDown 0.3s cubic-bezier(0.4, 0.0, 0.6, 1) forwards'
+                    : 'none'
               }}
             >
               {/* Header with Back Button */}
