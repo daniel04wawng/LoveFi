@@ -22,6 +22,7 @@ import PhotoUploadPage from "./pages/PhotoUploadPage";
 import MatchingPage from "./pages/MatchingPage";
 import MessagesPage from "./pages/MessagesPage";
 import ProfilePage from "./pages/ProfilePage";
+import RelationshipNFTPage from "./pages/RelationshipNFTPage";
 
 const queryClient = new QueryClient();
 
