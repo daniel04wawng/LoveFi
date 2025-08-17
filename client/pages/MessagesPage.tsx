@@ -501,19 +501,78 @@ export default function MessagesPage() {
                             className={`flex ${message.isFromUser ? "justify-end" : "justify-start"}`}
                           >
                             <div
-                              className={`max-w-[250px] ${message.isFromUser ? "mr-0 ml-6" : "ml-0 mr-6"}`}
+                              className={`max-w-[280px] ${message.isFromUser ? "mr-0 ml-6" : "ml-0 mr-6"}`}
                             >
-                              <div
-                                className={`rounded-[15px] p-4 ${
-                                  message.isFromUser
-                                    ? "bg-[#F3F3F3] rounded-br-none"
-                                    : "bg-[#E94057]/7 rounded-bl-none"
-                                }`}
-                              >
-                                <p className="text-sm font-normal text-black leading-[150%] font-[Alata]">
-                                  {message.text}
-                                </p>
-                              </div>
+                              {message.type === "stake_proposal" ? (
+                                <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-[15px] p-4 text-white">
+                                  <div className="flex items-center mb-2">
+                                    <svg
+                                      width="20"
+                                      height="20"
+                                      viewBox="0 0 34 34"
+                                      fill="none"
+                                      className="mr-2"
+                                    >
+                                      <g clipPath="url(#clip0_20_209)">
+                                        <path
+                                          d="M17 1.41663V32.5833M24.0833 7.08329H13.4583C12.1433 7.08329 10.8821 7.60569 9.95226 8.53555C9.02239 9.46542 8.5 10.7266 8.5 12.0416C8.5 13.3567 9.02239 14.6178 9.95226 15.5477C10.8821 16.4776 12.1433 17 13.4583 17H20.5417C21.8567 17 23.1179 17.5224 24.0477 18.4522C24.9776 19.3821 25.5 20.6433 25.5 21.9583C25.5 23.2733 24.9776 24.5345 24.0477 25.4644C23.1179 26.3942 21.8567 26.9166 20.5417 26.9166H8.5"
+                                          stroke="currentColor"
+                                          strokeWidth="2"
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
+                                        />
+                                      </g>
+                                      <defs>
+                                        <clipPath id="clip0_20_209">
+                                          <rect width="34" height="34" fill="white" />
+                                        </clipPath>
+                                      </defs>
+                                    </svg>
+                                    <span className="font-[Alata] font-medium">Stake Proposal</span>
+                                  </div>
+                                  <p className="text-sm font-[Alata] mb-3">
+                                    💎 ${message.stakeData?.amount} for exclusive relationship
+                                  </p>
+                                  {message.stakeData?.status === "pending" && !message.isFromUser && (
+                                    <div className="flex gap-2 mt-3">
+                                      <button
+                                        onClick={() => userData.sendStakeProposal && userData.respondToStakeProposal(openChatId!, message.id, true)}
+                                        className="flex-1 bg-white/20 hover:bg-white/30 text-white border border-white/30 rounded-lg py-2 px-3 text-xs font-[Alata] transition-colors"
+                                      >
+                                        Accept
+                                      </button>
+                                      <button
+                                        onClick={() => userData.sendStakeProposal && userData.respondToStakeProposal(openChatId!, message.id, false)}
+                                        className="flex-1 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-lg py-2 px-3 text-xs font-[Alata] transition-colors"
+                                      >
+                                        Decline
+                                      </button>
+                                    </div>
+                                  )}
+                                  {message.stakeData?.status === "accepted" && (
+                                    <div className="bg-green-500/20 border border-green-300/30 rounded-lg p-2 mt-2">
+                                      <p className="text-xs font-[Alata] text-green-100">✅ Accepted</p>
+                                    </div>
+                                  )}
+                                  {message.stakeData?.status === "declined" && (
+                                    <div className="bg-red-500/20 border border-red-300/30 rounded-lg p-2 mt-2">
+                                      <p className="text-xs font-[Alata] text-red-100">❌ Declined</p>
+                                    </div>
+                                  )}
+                                </div>
+                              ) : (
+                                <div
+                                  className={`rounded-[15px] p-4 ${
+                                    message.isFromUser
+                                      ? "bg-[#F3F3F3] rounded-br-none"
+                                      : "bg-[#E94057]/7 rounded-bl-none"
+                                  }`}
+                                >
+                                  <p className="text-sm font-normal text-black leading-[150%] font-[Alata]">
+                                    {message.text}
+                                  </p>
+                                </div>
+                              )}
                               <div
                                 className={`flex items-center mt-2 ${message.isFromUser ? "justify-end" : "justify-start"}`}
                               >
