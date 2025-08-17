@@ -386,7 +386,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const respondToStakeProposal = useCallback(
-    (profileId: string, messageId: string, accept: boolean) => {
+    (profileId: string, messageId: string, accept: boolean, onAccepted?: () => void) => {
       setUserData((prev) => {
         const conversations = prev.conversations || [];
         const timestamp = new Date().toLocaleTimeString([], {
