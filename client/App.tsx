@@ -40,6 +40,10 @@ function AnimatedRoutes() {
             element={<LocationSelectionPage />}
           />
           <Route
+            path="/sexuality-selection"
+            element={<SexualitySelectionPage />}
+          />
+          <Route
             path="/personal-interests"
             element={<PersonalInterestsPage />}
           />
