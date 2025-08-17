@@ -77,7 +77,7 @@ export default function StakeProposal({
         </div>
 
         {/* Amount Input */}
-        <div className="mb-6">
+        <div className="mb-4">
           <label className="block text-sm font-[Alata] text-black mb-2">
             Stake Amount (ETH)
           </label>
