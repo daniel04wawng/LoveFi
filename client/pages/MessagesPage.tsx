@@ -64,8 +64,8 @@ export default function MessagesPage() {
         setCurrentChatMessages(conversationMessages);
       }
 
-      // Mark messages as read when opening chat (only do this once per chat open)
-      markMessagesAsRead(openChatId);
+      // Messages will be marked as read when user actually opens the chat
+      // We'll handle this in the openChat function instead
     }
   }, [openChatId, userData.conversations, userData.firstName, userData.messages]);
 
