@@ -63,6 +63,18 @@ export default function MatchingScreen() {
     navigate(-1);
   };
 
+  if (profiles.length === 0) {
+    return (
+      <div className="w-full h-full bg-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-lovefi-purple mx-auto mb-4"></div>
+          <h2 className="text-xl font-[Alata] text-black mb-2">Finding your matches...</h2>
+          <p className="text-gray-600">Hold tight while we find people who share your interests!</p>
+        </div>
+      </div>
+    );
+  }
+
   if (!currentProfile) {
     return (
       <div className="w-full h-full bg-white flex items-center justify-center">
