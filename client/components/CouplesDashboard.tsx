@@ -70,7 +70,7 @@ const CouplesDashboard = () => {
 
   const friendBets: FriendBet[] = [
     { id: "1", friendName: "Sarah", prediction: "1 Year", stake: 0.001, avatar: "🙋‍♀️" },
-    { id: "2", friendName: "Mike", prediction: "6 Months", stake: 0.001, avatar: "🙋‍♂️" },
+    { id: "2", friendName: "Mike", prediction: "6 Months", stake: 0.001, avatar: "���‍♂️" },
     { id: "3", friendName: "Emma", prediction: "2 Years", stake: 0.002, avatar: "👩" },
   ];
 
@@ -209,7 +209,10 @@ const CouplesDashboard = () => {
             </div>
 
             {/* Milestone Progress Card */}
-            <div className="bg-gradient-to-br from-blue-600 to-cyan-500 rounded-2xl p-4">
+            <button
+              onClick={() => navigate("/milestones")}
+              className="w-full bg-gradient-to-br from-blue-600 to-cyan-500 rounded-2xl p-4 text-left hover:from-blue-700 hover:to-cyan-600 transition-all"
+            >
               <div className="flex items-center justify-between mb-3">
                 <h3 className="text-white font-alata font-medium">Milestone Progress</h3>
                 <span className="text-white/80 text-sm">🏆</span>
@@ -219,12 +222,12 @@ const CouplesDashboard = () => {
                 <div className="text-white/80 text-sm">Milestones Achieved</div>
               </div>
               <div className="w-full bg-white/20 rounded-full h-2">
-                <div 
+                <div
                   className="bg-white rounded-full h-2 transition-all duration-300"
                   style={{ width: `${progressPercentage}%` }}
                 />
               </div>
-            </div>
+            </button>
 
             {/* Active Challenges Card */}
             <div className="bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl p-4">
