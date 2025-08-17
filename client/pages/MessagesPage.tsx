@@ -247,7 +247,7 @@ export default function MessagesPage() {
                         <div className="ml-3">
                           <div className="w-5 h-5 bg-lovefi-purple rounded-full flex items-center justify-center">
                             <span className="text-white text-xs font-normal font-[Alata]">
-                              {conversation.filter(msg => !msg.isFromUser && !msg.isRead).length}
+                              {conversationMessages.filter(msg => !msg.isFromUser && !msg.isRead).length}
                             </span>
                           </div>
                         </div>
