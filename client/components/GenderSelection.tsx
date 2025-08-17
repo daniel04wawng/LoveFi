@@ -158,33 +158,6 @@ export default function GenderSelection({
               </svg>
             </button>
 
-            {/* Choose Another Option */}
-            <button
-              onClick={() => handleGenderSelect("other")}
-              className={`w-full h-[58px] rounded-2xl flex items-center justify-between px-5 transition-all ${
-                selectedGender === "other"
-                  ? "bg-lovefi-purple text-white"
-                  : "bg-white border border-lovefi-border text-black hover:bg-gray-50"
-              }`}
-            >
-              <span className="text-base font-alata font-normal">
-                Choose another
-              </span>
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M7.32741 4.41073C7.65285 4.0853 8.18049 4.0853 8.50592 4.41073L13.5059 9.41073C13.8314 9.73617 13.8314 10.2638 13.5059 10.5892L8.50592 15.5892C8.18049 15.9147 7.65285 15.9147 7.32741 15.5892C7.00197 15.2638 7.00197 14.7362 7.32741 14.4107L11.7382 9.99999L7.32741 5.58925C7.00197 5.26381 7.00197 4.73617 7.32741 4.41073Z"
-                  fill={selectedGender === "other" ? "white" : "#ADAFBB"}
-                />
-              </svg>
-            </button>
           </div>
 
           {/* Continue Button */}
