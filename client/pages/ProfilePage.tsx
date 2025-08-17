@@ -259,8 +259,8 @@ export default function ProfilePage() {
         </div>
 
         {/* Navigation as part of normal flow */}
-        <div className="bg-white border-t-4 border-gray-400 shadow-xl py-6 px-4 fixed bottom-0 left-0 right-0 max-w-sm mx-auto">
-          <div className="grid grid-cols-3 gap-0">
+        <div className="bg-white border-t-4 border-gray-400 shadow-xl py-6 px-4 mt-8">
+          <div className="grid grid-cols-3 gap-0 max-w-sm mx-auto">
             <button
               onClick={() => navigate("/matching")}
               className="flex flex-col items-center justify-center py-4 px-2 rounded-lg text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors"
