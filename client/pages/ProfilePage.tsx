@@ -168,7 +168,9 @@ export default function ProfilePage() {
                   </span>
                   <button
                     onClick={() =>
-                      navigate("/sexuality-selection", { state: { from: "profile" } })
+                      navigate("/sexuality-selection", {
+                        state: { from: "profile" },
+                      })
                     }
                     className="text-lovefi-purple font-[Alata] text-sm hover:underline"
                   >
