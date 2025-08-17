@@ -11,7 +11,7 @@ interface Tab {
 export default function BottomNavigation() {
   const navigate = useNavigate();
   const location = useLocation();
-  
+
   const tabs: Tab[] = [
     {
       id: "matching",
@@ -20,14 +20,14 @@ export default function BottomNavigation() {
       icon: "♥",
     },
     {
-      id: "messages", 
+      id: "messages",
       label: "Messages",
       path: "/messages",
       icon: "💬",
     },
     {
       id: "profile",
-      label: "Profile", 
+      label: "Profile",
       path: "/profile",
       icon: "👤",
     },
@@ -36,7 +36,7 @@ export default function BottomNavigation() {
   const handleTabClick = (path: string) => {
     console.log("Navigation clicked, going to:", path);
     // Force navigation
-    window.location.hash = '';
+    window.location.hash = "";
     navigate(path, { replace: false });
   };
 
@@ -44,35 +44,35 @@ export default function BottomNavigation() {
   useEffect(() => {
     const navElement = document.querySelector('[data-nav="bottom-navigation"]');
     if (navElement) {
-      (navElement as HTMLElement).style.display = 'block';
-      (navElement as HTMLElement).style.visibility = 'visible';
-      (navElement as HTMLElement).style.position = 'fixed';
-      (navElement as HTMLElement).style.bottom = '0';
-      (navElement as HTMLElement).style.zIndex = '999999';
+      (navElement as HTMLElement).style.display = "block";
+      (navElement as HTMLElement).style.visibility = "visible";
+      (navElement as HTMLElement).style.position = "fixed";
+      (navElement as HTMLElement).style.bottom = "0";
+      (navElement as HTMLElement).style.zIndex = "999999";
     }
   }, [location.pathname]);
 
   return (
-    <div 
+    <div
       data-nav="bottom-navigation"
       className="fixed bottom-0 left-0 right-0 bg-white border-t-4 border-gray-400 shadow-2xl"
       style={{
-        position: 'fixed !important',
-        bottom: '0 !important',
-        left: '0 !important',
-        right: '0 !important',
+        position: "fixed !important",
+        bottom: "0 !important",
+        left: "0 !important",
+        right: "0 !important",
         zIndex: 999999,
-        display: 'block !important',
-        visibility: 'visible !important',
-        minHeight: '80px',
-        backgroundColor: 'white',
-        borderTop: '4px solid #9CA3AF'
+        display: "block !important",
+        visibility: "visible !important",
+        minHeight: "80px",
+        backgroundColor: "white",
+        borderTop: "4px solid #9CA3AF",
       }}
     >
       <div className="w-full max-w-sm mx-auto bg-white">
-        <div 
+        <div
           className="grid grid-cols-3 gap-0 py-4 px-4 bg-white"
-          style={{ backgroundColor: 'white' }}
+          style={{ backgroundColor: "white" }}
         >
           {tabs.map((tab) => {
             const isActive = location.pathname === tab.path;
@@ -91,21 +91,21 @@ export default function BottomNavigation() {
                     : "text-gray-700 hover:text-gray-900 hover:bg-gray-100"
                 }`}
                 style={{
-                  minHeight: '60px',
-                  cursor: 'pointer',
-                  touchAction: 'manipulation',
-                  userSelect: 'none'
+                  minHeight: "60px",
+                  cursor: "pointer",
+                  touchAction: "manipulation",
+                  userSelect: "none",
                 }}
               >
-                <div 
+                <div
                   className="text-2xl mb-1 leading-none"
-                  style={{ fontSize: '24px', lineHeight: '1' }}
+                  style={{ fontSize: "24px", lineHeight: "1" }}
                 >
                   {tab.icon}
                 </div>
-                <span 
+                <span
                   className="text-xs font-medium text-center"
-                  style={{ fontSize: '11px' }}
+                  style={{ fontSize: "11px" }}
                 >
                   {tab.label}
                 </span>

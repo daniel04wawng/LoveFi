@@ -164,25 +164,23 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <UserContext.Provider value={contextValue}>
-      {children}
-    </UserContext.Provider>
+    <UserContext.Provider value={contextValue}>{children}</UserContext.Provider>
   );
 };
 
 // Custom hook to use the UserContext
 export const useUser = () => {
   const context = useContext(UserContext);
-  
+
   // More detailed error message for debugging
   if (!context || Object.keys(context).length === 0) {
     console.error("useUser hook called outside of UserProvider!");
     throw new Error(
       "useUser must be used within a UserProvider. " +
-      "Make sure your component is wrapped with <UserProvider>."
+        "Make sure your component is wrapped with <UserProvider>.",
     );
   }
-  
+
   return context;
 };
 
