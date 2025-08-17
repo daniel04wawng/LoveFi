@@ -282,15 +282,21 @@ export default function RelationshipNFTPage() {
               </div>
 
               <div className="space-y-3">
-                <div className="bg-green-50 border border-green-200 rounded-lg p-3">
-                  <p className="text-green-800 font-[Alata] text-sm">
-                    🔒 Your relationship is now locked and secured
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 rounded-lg p-4 animate-pulse">
+                  <p className="text-green-800 font-[Alata] text-base font-medium">
+                    🔒 Your relationship is now locked and secured! 🎉
                   </p>
                 </div>
 
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-                  <p className="text-blue-800 font-[Alata] text-sm">
-                    💎 {relationshipStatus.stakeAmount} ETH held in escrow
+                <div className="bg-gradient-to-r from-blue-50 to-cyan-50 border-2 border-blue-300 rounded-lg p-4 animate-pulse">
+                  <p className="text-blue-800 font-[Alata] text-base font-medium">
+                    💎 {relationshipStatus.stakeAmount} ETH safely held in escrow! 💎
+                  </p>
+                </div>
+
+                <div className="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-300 rounded-lg p-4 animate-pulse">
+                  <p className="text-purple-800 font-[Alata] text-base font-medium">
+                    🎊 Congratulations on your commitment! 🎊
                   </p>
                 </div>
               </div>
