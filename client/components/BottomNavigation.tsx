@@ -71,9 +71,9 @@ export default function BottomNavigation() {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50">
+    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50 shadow-lg">
       <div className="max-w-sm mx-auto">
-        <div className="flex items-center justify-around py-2">
+        <div className="flex items-center justify-around py-3">
           {tabs.map((tab) => {
             const isActive = location.pathname === tab.path;
 
