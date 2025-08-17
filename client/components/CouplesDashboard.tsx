@@ -181,92 +181,72 @@ const CouplesDashboard = () => {
 
           {/* Cards Section */}
           <div className="px-5 space-y-4 pb-24">
-            {/* Friends Betting Card */}
+            {/* Grid Layout for Cards */}
+            <div className="grid grid-cols-2 gap-3 mb-4">
+              {/* Milestone Progress Card */}
+              <button
+                onClick={() => navigate("/milestones")}
+                className="bg-white rounded-2xl p-4 text-left hover:shadow-md transition-all border border-gray-100"
+              >
+                <div className="text-center">
+                  <div className="text-2xl mb-2">🏆</div>
+                  <div className="text-sm font-alata font-medium text-gray-700 mb-1">Milestones</div>
+                  <div className="text-lg font-bold text-lovefi-purple">{completedMilestones}/{milestones.length}</div>
+                  <div className="text-xs text-gray-500">Completed</div>
+                </div>
+              </button>
+
+              {/* Active Challenges Card */}
+              <button
+                onClick={() => navigate("/challenges")}
+                className="bg-white rounded-2xl p-4 text-left hover:shadow-md transition-all border border-gray-100"
+              >
+                <div className="text-center">
+                  <div className="text-2xl mb-2">🎯</div>
+                  <div className="text-sm font-alata font-medium text-gray-700 mb-1">Challenges</div>
+                  <div className="text-lg font-bold text-orange-500">{challenges.length}</div>
+                  <div className="text-xs text-gray-500">Active</div>
+                </div>
+              </button>
+            </div>
+
+            {/* Friends Predictions Card */}
             <button
               onClick={() => navigate("/friends-predictions")}
-              className="w-full bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-4 text-left hover:from-purple-700 hover:to-pink-700 transition-all"
+              className="w-full bg-white rounded-2xl p-4 text-left hover:shadow-md transition-all border border-gray-100"
             >
               <div className="flex items-center justify-between mb-3">
-                <h3 className="text-white font-alata font-medium">Friends Predictions</h3>
-                <span className="text-white/80 text-sm">🎯</span>
+                <div className="flex items-center gap-2">
+                  <span className="text-xl">🎯</span>
+                  <h3 className="text-gray-900 font-alata font-medium">Friends Predictions</h3>
+                </div>
+                <span className="text-xs text-gray-500">{friendBets.length} predictions</span>
               </div>
               <div className="space-y-2">
                 {friendBets.slice(0, 2).map((bet) => (
-                  <div key={bet.id} className="flex items-center justify-between">
+                  <div key={bet.id} className="flex items-center justify-between text-sm">
                     <div className="flex items-center gap-2">
-                      <span className="text-lg">{bet.avatar}</span>
-                      <span className="text-white/90 text-sm">{bet.friendName}</span>
+                      <span className="text-sm">{bet.avatar}</span>
+                      <span className="text-gray-700">{bet.friendName}</span>
                     </div>
                     <div className="text-right">
-                      <div className="text-white text-sm">{bet.prediction}</div>
-                      <div className="text-white/60 text-xs">{bet.stake} ETH</div>
+                      <div className="text-gray-900 font-medium">{bet.prediction}</div>
+                      <div className="text-xs text-gray-500">{bet.stake} ETH</div>
                     </div>
                   </div>
                 ))}
               </div>
-              <div className="w-full mt-3 py-2 bg-white/20 rounded-lg text-white text-sm text-center">
-                View All Predictions ({friendBets.length})
-              </div>
-            </button>
-
-            {/* Milestone Progress Card */}
-            <button
-              onClick={() => navigate("/milestones")}
-              className="w-full bg-gradient-to-br from-blue-600 to-cyan-500 rounded-2xl p-4 text-left hover:from-blue-700 hover:to-cyan-600 transition-all"
-            >
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-white font-alata font-medium">Milestone Progress</h3>
-                <span className="text-white/80 text-sm">🏆</span>
-              </div>
-              <div className="mb-3">
-                <div className="text-white text-lg font-bold">{completedMilestones}/{milestones.length}</div>
-                <div className="text-white/80 text-sm">Milestones Achieved</div>
-              </div>
-              <div className="w-full bg-white/20 rounded-full h-2">
-                <div
-                  className="bg-white rounded-full h-2 transition-all duration-300"
-                  style={{ width: `${progressPercentage}%` }}
-                />
-              </div>
-            </button>
-
-            {/* Active Challenges Card */}
-            <button
-              onClick={() => navigate("/challenges")}
-              className="w-full bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl p-4 text-left hover:from-orange-600 hover:to-red-600 transition-all"
-            >
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-white font-alata font-medium">Active Challenges</h3>
-                <span className="text-white/80 text-sm">🎯</span>
-              </div>
-              <div className="space-y-2">
-                {challenges.slice(0, 1).map((challenge) => (
-                  <div key={challenge.id}>
-                    <div className="text-white font-medium text-sm">{challenge.title}</div>
-                    <div className="text-white/80 text-xs">{challenge.description}</div>
-                    <div className="flex justify-between mt-1">
-                      <span className="text-white/60 text-xs">by {challenge.submittedBy}</span>
-                      <span className="text-white text-xs">{challenge.stake} ETH</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              {challenges.length > 1 && (
-                <div className="w-full mt-3 py-2 bg-white/20 rounded-lg text-white text-sm text-center">
-                  View All Challenges ({challenges.length})
-                </div>
-              )}
             </button>
 
             {/* Days Together Card */}
-            <div className="bg-gradient-to-br from-purple-600 to-purple-400 rounded-2xl p-4">
+            <div className="bg-white rounded-2xl p-4 border border-gray-100">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-white font-alata font-medium">Days Together</h3>
-                  <div className="text-white text-2xl font-bold">{relationshipDays}</div>
-                  <div className="text-white/80 text-sm">Keep the streak going! 💕</div>
+                  <h3 className="text-gray-900 font-alata font-medium mb-1">Days Together</h3>
+                  <div className="text-2xl font-bold text-lovefi-purple">{relationshipDays}</div>
+                  <div className="text-xs text-gray-500">Keep the streak going! 💕</div>
                 </div>
-                <div className="text-4xl">😍</div>
+                <div className="text-3xl">😍</div>
               </div>
             </div>
           </div>
