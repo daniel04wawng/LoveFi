@@ -118,7 +118,7 @@ export default function LocationSelection({
                     background: `linear-gradient(to right, #8F7CFF 0%, #8F7CFF ${(radius / 50) * 100}%, #E5E5E5 ${(radius / 50) * 100}%, #E5E5E5 100%)`,
                   }}
                 />
-                <style jsx>{`
+                <style>{`
                   .slider::-webkit-slider-thumb {
                     appearance: none;
                     height: 20px;
