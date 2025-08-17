@@ -55,6 +55,9 @@ interface UserData {
 
   // Saved profiles
   savedProfiles?: Profile[];
+
+  // Messages - profiles that were liked and are available for messaging
+  messages?: Profile[];
 }
 
 interface UserContextType {
