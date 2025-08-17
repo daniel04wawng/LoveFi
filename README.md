@@ -42,6 +42,7 @@ We keep the relationship commitment fully on-chain.
 
 Contracts are written in **Cadence**, deployed to **Flow testnet** first, and then promoted to mainnet after audits.
 
+flowscan : https://evm-testnet.flowscan.io/tx/0xf29224b7a3795a893a2b0e4fd24df6c66fe801022e6b1f3e367a24ea73867358
 ---
 
 ## Wallet connection with Dynamic
