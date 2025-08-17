@@ -3,6 +3,7 @@ import { useUser, ChatMessage } from "../contexts/UserContext";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import BottomNavigation from "../components/BottomNavigation";
 import AnimatedPageWrapper from "../components/AnimatedPageWrapper";
+import StakeProposal from "../components/StakeProposal";
 
 const sampleMessages = [
   {
