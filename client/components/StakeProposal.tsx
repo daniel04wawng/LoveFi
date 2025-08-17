@@ -35,7 +35,7 @@ export default function StakeProposal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 z-[60] flex items-end justify-center pb-20 pt-4">
+    <div className="fixed inset-0 bg-black/50 z-[60] flex items-center justify-center p-4">
       <div
         className="bg-white rounded-[20px] p-6 w-full max-w-sm mx-auto shadow-2xl"
         style={{
