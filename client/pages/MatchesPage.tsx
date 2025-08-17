@@ -81,7 +81,7 @@ export default function MatchesPage() {
 
                   {/* Name Overlay */}
                   <div className="absolute left-4 top-[132px] z-10">
-                    <span className="text-white font-bold text-base leading-[150%] font-[Sk-Modernist] drop-shadow-sm">
+                    <span className="text-white font-bold text-base leading-[150%] font-sans drop-shadow-sm">
                       {profile.name}, {profile.age}
                     </span>
                   </div>
