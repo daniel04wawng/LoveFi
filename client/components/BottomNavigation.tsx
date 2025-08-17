@@ -13,49 +13,59 @@ export default function BottomNavigation() {
 
   const tabs: Tab[] = [
     {
-      id: "matching",
-      label: "Matching",
+      id: "home",
+      label: "Home",
       path: "/matching",
       icon: (
         <div className="w-6 h-6 flex items-center justify-center">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-            <path
-              d="M10 18l-1.45-1.32C5.4 13.36 2 10.28 2 6.5 2 3.42 4.42 1 7.5 1c1.74 0 3.41.81 4.5 2.09C13.09 1.81 14.76 1 16.5 1 19.58 1 22 3.42 22 6.5c0 3.78-3.4 6.86-8.55 11.54L10 18z"
-              transform="scale(0.9) translate(1,1)"
-            />
-          </svg>
+          <div className="relative w-[22px] h-[21px]">
+            {/* Back card */}
+            <div className="absolute top-0 left-0 w-[13px] h-[18px] bg-current rounded-[2px] border border-gray-100 transform -rotate-[15deg]"></div>
+            {/* Front card */}
+            <div className="absolute top-[3px] left-[9px] w-[13px] h-[18px] bg-current rounded-[2px] border border-gray-100"></div>
+          </div>
         </div>
       ),
     },
     {
-      id: "saved",
-      label: "Saved",
-      path: "/saved",
+      id: "matches",
+      label: "Matches",
+      path: "/matches",
       icon: (
-        <div className="w-6 h-6 flex items-center justify-center">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+        <div className="w-6 h-6 flex items-center justify-center relative">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
-              d="M15 1H5C3.9 1 3 1.9 3 3V19L10 16L17 19V3C17 1.9 16.1 1 15 1Z"
-              transform="scale(0.9) translate(1,1)"
+              d="M7.5 4C4.46244 4 2 6.46245 2 9.5C2 15 8.5 20 12 21.1631C15.5 20 22 15 22 9.5C22 6.46245 19.5375 4 16.5 4C14.6399 4 12.9954 4.92345 12 6.3369C11.0046 4.92345 9.36015 4 7.5 4Z"
+              fill="currentColor"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
+          {/* Notification dot for matches */}
+          <div className="absolute -top-1 -right-1 w-4 h-4 bg-lovefi-purple rounded-full border-2 border-white"></div>
         </div>
       ),
     },
     {
       id: "messages",
-      label: "Messages",
+      label: "Messages", 
       path: "/messages",
       icon: (
         <div className="w-6 h-6 flex items-center justify-center">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
-              d="M18 0H2C0.9 0 0 0.9 0 2V20L4 16H18C19.1 16 20 15.1 20 14V2C20 0.9 19.1 0 18 0Z"
-              transform="scale(0.9) translate(1,1)"
+              d="M22 12C22 17.5229 17.5229 22 12 22C9.01325 22 2 22 2 22C2 22 2 14.5361 2 12C2 6.47715 6.47715 2 12 2C17.5229 2 22 6.47715 22 12Z"
+              fill="currentColor"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
-            <circle cx="6" cy="8" r="1" />
-            <circle cx="10" cy="8" r="1" />
-            <circle cx="14" cy="8" r="1" />
+            <path d="M7 9H16" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M7 13H16" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M7 17H12" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </div>
       ),
@@ -66,11 +76,22 @@ export default function BottomNavigation() {
       path: "/profile",
       icon: (
         <div className="w-6 h-6 flex items-center justify-center">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-            <circle cx="10" cy="5" r="3" />
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
-              d="M10 11c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4z"
-              transform="translate(0,1)"
+              d="M12 10C13.933 10 15.5 8.433 15.5 6.5C15.5 4.56701 13.933 3 12 3C10.067 3 8.5 4.56701 8.5 6.5C8.5 8.433 10.067 10 12 10Z"
+              fill="currentColor"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M3 20.4V21H21V20.4C21 18.1598 21 17.0397 20.5641 16.184C20.1806 15.4314 19.5686 14.8195 18.816 14.436C17.9603 14 16.8402 14 14.6 14H9.4C7.1598 14 6.0397 14 5.18405 14.436C4.43139 14.8195 3.81947 15.4314 3.43598 16.184C3 17.0397 3 18.1598 3 20.4Z"
+              fill="currentColor"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </div>
@@ -83,9 +104,12 @@ export default function BottomNavigation() {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-gray-300 z-50 shadow-xl">
+    <div className="fixed bottom-0 left-0 right-0 bg-gray-50 z-50">
+      {/* Menu divider */}
+      <div className="w-full h-px bg-gray-200"></div>
+      
       <div className="max-w-sm mx-auto">
-        <div className="flex items-center justify-around py-4 px-2">
+        <div className="flex items-center justify-around h-12">
           {tabs.map((tab) => {
             const isActive = location.pathname === tab.path;
 
@@ -93,22 +117,29 @@ export default function BottomNavigation() {
               <button
                 key={tab.id}
                 onClick={() => handleTabClick(tab)}
-                className={`flex flex-col items-center py-2 px-4 transition-all duration-200 rounded-lg min-w-[65px] ${
+                className={`relative flex flex-col items-center justify-center h-12 w-15 transition-colors duration-200 ${
                   isActive
-                    ? "text-lovefi-purple bg-lovefi-purple/10"
-                    : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                    ? "text-lovefi-purple"
+                    : "text-gray-400"
                 }`}
               >
-                <div className="mb-1 transform transition-transform duration-200 hover:scale-110">
+                {/* Active indicator line */}
+                {isActive && (
+                  <div className="absolute top-0 left-0 w-full h-px bg-lovefi-purple"></div>
+                )}
+                
+                <div className="flex items-center justify-center">
                   {tab.icon}
                 </div>
-                <span className="text-xs font-[Alata] font-medium">
-                  {tab.label}
-                </span>
               </button>
             );
           })}
         </div>
+      </div>
+      
+      {/* Home indicator */}
+      <div className="w-full h-[34px] bg-gray-50 flex items-center justify-center pt-5 pb-2">
+        <div className="w-[134px] h-[5px] bg-black rounded-full"></div>
       </div>
     </div>
   );
