@@ -59,7 +59,7 @@ const sampleMessages = [
 // No default messages - chats start completely empty
 
 export default function MessagesPage() {
-  const { userData, sendMessage, getConversation, markMessagesAsRead, sendStakeProposal, respondToStakeProposal } =
+  const { userData, updateUserData, sendMessage, getConversation, markMessagesAsRead, sendStakeProposal, respondToStakeProposal } =
     useUser();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
