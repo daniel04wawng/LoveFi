@@ -48,10 +48,6 @@ export default function ProfilePage() {
       .join(", ");
   };
 
-  const handleLogout = () => {
-    clearUserData();
-    window.location.href = "/";
-  };
 
   return (
     <AnimatedPageWrapper>
