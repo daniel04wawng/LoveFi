@@ -72,8 +72,6 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 export function useUser() {
   const context = useContext(UserContext);
   if (context === undefined) {
-    console.error("useUser called outside of UserProvider. Make sure your component is wrapped in UserProvider.");
-    console.error("Current component stack:", new Error().stack);
     throw new Error("useUser must be used within a UserProvider");
   }
   return context;
