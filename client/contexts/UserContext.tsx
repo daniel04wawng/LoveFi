@@ -70,7 +70,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       {children}
     </UserContext.Provider>
   );
-}
+};
 
 export function useUser() {
   const context = useContext(UserContext);
