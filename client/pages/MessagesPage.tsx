@@ -86,6 +86,8 @@ export default function MessagesPage() {
   const openChat = (profileId: string) => {
     setOpenChatId(profileId);
     setSearchParams({ chat: profileId });
+    // Mark messages as read when user opens a chat
+    markMessagesAsRead(profileId);
   };
 
   const closeChat = () => {
