@@ -376,7 +376,7 @@ export default function MessagesPage() {
               }}
             >
               {/* Header with Back Button */}
-              <div className="px-10 pt-2 pb-4 flex items-center">
+              <div className="px-6 pt-2 pb-2 flex items-center">
                 <button
                   onClick={closeChat}
                   className="mr-4 w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100"
