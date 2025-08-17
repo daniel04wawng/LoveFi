@@ -34,19 +34,28 @@ export default function MessagesPage() {
 
   const messages = userData.messages || [];
 
-  // Check for chat parameter in URL and load conversation
+  // Check for chat parameter in URL and set openChatId
   useEffect(() => {
     const chatId = searchParams.get('chat');
-    if (chatId) {
+    if (chatId && chatId !== openChatId) {
       setOpenChatId(chatId);
+    } else if (!chatId && openChatId) {
+      setOpenChatId(null);
+      setCurrentChatMessages([]);
+    }
+  }, [searchParams, openChatId]);
+
+  // Load conversation when openChatId changes
+  useEffect(() => {
+    if (openChatId) {
       const conversations = userData.conversations || [];
-      const conversation = conversations.find(conv => conv.profileId === chatId);
+      const conversation = conversations.find(conv => conv.profileId === openChatId);
       const conversationMessages = conversation ? conversation.messages : [];
 
       // If no conversation exists, start with default demo messages
       if (conversationMessages.length === 0) {
         const userMessages = userData.messages || [];
-        const profile = userMessages.find(p => p.id === chatId);
+        const profile = userMessages.find(p => p.id === openChatId);
         if (profile) {
           const userName = userData.firstName || "there";
           setCurrentChatMessages(getDefaultMessages(userName));
@@ -55,23 +64,24 @@ export default function MessagesPage() {
         setCurrentChatMessages(conversationMessages);
       }
 
-      // Mark messages as read when opening chat
-      markMessagesAsRead(chatId);
+      // Mark messages as read when opening chat (only do this once per chat open)
+      markMessagesAsRead(openChatId);
     }
-  }, [searchParams, userData.conversations, userData.firstName, userData.messages]);
+  }, [openChatId, userData.conversations, userData.firstName, userData.messages]);
 
-  // Update chat messages when conversation changes
+  // Update chat messages when conversation data changes (for real-time updates)
   useEffect(() => {
     if (openChatId) {
       const conversations = userData.conversations || [];
       const conversation = conversations.find(conv => conv.profileId === openChatId);
       const conversationMessages = conversation ? conversation.messages : [];
 
+      // Only update if we have messages and they're different from current
       if (conversationMessages.length > 0) {
         setCurrentChatMessages(conversationMessages);
       }
     }
-  }, [openChatId, userData.conversations]);
+  }, [userData.conversations, openChatId]);
 
   const openChat = (profileId: string) => {
     setOpenChatId(profileId);
