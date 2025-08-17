@@ -97,22 +97,31 @@ const CouplesDashboard = () => {
             <div className="text-sm text-gray-500">Joint Account Balance</div>
           </div>
 
-          {/* Weekly Progress */}
+          {/* Days Together */}
+          <div className="px-5 mb-6">
+            <div className="bg-white rounded-2xl p-4 border border-gray-100 text-center">
+              <div className="text-2xl font-bold text-lovefi-purple mb-1">{relationshipDays}</div>
+              <div className="text-sm text-gray-600 mb-1">Days Together</div>
+              <div className="text-xs text-gray-500">Keep the streak going! 💕</div>
+            </div>
+          </div>
+
+          {/* Milestone Progress */}
           <div className="px-5 mb-8">
             <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-              <h3 className="text-sm font-alata font-medium text-gray-700 mb-3">This Week's Progress</h3>
-              <div className="flex justify-between items-center gap-2">
-                {getWeekProgress().map((day, index) => (
+              <h3 className="text-sm font-alata font-medium text-gray-700 mb-3">Milestone Progress</h3>
+              <div className="flex justify-between items-center gap-1">
+                {getMilestoneProgress().map((milestone, index) => (
                   <div key={index} className="flex flex-col items-center gap-2">
-                    <span className="text-xs text-gray-500">{day.day}</span>
+                    <span className="text-xs text-gray-500 text-center">{milestone.name}</span>
                     <div
                       className={`w-7 h-7 rounded-full flex items-center justify-center ${
-                        day.completed
-                          ? "bg-gradient-to-r from-orange-400 to-yellow-400"
+                        milestone.completed
+                          ? "bg-gradient-to-r from-lovefi-purple to-lovefi-purple-pink"
                           : "bg-gray-100"
                       }`}
                     >
-                      {day.completed && <span className="text-white text-xs">✓</span>}
+                      {milestone.completed && <span className="text-white text-xs">✓</span>}
                     </div>
                   </div>
                 ))}
