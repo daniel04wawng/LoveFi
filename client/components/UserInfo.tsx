@@ -18,6 +18,7 @@ export default function UserInfo({ onContinue, onBack }: UserInfoProps) {
   const [firstName, setFirstName] = useState(userData.firstName || "Daniel");
   const [lastName, setLastName] = useState(userData.lastName || "Daniel");
   const [birthday, setBirthday] = useState(userData.birthday || "");
+  const [zkProof, setZkProof] = useState(userData.zkProof || "");
   const [showDatePicker, setShowDatePicker] = useState(false);
 
   // Determine back route based on referrer or default flow
