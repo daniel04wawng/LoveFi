@@ -114,7 +114,16 @@ export default function MatchingScreen() {
 
       {/* Profile Card */}
       <div className="flex-1 px-10 pb-6">
-        <div className="relative w-full h-[450px] rounded-[15px] overflow-hidden shadow-lg">
+        <div
+          ref={cardRef}
+          className={`relative w-full h-[450px] rounded-[15px] overflow-hidden shadow-lg transition-all duration-500 ease-out ${
+            isAnimating && animationDirection === 'left'
+              ? 'transform translate-x-[-150%] translate-y-[-20px] rotate-[-30deg] opacity-0'
+              : isAnimating && animationDirection === 'right'
+              ? 'transform translate-x-[150%] translate-y-[-20px] rotate-[30deg] opacity-0'
+              : 'transform translate-x-0 translate-y-0 rotate-0 opacity-100'
+          }`}
+        >
           {/* Background photo with opacity - offset for depth effect */}
           <div className="absolute top-4 left-8 right-0 bottom-0 opacity-30 rounded-[15px] overflow-hidden">
             <img
@@ -128,19 +137,43 @@ export default function MatchingScreen() {
           <div
             className="absolute top-4 left-0 right-4 bottom-0 cursor-pointer rounded-[15px] overflow-hidden"
             onTouchStart={(e) => {
+              if (isAnimating) return;
               const startY = e.touches[0].clientY;
+              const startTime = Date.now();
+
+              const handleTouchMove = (moveEvent: TouchEvent) => {
+                moveEvent.preventDefault();
+              };
+
               const handleTouchEnd = (endEvent: TouchEvent) => {
                 const endY = endEvent.changedTouches[0].clientY;
                 const deltaY = startY - endY;
-                
-                if (Math.abs(deltaY) > 50) {
+                const touchDuration = Date.now() - startTime;
+
+                // Only register as swipe if significant movement and reasonable duration
+                if (Math.abs(deltaY) > 50 && touchDuration < 1000) {
                   handlePhotoChange(deltaY > 0 ? 'up' : 'down');
                 }
-                
+
+                document.removeEventListener('touchmove', handleTouchMove);
                 document.removeEventListener('touchend', handleTouchEnd);
               };
-              
+
+              document.addEventListener('touchmove', handleTouchMove, { passive: false });
               document.addEventListener('touchend', handleTouchEnd);
+            }}
+            onClick={(e) => {
+              // For desktop/mouse users - click top/bottom half to navigate
+              if (isAnimating) return;
+              const rect = e.currentTarget.getBoundingClientRect();
+              const clickY = e.clientY - rect.top;
+              const halfHeight = rect.height / 2;
+
+              if (clickY < halfHeight) {
+                handlePhotoChange('up');
+              } else {
+                handlePhotoChange('down');
+              }
             }}
           >
             <img
