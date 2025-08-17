@@ -154,11 +154,11 @@ export default function MatchingScreen() {
             />
           </div>
 
-          {/* Main photo */}
+          {/* Main photo with transition animations */}
           <div
             className="absolute top-4 left-0 right-4 bottom-0 cursor-pointer rounded-[15px] overflow-hidden"
             onTouchStart={(e) => {
-              if (isAnimating) return;
+              if (isAnimating || isPhotoTransitioning) return;
               const startY = e.touches[0].clientY;
               const startTime = Date.now();
 
@@ -185,7 +185,7 @@ export default function MatchingScreen() {
             }}
             onClick={(e) => {
               // For desktop/mouse users - click top/bottom half to navigate
-              if (isAnimating) return;
+              if (isAnimating || isPhotoTransitioning) return;
               const rect = e.currentTarget.getBoundingClientRect();
               const clickY = e.clientY - rect.top;
               const halfHeight = rect.height / 2;
@@ -197,11 +197,41 @@ export default function MatchingScreen() {
               }
             }}
           >
-            <img
-              src={currentProfile.photos[currentPhotoIndex]}
-              alt={currentProfile.name}
-              className="w-full h-full object-cover"
-            />
+            {/* Current photo */}
+            <div className={`absolute inset-0 transition-all duration-300 ease-out ${
+              isPhotoTransitioning && photoTransitionDirection === 'up'
+                ? 'transform translate-y-[-100%] opacity-0'
+                : isPhotoTransitioning && photoTransitionDirection === 'down'
+                ? 'transform translate-y-[100%] opacity-0'
+                : 'transform translate-y-0 opacity-100'
+            }`}>
+              <img
+                src={currentProfile.photos[currentPhotoIndex]}
+                alt={currentProfile.name}
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Next photo preview during transition */}
+            {isPhotoTransitioning && (
+              <div className={`absolute inset-0 transition-all duration-300 ease-out ${
+                photoTransitionDirection === 'up'
+                  ? 'transform translate-y-[100%] opacity-0 animate-slide-up'
+                  : 'transform translate-y-[-100%] opacity-0 animate-slide-down'
+              }`}>
+                <img
+                  src={
+                    photoTransitionDirection === 'up' && currentPhotoIndex < currentProfile.photos.length - 1
+                      ? currentProfile.photos[currentPhotoIndex + 1]
+                      : photoTransitionDirection === 'down' && currentPhotoIndex > 0
+                      ? currentProfile.photos[currentPhotoIndex - 1]
+                      : currentProfile.photos[currentPhotoIndex]
+                  }
+                  alt={currentProfile.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            )}
           </div>
 
           {/* Distance indicator */}
