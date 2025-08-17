@@ -458,6 +458,12 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         }
 
         saveToStorage(newData);
+
+        // Call the onAccepted callback if provided and stake was accepted
+        if (accept && onAccepted) {
+          setTimeout(onAccepted, 100); // Small delay to ensure state is updated
+        }
+
         return newData;
       });
     },
