@@ -13,15 +13,7 @@ const sampleMessages = [
   { profileId: "", lastMessage: "You: Great I will write later..", time: "1 hour", unread: 0, isTyping: false, isFromUser: true },
 ];
 
-// Default messages for demonstration - these will be replaced by actual chat messages
-const getDefaultMessages = (profileName: string): ChatMessage[] => [
-  {
-    id: "demo-1",
-    text: `Hi! Nice to meet you ${profileName}! I saw on the app that we've crossed paths several times this week 😄`,
-    timestamp: "2:55 PM",
-    isFromUser: false,
-  },
-];
+// No default messages - chats start completely empty
 
 export default function MessagesPage() {
   const { userData, sendMessage, getConversation, markMessagesAsRead } = useUser();
@@ -52,36 +44,16 @@ export default function MessagesPage() {
       const conversation = conversations.find(conv => conv.profileId === openChatId);
       const conversationMessages = conversation ? conversation.messages : [];
 
-      // If no conversation exists, start with default demo messages
-      if (conversationMessages.length === 0) {
-        const userMessages = userData.messages || [];
-        const profile = userMessages.find(p => p.id === openChatId);
-        if (profile) {
-          const userName = userData.firstName || "there";
-          setCurrentChatMessages(getDefaultMessages(userName));
-        }
-      } else {
-        setCurrentChatMessages(conversationMessages);
-      }
-
-      // Messages will be marked as read when user actually opens the chat
-      // We'll handle this in the openChat function instead
+      // Always set the conversation messages (empty array if no conversation exists)
+      setCurrentChatMessages(conversationMessages);
+    } else {
+      // Clear messages when no chat is open
+      setCurrentChatMessages([]);
     }
-  }, [openChatId, userData.conversations, userData.firstName, userData.messages]);
+  }, [openChatId, userData.conversations]);
 
-  // Update chat messages when conversation data changes (for real-time updates)
-  useEffect(() => {
-    if (openChatId) {
-      const conversations = userData.conversations || [];
-      const conversation = conversations.find(conv => conv.profileId === openChatId);
-      const conversationMessages = conversation ? conversation.messages : [];
-
-      // Only update if we have messages and they're different from current
-      if (conversationMessages.length > 0) {
-        setCurrentChatMessages(conversationMessages);
-      }
-    }
-  }, [userData.conversations, openChatId]);
+  // This useEffect is now redundant since we handle conversation updates above
+  // Removed to prevent duplicate updates and potential loops
 
   const openChat = (profileId: string) => {
     setOpenChatId(profileId);
