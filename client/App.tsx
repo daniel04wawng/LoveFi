@@ -58,9 +58,21 @@ function AnimatedRoutes() {
             element={<PartnerPreferencesPage />}
           />
           <Route path="/photo-upload" element={<PhotoUploadPage />} />
-          <Route path="/matching" element={<MatchingPage />} />
-          <Route path="/messages" element={<MessagesPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/matching" element={
+            <RouteGuard requireSingles={true}>
+              <MatchingPage />
+            </RouteGuard>
+          } />
+          <Route path="/messages" element={
+            <RouteGuard requireSingles={true}>
+              <MessagesPage />
+            </RouteGuard>
+          } />
+          <Route path="/profile" element={
+            <RouteGuard requireSingles={true}>
+              <ProfilePage />
+            </RouteGuard>
+          } />
           <Route path="/relationship-nft" element={<RelationshipNFTPage />} />
           <Route path="/couples-dashboard" element={<CouplesDashboardPage />} />
           <Route path="/milestones" element={<MilestonesPage />} />
