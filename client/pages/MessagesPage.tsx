@@ -372,13 +372,17 @@ export default function MessagesPage() {
             <div
               className="bg-white relative max-w-sm mx-auto w-full"
               style={{
-                height: '100vh',
-                transform: isAnimatingOut ? 'translateY(100%)' : (isAnimatingIn ? 'translateY(100%)' : 'translateY(0)'),
+                height: "100vh",
+                transform: isAnimatingOut
+                  ? "translateY(100%)"
+                  : isAnimatingIn
+                    ? "translateY(100%)"
+                    : "translateY(0)",
                 animation: isAnimatingIn
-                  ? 'slideUp 0.4s cubic-bezier(0.4, 0.0, 0.2, 1) forwards'
+                  ? "slideUp 0.4s cubic-bezier(0.4, 0.0, 0.2, 1) forwards"
                   : isAnimatingOut
-                    ? 'slideDown 0.3s cubic-bezier(0.4, 0.0, 0.6, 1) forwards'
-                    : 'none'
+                    ? "slideDown 0.3s cubic-bezier(0.4, 0.0, 0.6, 1) forwards"
+                    : "none",
               }}
             >
               {/* Header with Back Button */}
