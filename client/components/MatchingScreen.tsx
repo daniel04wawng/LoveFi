@@ -13,6 +13,7 @@ export default function MatchingScreen() {
   const [animationDirection, setAnimationDirection] = useState<'left' | 'right' | null>(null);
   const [isPhotoTransitioning, setIsPhotoTransitioning] = useState(false);
   const [photoTransitionDirection, setPhotoTransitionDirection] = useState<'up' | 'down' | null>(null);
+  const [isBouncing, setIsBouncing] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
   // Generate profiles based on user data
