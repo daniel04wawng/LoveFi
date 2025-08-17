@@ -17,9 +17,9 @@ export default function BottomNavigation() {
       label: "Matching",
       path: "/matching",
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
-            d="M19.5 12.572l-7.5 7.428-7.5-7.428a5 5 0 1 1 7.5-6.566 5 5 0 1 1 7.5 6.566z"
+            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
             fill="currentColor"
           />
         </svg>
@@ -30,9 +30,9 @@ export default function BottomNavigation() {
       label: "Saved",
       path: "/saved",
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
-            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+            d="M17 3H7C5.9 3 5 3.9 5 5V21L12 18L19 21V5C19 3.9 18.1 3 17 3Z"
             fill="currentColor"
           />
         </svg>
@@ -43,11 +43,14 @@ export default function BottomNavigation() {
       label: "Messages",
       path: "/messages",
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
-            d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"
+            d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H5.17L4 17.17V4H20V16Z"
             fill="currentColor"
           />
+          <circle cx="8" cy="10" r="1" fill="currentColor"/>
+          <circle cx="12" cy="10" r="1" fill="currentColor"/>
+          <circle cx="16" cy="10" r="1" fill="currentColor"/>
         </svg>
       ),
     },
@@ -56,9 +59,9 @@ export default function BottomNavigation() {
       label: "Profile",
       path: "/profile",
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
-            d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 7.5V8.5C15 9.3 14.3 10 13.5 10S12 9.3 12 8.5V7.5L6 7V9C6 10.7 6.8 12.2 8 13.2V22H16V13.2C17.2 12.2 18 10.7 18 9H21Z"
+            d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM12 7C13.1 7 14 7.9 14 9C14 10.1 13.1 11 12 11C10.9 11 10 10.1 10 9C10 7.9 10.9 7 12 7ZM12 12C15.31 12 18 14.69 18 18V20H6V18C6 14.69 8.69 12 12 12Z"
             fill="currentColor"
           />
         </svg>
