@@ -93,6 +93,9 @@ interface UserData {
     partnerId?: string;
     stakeAmount?: number;
     startDate?: string;
+    nftMinted?: boolean;
+    nftTokenId?: string;
+    nftMintDate?: string;
   };
 }
 
