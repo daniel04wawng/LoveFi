@@ -148,6 +148,10 @@ export default function LocationSelection({
     return "[Name]";
   };
 
+  const handleStreetChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLocationData(prev => ({ ...prev, street: e.target.value }));
+  };
+
   const handleCityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLocationData(prev => ({ ...prev, city: e.target.value }));
   };
