@@ -599,7 +599,8 @@ export default function MessagesPage() {
                                               openChatId,
                                               message.id,
                                               true,
-                                              () => navigate("/relationship-nft")
+                                              () =>
+                                                navigate("/relationship-nft"),
                                             )
                                           }
                                           className="flex-1 bg-white/20 hover:bg-white/30 text-white border border-white/30 rounded-lg py-2 px-3 text-xs font-[Alata] transition-colors"
