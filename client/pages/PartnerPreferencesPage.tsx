@@ -6,8 +6,8 @@ export default function PartnerPreferencesPage() {
 
   const handleContinue = () => {
     console.log("Partner preferences completed");
-    // TODO: Navigate to next step in onboarding
-    // navigate("/next-step");
+    // Navigate to personal interests
+    navigate("/personal-interests");
   };
 
   const handleBack = () => {
