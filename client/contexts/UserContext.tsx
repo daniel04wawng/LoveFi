@@ -66,11 +66,20 @@ interface UserContextType {
   isSaved: (profileId: string) => boolean;
 }
 
-const UserContext = createContext<UserContextType | undefined>(undefined);
+// Create context with a default value to prevent undefined errors
+const UserContext = createContext<UserContextType>({
+  userData: {},
+  updateUserData: () => {},
+  clearUserData: () => {},
+  saveProfile: () => {},
+  removeSavedProfile: () => {},
+  isSaved: () => false,
+});
 
-export const UserProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+// Make UserContext displayName to help with debugging
+UserContext.displayName = "UserContext";
+
+export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [userData, setUserData] = useState<UserData>({});
 
   const updateUserData = useCallback((data: Partial<UserData>) => {
@@ -113,28 +122,37 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
     [userData.savedProfiles],
   );
 
-  // UserProvider is ready
+  const contextValue = {
+    userData,
+    updateUserData,
+    clearUserData,
+    saveProfile,
+    removeSavedProfile,
+    isSaved,
+  };
 
   return (
-    <UserContext.Provider
-      value={{
-        userData,
-        updateUserData,
-        clearUserData,
-        saveProfile,
-        removeSavedProfile,
-        isSaved,
-      }}
-    >
+    <UserContext.Provider value={contextValue}>
       {children}
     </UserContext.Provider>
   );
 };
 
+// Custom hook to use the UserContext
 export const useUser = () => {
   const context = useContext(UserContext);
-  if (context === undefined) {
-    throw new Error("useUser must be used within a UserProvider");
+  
+  // More detailed error message for debugging
+  if (!context || Object.keys(context).length === 0) {
+    console.error("useUser hook called outside of UserProvider!");
+    throw new Error(
+      "useUser must be used within a UserProvider. " +
+      "Make sure your component is wrapped with <UserProvider>."
+    );
   }
+  
   return context;
 };
+
+// Export the context for advanced use cases
+export { UserContext };
