@@ -12,6 +12,13 @@ export interface ChatMessage {
   timestamp: string;
   isFromUser: boolean;
   isRead?: boolean;
+  type?: "message" | "stake_proposal" | "stake_response";
+  stakeData?: {
+    amount: number;
+    status: "pending" | "accepted" | "declined";
+    proposerId: string;
+    responderId: string;
+  };
 }
 
 export interface Profile {
