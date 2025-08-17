@@ -4,38 +4,13 @@ import SignUp from "../components/SignUp";
 export default function Index() {
   const navigate = useNavigate();
 
-  const handleEmailSignUp = () => {
-    console.log("Email sign up clicked");
-    navigate("/wallet-connect");
-  };
-
-  const handlePhoneSignUp = () => {
-    console.log("Phone sign up clicked");
-    navigate("/wallet-connect");
-  };
-
-  const handleFacebookLogin = () => {
-    console.log("Facebook login clicked");
-    // TODO: Implement Facebook login logic
-  };
-
-  const handleGoogleLogin = () => {
-    console.log("Google login clicked");
-    // TODO: Implement Google login logic
-  };
-
-  const handleAppleLogin = () => {
-    console.log("Apple login clicked");
-    // TODO: Implement Apple login logic
+  const handleWalletConnect = (walletData: { name: string; logo?: string; type?: string }) => {
+    console.log("Wallet connected:", walletData);
+    // Navigate to the next step in the onboarding flow
+    navigate("/user-info");
   };
 
   return (
-    <SignUp
-      onEmailSignUp={handleEmailSignUp}
-      onPhoneSignUp={handlePhoneSignUp}
-      onFacebookLogin={handleFacebookLogin}
-      onGoogleLogin={handleGoogleLogin}
-      onAppleLogin={handleAppleLogin}
-    />
+    <SignUp onWalletConnect={handleWalletConnect} />
   );
 }
