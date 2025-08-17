@@ -14,10 +14,15 @@ interface UserInfoProps {
 
 export default function UserInfo({ onContinue, onBack }: UserInfoProps) {
   const { userData, updateUserData } = useUser();
+  const location = useLocation();
   const [firstName, setFirstName] = useState(userData.firstName || "Daniel");
   const [lastName, setLastName] = useState(userData.lastName || "Daniel");
   const [birthday, setBirthday] = useState(userData.birthday || "");
   const [showDatePicker, setShowDatePicker] = useState(false);
+
+  // Determine back route based on referrer or default flow
+  const isFromProfile = location.state?.from === 'profile';
+  const backRoute = isFromProfile ? '/profile' : '/wallet-connect';
 
   // Update context when local state changes
   // Remove automatic context updates to prevent infinite loops
