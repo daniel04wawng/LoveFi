@@ -1,5 +1,5 @@
-import { writeFileSync, existsSync, mkdirSync } from 'fs';
-import { join } from 'path';
+import { writeFileSync, existsSync, mkdirSync } from "fs";
+import { join } from "path";
 
 interface UserProfileData {
   id: string;
@@ -51,7 +51,7 @@ interface UserProfileData {
   version: string;
 }
 
-const DATA_DIR = join(process.cwd(), 'server', 'data', 'profiles');
+const DATA_DIR = join(process.cwd(), "server", "data", "profiles");
 
 // Ensure data directory exists
 if (!existsSync(DATA_DIR)) {
@@ -60,28 +60,34 @@ if (!existsSync(DATA_DIR)) {
 
 export function saveUserProfile(userData: any): UserProfileData {
   const userId = `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-  
+
   // Parse location data if it's stored as JSON string
   let locationData = userData.location;
-  if (typeof locationData === 'string') {
+  if (typeof locationData === "string") {
     try {
       locationData = JSON.parse(locationData);
     } catch {
       // If parsing fails, treat as legacy string format
-      locationData = { city: locationData, country: '', searchRadius: userData.radius || 10 };
+      locationData = {
+        city: locationData,
+        country: "",
+        searchRadius: userData.radius || 10,
+      };
     }
   }
 
   const profileData: UserProfileData = {
     id: userId,
     timestamp: new Date().toISOString(),
-    
+
     // Wallet information
-    wallet: userData.wallet ? {
-      name: userData.wallet.name,
-      logo: userData.wallet.logo,
-      type: userData.wallet.type,
-    } : undefined,
+    wallet: userData.wallet
+      ? {
+          name: userData.wallet.name,
+          logo: userData.wallet.logo,
+          type: userData.wallet.type,
+        }
+      : undefined,
 
     // Personal information
     personalInfo: {
@@ -92,48 +98,56 @@ export function saveUserProfile(userData: any): UserProfileData {
     },
 
     // Gender selection
-    gender: userData.gender ? {
-      selection: userData.gender,
-      customGender: userData.customGender,
-    } : undefined,
+    gender: userData.gender
+      ? {
+          selection: userData.gender,
+          customGender: userData.customGender,
+        }
+      : undefined,
 
     // Location data
-    location: locationData ? {
-      street: locationData.street,
-      city: locationData.city,
-      country: locationData.country,
-      fullAddress: locationData.fullAddress,
-      latitude: locationData.latitude,
-      longitude: locationData.longitude,
-      searchRadius: userData.radius || 10,
-    } : undefined,
+    location: locationData
+      ? {
+          street: locationData.street,
+          city: locationData.city,
+          country: locationData.country,
+          fullAddress: locationData.fullAddress,
+          latitude: locationData.latitude,
+          longitude: locationData.longitude,
+          searchRadius: userData.radius || 10,
+        }
+      : undefined,
 
     // Sexuality
-    sexuality: userData.sexuality ? {
-      selection: userData.sexuality,
-      customSexuality: userData.customSexuality,
-    } : undefined,
+    sexuality: userData.sexuality
+      ? {
+          selection: userData.sexuality,
+          customSexuality: userData.customSexuality,
+        }
+      : undefined,
 
     // Personal interests
     personalInterests: userData.personalInterests || [],
 
     // Partner preferences with detailed mapping
-    partnerPreferences: userData.partnerPreferences?.map((pref: any) => ({
-      category: getPreferenceCategory(pref.id),
-      question: getPreferenceQuestion(pref.id),
-      options: pref.options,
-      selectedIndex: pref.selected,
-      selectedOption: pref.options[pref.selected],
-    })) || [],
+    partnerPreferences:
+      userData.partnerPreferences?.map((pref: any) => ({
+        category: getPreferenceCategory(pref.id),
+        question: getPreferenceQuestion(pref.id),
+        options: pref.options,
+        selectedIndex: pref.selected,
+        selectedOption: pref.options[pref.selected],
+      })) || [],
 
     // Photos metadata (actual files would be handled separately)
-    photos: userData.photos?.map((photo: File, index: number) => ({
-      name: photo.name,
-      size: photo.size,
-      type: photo.type,
-      lastModified: photo.lastModified,
-      uploadedAt: new Date().toISOString(),
-    })) || [],
+    photos:
+      userData.photos?.map((photo: File, index: number) => ({
+        name: photo.name,
+        size: photo.size,
+        type: photo.type,
+        lastModified: photo.lastModified,
+        uploadedAt: new Date().toISOString(),
+      })) || [],
 
     // Metadata
     completedAt: new Date().toISOString(),
@@ -143,13 +157,13 @@ export function saveUserProfile(userData: any): UserProfileData {
   // Save to JSON file
   const filename = `${userId}.json`;
   const filepath = join(DATA_DIR, filename);
-  
+
   try {
-    writeFileSync(filepath, JSON.stringify(profileData, null, 2), 'utf8');
+    writeFileSync(filepath, JSON.stringify(profileData, null, 2), "utf8");
     console.log(`✅ User profile saved: ${filepath}`);
   } catch (error) {
     console.error(`❌ Failed to save user profile: ${error}`);
-    throw new Error('Failed to save user profile');
+    throw new Error("Failed to save user profile");
   }
 
   return profileData;
@@ -157,20 +171,20 @@ export function saveUserProfile(userData: any): UserProfileData {
 
 function getPreferenceCategory(id: string): string {
   const categories: Record<string, string> = {
-    "lifestyle": "Lifestyle",
-    "blockchain": "Blockchain", 
-    "investment": "Investment",
-    "community": "Community",
+    lifestyle: "Lifestyle",
+    blockchain: "Blockchain",
+    investment: "Investment",
+    community: "Community",
   };
   return categories[id] || "Unknown";
 }
 
 function getPreferenceQuestion(id: string): string {
   const questions: Record<string, string> = {
-    "lifestyle": "How would you describe your lifestyle?",
-    "blockchain": "What is your blockchain preference?",
-    "investment": "What describes your investment style?", 
-    "community": "Which community do you identify with?",
+    lifestyle: "How would you describe your lifestyle?",
+    blockchain: "What is your blockchain preference?",
+    investment: "What describes your investment style?",
+    community: "Which community do you identify with?",
   };
   return questions[id] || "Unknown question";
 }
