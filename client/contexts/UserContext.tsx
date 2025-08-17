@@ -110,14 +110,14 @@ const UserContext = createContext<UserContextType>({
 UserContext.displayName = "UserContext";
 
 // Local storage helpers
-const STORAGE_KEY = 'lovefi-user-data';
+const STORAGE_KEY = "lovefi-user-data";
 
 const loadFromStorage = (): UserData => {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     return stored ? JSON.parse(stored) : {};
   } catch (error) {
-    console.error('Error loading user data from storage:', error);
+    console.error("Error loading user data from storage:", error);
     return {};
   }
 };
@@ -126,7 +126,7 @@ const saveToStorage = (data: UserData) => {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch (error) {
-    console.error('Error saving user data to storage:', error);
+    console.error("Error saving user data to storage:", error);
   }
 };
 
@@ -199,12 +199,17 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
       // Initialize empty conversation if not exists
       let updatedConversations = existingConversations;
-      if (!existingConversations.some(conv => conv.profileId === profile.id)) {
-        updatedConversations = [...existingConversations, {
-          profileId: profile.id,
-          messages: [],
-          lastActivity: new Date().toISOString()
-        }];
+      if (
+        !existingConversations.some((conv) => conv.profileId === profile.id)
+      ) {
+        updatedConversations = [
+          ...existingConversations,
+          {
+            profileId: profile.id,
+            messages: [],
+            lastActivity: new Date().toISOString(),
+          },
+        ];
       }
 
       const newData = {
@@ -236,22 +241,25 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   const sendMessage = useCallback((profileId: string, text: string) => {
     setUserData((prev) => {
       const conversations = prev.conversations || [];
-      const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const timestamp = new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
 
       const newMessage: ChatMessage = {
         id: Date.now().toString(),
         text,
         timestamp,
         isFromUser: true,
-        isRead: false
+        isRead: false,
       };
 
-      const updatedConversations = conversations.map(conv => {
+      const updatedConversations = conversations.map((conv) => {
         if (conv.profileId === profileId) {
           return {
             ...conv,
             messages: [...conv.messages, newMessage],
-            lastActivity: new Date().toISOString()
+            lastActivity: new Date().toISOString(),
           };
         }
         return conv;
@@ -266,20 +274,25 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     });
   }, []);
 
-  const getConversation = useCallback((profileId: string): ChatMessage[] => {
-    const conversations = userData.conversations || [];
-    const conversation = conversations.find(conv => conv.profileId === profileId);
-    return conversation ? conversation.messages : [];
-  }, [userData.conversations]);
+  const getConversation = useCallback(
+    (profileId: string): ChatMessage[] => {
+      const conversations = userData.conversations || [];
+      const conversation = conversations.find(
+        (conv) => conv.profileId === profileId,
+      );
+      return conversation ? conversation.messages : [];
+    },
+    [userData.conversations],
+  );
 
   const markMessagesAsRead = useCallback((profileId: string) => {
     setUserData((prev) => {
       const conversations = prev.conversations || [];
-      const updatedConversations = conversations.map(conv => {
+      const updatedConversations = conversations.map((conv) => {
         if (conv.profileId === profileId) {
           return {
             ...conv,
-            messages: conv.messages.map(msg => ({ ...msg, isRead: true }))
+            messages: conv.messages.map((msg) => ({ ...msg, isRead: true })),
           };
         }
         return conv;
