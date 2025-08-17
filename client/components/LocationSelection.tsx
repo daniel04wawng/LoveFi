@@ -213,7 +213,7 @@ export default function LocationSelection({
           {/* Header Text */}
           <div className="pt-12 pb-8">
             <h1 className="text-lg font-alata font-normal leading-[150%] text-black">
-              Thanks for the information, {getDisplayName()} Where are you{" "}
+              Thanks for the information, {getDisplayName()}! Where are you{" "}
               <span className="text-lovefi-text-secondary">located?</span>
             </h1>
           </div>
