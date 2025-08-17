@@ -6,8 +6,8 @@ export default function LocationSelectionPage() {
 
   const handleContinue = () => {
     console.log("Location selection completed");
-    // TODO: Navigate to next step in onboarding
-    // navigate("/next-step");
+    // Navigate to partner preferences
+    navigate("/partner-preferences");
   };
 
   const handleBack = () => {
