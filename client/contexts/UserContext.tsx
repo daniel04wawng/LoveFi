@@ -79,6 +79,8 @@ const UserContext = createContext<UserContextType>({
   saveProfile: () => {},
   removeSavedProfile: () => {},
   isSaved: () => false,
+  addToMessages: () => {},
+  removeFromMessages: () => {},
 });
 
 // Make UserContext displayName to help with debugging
