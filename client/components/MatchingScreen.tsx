@@ -209,6 +209,8 @@ export default function MatchingScreen() {
                 ? 'transform translate-y-[-100%] opacity-0'
                 : isPhotoTransitioning && photoTransitionDirection === 'down'
                 ? 'transform translate-y-[100%] opacity-0'
+                : isBouncing
+                ? 'transform translate-y-0 opacity-100 animate-bounce'
                 : 'transform translate-y-0 opacity-100'
             }`}>
               <img
