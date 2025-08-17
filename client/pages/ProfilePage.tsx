@@ -86,9 +86,17 @@ export default function ProfilePage() {
         {/* Profile Content */}
         <div className="px-10 pb-32">
           {/* Profile Picture Section */}
-          {userData.photos && userData.photos.length > 0 && (
-            <div className="mb-8">
-              <h2 className="text-lg font-normal text-black mb-4 font-[Alata]">Photos</h2>
+          <div className="mb-8">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-lg font-normal text-black font-[Alata]">Photos</h2>
+              <button
+                onClick={() => navigate('/photo-upload')}
+                className="text-lovefi-purple font-[Alata] text-sm hover:underline"
+              >
+                Edit
+              </button>
+            </div>
+            {userData.photos && userData.photos.length > 0 ? (
               <div className="grid grid-cols-2 gap-3">
                 {userData.photos.slice(0, 4).map((photo, index) => (
                   <div key={index} className="aspect-square rounded-[15px] overflow-hidden">
@@ -100,17 +108,29 @@ export default function ProfilePage() {
                   </div>
                 ))}
               </div>
-            </div>
-          )}
+            ) : (
+              <div className="h-32 border-2 border-dashed border-gray-200 rounded-[15px] flex items-center justify-center">
+                <span className="text-gray-400 font-[Alata]">No photos uploaded</span>
+              </div>
+            )}
+          </div>
 
           {/* Basic Information */}
           <div className="mb-8">
-            <h2 className="text-lg font-normal text-black mb-4 font-[Alata]">Basic Information</h2>
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-lg font-normal text-black font-[Alata]">Basic Information</h2>
+              <button
+                onClick={() => navigate('/user-info')}
+                className="text-lovefi-purple font-[Alata] text-sm hover:underline"
+              >
+                Edit
+              </button>
+            </div>
             <div className="space-y-4">
               <div className="flex justify-between items-center py-3 border-b border-gray-100">
                 <span className="text-black font-[Alata]">Name</span>
                 <span className="text-black/70 font-[Alata]">
-                  {userData.firstName && userData.lastName 
+                  {userData.firstName && userData.lastName
                     ? `${userData.firstName} ${userData.lastName}`
                     : userData.firstName || "Not set"}
                 </span>
@@ -138,7 +158,15 @@ export default function ProfilePage() {
 
           {/* Location & Preferences */}
           <div className="mb-8">
-            <h2 className="text-lg font-normal text-black mb-4 font-[Alata]">Location & Search</h2>
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-lg font-normal text-black font-[Alata]">Location & Search</h2>
+              <button
+                onClick={() => navigate('/location-selection')}
+                className="text-lovefi-purple font-[Alata] text-sm hover:underline"
+              >
+                Edit
+              </button>
+            </div>
             <div className="space-y-4">
               <div className="flex justify-between items-center py-3 border-b border-gray-100">
                 <span className="text-black font-[Alata]">Location</span>
@@ -157,7 +185,15 @@ export default function ProfilePage() {
 
           {/* Partner Preferences */}
           <div className="mb-8">
-            <h2 className="text-lg font-normal text-black mb-4 font-[Alata]">Partner Preferences</h2>
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-lg font-normal text-black font-[Alata]">Partner Preferences</h2>
+              <button
+                onClick={() => navigate('/partner-preferences')}
+                className="text-lovefi-purple font-[Alata] text-sm hover:underline"
+              >
+                Edit
+              </button>
+            </div>
             <div className="py-3 border-b border-gray-100">
               <span className="text-black/70 font-[Alata] text-sm leading-relaxed">
                 {getPartnerPreferencesDisplay()}
@@ -167,7 +203,15 @@ export default function ProfilePage() {
 
           {/* Personal Interests */}
           <div className="mb-8">
-            <h2 className="text-lg font-normal text-black mb-4 font-[Alata]">Personal Interests</h2>
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-lg font-normal text-black font-[Alata]">Personal Interests</h2>
+              <button
+                onClick={() => navigate('/personal-interests')}
+                className="text-lovefi-purple font-[Alata] text-sm hover:underline"
+              >
+                Edit
+              </button>
+            </div>
             <div className="py-3">
               {userData.personalInterests && userData.personalInterests.length > 0 ? (
                 <div className="flex flex-wrap gap-2">
