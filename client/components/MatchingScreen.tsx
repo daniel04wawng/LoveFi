@@ -199,19 +199,35 @@ export default function MatchingScreen() {
 
           {/* Photo pagination */}
           {currentProfile.photos.length > 1 && (
-            <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
-              <div className="bg-white/15 rounded-l-lg px-2 py-4 flex flex-col space-y-2">
+            <div className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20">
+              <div className="bg-black/30 backdrop-blur-sm rounded-l-lg px-3 py-4 flex flex-col space-y-3">
                 {currentProfile.photos.map((_, index) => (
                   <div
                     key={index}
-                    className={`w-2 h-2 rounded-full ${
-                      index === currentPhotoIndex ? 'bg-white' : 'bg-white/50'
+                    className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                      index === currentPhotoIndex
+                        ? 'bg-white scale-125'
+                        : 'bg-white/50 hover:bg-white/75'
                     }`}
                   />
                 ))}
               </div>
             </div>
           )}
+
+          {/* Swipe hints overlay */}
+          <div className="absolute inset-0 pointer-events-none z-10">
+            <div className="absolute top-0 left-0 right-0 h-1/2 flex items-center justify-center">
+              <div className="bg-black/20 rounded-full px-3 py-1 opacity-0 hover:opacity-100 transition-opacity">
+                <span className="text-white text-xs">↑ Next photo</span>
+              </div>
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 h-1/2 flex items-center justify-center">
+              <div className="bg-black/20 rounded-full px-3 py-1 opacity-0 hover:opacity-100 transition-opacity">
+                <span className="text-white text-xs">↓ Previous photo</span>
+              </div>
+            </div>
+          </div>
 
           {/* Bottom overlay with blurred background and profile info */}
           <div className="absolute bottom-0 left-0 right-0 h-[83px] rounded-b-[15px] overflow-hidden">
