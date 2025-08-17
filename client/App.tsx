@@ -18,6 +18,7 @@ import GenderSelectionPage from "./pages/GenderSelectionPage";
 import LocationSelectionPage from "./pages/LocationSelectionPage";
 import PersonalInterestsPage from "./pages/PersonalInterestsPage";
 import PartnerPreferencesPage from "./pages/PartnerPreferencesPage";
+import PhotoUploadPage from "./pages/PhotoUploadPage";
 
 const queryClient = new QueryClient();
 
