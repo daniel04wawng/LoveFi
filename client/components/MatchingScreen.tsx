@@ -142,8 +142,8 @@ export default function MatchingScreen() {
           </div>
 
           {/* Main photo */}
-          <div 
-            className="absolute inset-0 cursor-pointer"
+          <div
+            className="absolute top-4 left-0 right-4 bottom-0 cursor-pointer rounded-[15px] overflow-hidden"
             onTouchStart={(e) => {
               const startY = e.touches[0].clientY;
               const handleTouchEnd = (endEvent: TouchEvent) => {
