@@ -18,11 +18,6 @@ export default function LocationSelection({
   );
   const [radius, setRadius] = useState(userData.radius || 10);
 
-  // Update context when location changes
-  useEffect(() => {
-    updateUserData({ location, radius });
-  }, [location, radius, updateUserData]);
-
   const handleContinue = () => {
     if (onContinue) {
       onContinue();
