@@ -35,21 +35,32 @@ export default function MatchingScreen() {
   };
 
   const handleAction = (action: 'decline' | 'message' | 'save') => {
+    if (isAnimating) return;
+
     switch (action) {
       case 'decline':
-        // Move to next profile
-        nextProfile();
+        animateCardAndNext('left');
         break;
       case 'message':
         // Navigate to messaging (not implemented yet)
         console.log('Navigate to messaging');
         break;
       case 'save':
-        // Save profile for later
-        console.log('Profile saved');
-        nextProfile();
+        animateCardAndNext('right');
         break;
     }
+  };
+
+  const animateCardAndNext = (direction: 'left' | 'right') => {
+    setIsAnimating(true);
+    setAnimationDirection(direction);
+
+    // Wait for animation to complete before showing next profile
+    setTimeout(() => {
+      nextProfile();
+      setIsAnimating(false);
+      setAnimationDirection(null);
+    }, 500);
   };
 
   const nextProfile = () => {
