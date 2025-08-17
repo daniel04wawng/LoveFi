@@ -269,7 +269,7 @@ export default function RelationshipNFTPage() {
                 <p className="text-gray-700 font-[Alata] text-lg mb-4 font-medium">
                   🎉 Your relationship is now secured on the blockchain! 🎉
                 </p>
-                <div className="flex justify-center gap-1 mb-4">
+                <div className="flex justify-center gap-1 mb-6">
                   {["🎊", "💍", "💎", "💍", "🎊"].map((emoji, i) => (
                     <span
                       key={i}
@@ -280,30 +280,43 @@ export default function RelationshipNFTPage() {
                     </span>
                   ))}
                 </div>
-                <p className="text-xs font-[Alata] text-gray-500 bg-gray-100 rounded-lg p-2">
+                <p className="text-xs font-[Alata] text-gray-500 bg-gray-100 rounded-lg p-2 mb-6">
                   Token ID: {relationshipStatus.nftTokenId}
                 </p>
               </div>
 
+              <div className="space-y-4 mb-6">
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 rounded-lg p-3">
+                  <p className="text-green-800 font-[Alata] text-sm font-medium">
+                    🔒 Relationship locked & secured!
+                  </p>
+                </div>
+
+                <div className="bg-gradient-to-r from-blue-50 to-cyan-50 border-2 border-blue-300 rounded-lg p-3">
+                  <p className="text-blue-800 font-[Alata] text-sm font-medium">
+                    💎 {relationshipStatus.stakeAmount} ETH in joint wallet
+                  </p>
+                </div>
+
+                <div className="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-300 rounded-lg p-3">
+                  <p className="text-purple-800 font-[Alata] text-sm font-medium">
+                    🏆 Milestone journey begins now!
+                  </p>
+                </div>
+              </div>
+
+              {/* Dashboard Navigation Button */}
               <div className="space-y-3">
-                <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 rounded-lg p-4 animate-pulse">
-                  <p className="text-green-800 font-[Alata] text-base font-medium">
-                    🔒 Your relationship is now locked and secured! 🎉
-                  </p>
-                </div>
+                <button
+                  onClick={() => navigate("/couples-dashboard")}
+                  className="w-full h-14 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-[Alata] text-lg font-medium rounded-[15px] hover:from-purple-600 hover:to-pink-600 transition-all shadow-lg"
+                >
+                  💕 Enter Your Love Dashboard
+                </button>
 
-                <div className="bg-gradient-to-r from-blue-50 to-cyan-50 border-2 border-blue-300 rounded-lg p-4 animate-pulse">
-                  <p className="text-blue-800 font-[Alata] text-base font-medium">
-                    💎 {relationshipStatus.stakeAmount} ETH safely held in
-                    escrow! 💎
-                  </p>
-                </div>
-
-                <div className="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-300 rounded-lg p-4 animate-pulse">
-                  <p className="text-purple-800 font-[Alata] text-base font-medium">
-                    🎊 Congratulations on your commitment! 🎊
-                  </p>
-                </div>
+                <p className="text-xs text-gray-500 font-[Alata]">
+                  Track milestones, manage challenges & build your future together
+                </p>
               </div>
             </div>
           )}
