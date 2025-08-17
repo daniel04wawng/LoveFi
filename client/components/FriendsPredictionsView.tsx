@@ -22,63 +22,65 @@ interface PredictionOption {
 
 const FriendsPredictionsView = () => {
   const [friendBets] = useState<FriendBet[]>([
-    { 
-      id: "1", 
-      friendName: "Sarah Martinez", 
-      prediction: "1 Year", 
-      stake: 0.001, 
+    {
+      id: "1",
+      friendName: "Sarah Martinez",
+      prediction: "1 Year",
+      stake: 0.001,
       avatar: "🙋‍♀️",
       dateSubmitted: "2024-01-10",
-      confidence: "high"
+      confidence: "high",
     },
-    { 
-      id: "2", 
-      friendName: "Mike Richardson", 
-      prediction: "6 Months", 
-      stake: 0.001, 
+    {
+      id: "2",
+      friendName: "Mike Richardson",
+      prediction: "6 Months",
+      stake: 0.001,
       avatar: "🙋‍♂️",
       dateSubmitted: "2024-01-12",
-      confidence: "medium"
+      confidence: "medium",
     },
-    { 
-      id: "3", 
-      friendName: "Emma Johnson", 
-      prediction: "2 Years", 
-      stake: 0.002, 
+    {
+      id: "3",
+      friendName: "Emma Johnson",
+      prediction: "2 Years",
+      stake: 0.002,
       avatar: "👩",
       dateSubmitted: "2024-01-11",
-      confidence: "high"
+      confidence: "high",
     },
-    { 
-      id: "4", 
-      friendName: "Alex Thompson", 
-      prediction: "1 Year", 
-      stake: 0.0015, 
+    {
+      id: "4",
+      friendName: "Alex Thompson",
+      prediction: "1 Year",
+      stake: 0.0015,
       avatar: "👨",
       dateSubmitted: "2024-01-13",
-      confidence: "medium"
+      confidence: "medium",
     },
-    { 
-      id: "5", 
-      friendName: "Lisa Chen", 
-      prediction: "6 Months", 
-      stake: 0.0008, 
+    {
+      id: "5",
+      friendName: "Lisa Chen",
+      prediction: "6 Months",
+      stake: 0.0008,
       avatar: "👩‍💼",
       dateSubmitted: "2024-01-14",
-      confidence: "low"
+      confidence: "low",
     },
-    { 
-      id: "6", 
-      friendName: "David Wilson", 
-      prediction: "2 Years", 
-      stake: 0.0025, 
+    {
+      id: "6",
+      friendName: "David Wilson",
+      prediction: "2 Years",
+      stake: 0.0025,
       avatar: "👨‍💼",
       dateSubmitted: "2024-01-09",
-      confidence: "high"
-    }
+      confidence: "high",
+    },
   ]);
 
-  const [selectedTab, setSelectedTab] = useState<"predictions" | "leaderboard">("predictions");
+  const [selectedTab, setSelectedTab] = useState<"predictions" | "leaderboard">(
+    "predictions",
+  );
 
   // Calculate prediction statistics
   const predictionOptions: PredictionOption[] = [
@@ -86,26 +88,35 @@ const FriendsPredictionsView = () => {
       id: "6months",
       milestone: "6 Months",
       period: "180 days",
-      totalStaked: friendBets.filter(b => b.prediction === "6 Months").reduce((sum, b) => sum + b.stake, 0),
-      betCount: friendBets.filter(b => b.prediction === "6 Months").length
+      totalStaked: friendBets
+        .filter((b) => b.prediction === "6 Months")
+        .reduce((sum, b) => sum + b.stake, 0),
+      betCount: friendBets.filter((b) => b.prediction === "6 Months").length,
     },
     {
-      id: "1year", 
+      id: "1year",
       milestone: "1 Year",
       period: "365 days",
-      totalStaked: friendBets.filter(b => b.prediction === "1 Year").reduce((sum, b) => sum + b.stake, 0),
-      betCount: friendBets.filter(b => b.prediction === "1 Year").length
+      totalStaked: friendBets
+        .filter((b) => b.prediction === "1 Year")
+        .reduce((sum, b) => sum + b.stake, 0),
+      betCount: friendBets.filter((b) => b.prediction === "1 Year").length,
     },
     {
       id: "2years",
-      milestone: "2 Years", 
+      milestone: "2 Years",
       period: "730 days",
-      totalStaked: friendBets.filter(b => b.prediction === "2 Years").reduce((sum, b) => sum + b.stake, 0),
-      betCount: friendBets.filter(b => b.prediction === "2 Years").length
-    }
+      totalStaked: friendBets
+        .filter((b) => b.prediction === "2 Years")
+        .reduce((sum, b) => sum + b.stake, 0),
+      betCount: friendBets.filter((b) => b.prediction === "2 Years").length,
+    },
   ];
 
-  const totalStaked = predictionOptions.reduce((sum, option) => sum + option.totalStaked, 0);
+  const totalStaked = predictionOptions.reduce(
+    (sum, option) => sum + option.totalStaked,
+    0,
+  );
   const totalBets = friendBets.length;
 
   // Sort friends by stake amount for leaderboard
@@ -113,17 +124,23 @@ const FriendsPredictionsView = () => {
 
   const getConfidenceColor = (confidence: FriendBet["confidence"]) => {
     switch (confidence) {
-      case "high": return "bg-green-100 text-green-700 border-green-200";
-      case "medium": return "bg-yellow-100 text-yellow-700 border-yellow-200";
-      case "low": return "bg-red-100 text-red-700 border-red-200";
+      case "high":
+        return "bg-green-100 text-green-700 border-green-200";
+      case "medium":
+        return "bg-yellow-100 text-yellow-700 border-yellow-200";
+      case "low":
+        return "bg-red-100 text-red-700 border-red-200";
     }
   };
 
   const getConfidenceText = (confidence: FriendBet["confidence"]) => {
     switch (confidence) {
-      case "high": return "High Confidence";
-      case "medium": return "Medium Confidence";
-      case "low": return "Low Confidence";
+      case "high":
+        return "High Confidence";
+      case "medium":
+        return "Medium Confidence";
+      case "low":
+        return "Low Confidence";
     }
   };
 
@@ -154,8 +171,12 @@ const FriendsPredictionsView = () => {
                 </svg>
               </Link>
               <div>
-                <h1 className="text-2xl font-alata font-bold text-black">Friends Predictions</h1>
-                <p className="text-sm text-gray-600">See what your friends predict</p>
+                <h1 className="text-2xl font-alata font-bold text-black">
+                  Friends Predictions
+                </h1>
+                <p className="text-sm text-gray-600">
+                  See what your friends predict
+                </p>
               </div>
             </div>
 
@@ -163,11 +184,15 @@ const FriendsPredictionsView = () => {
             <div className="bg-gradient-to-r from-lovefi-purple-light to-lovefi-purple-pink rounded-2xl p-4 mb-6">
               <div className="grid grid-cols-2 gap-4 text-white">
                 <div className="text-center">
-                  <div className="text-2xl font-alata font-bold">{totalBets}</div>
+                  <div className="text-2xl font-alata font-bold">
+                    {totalBets}
+                  </div>
                   <div className="text-white/90 text-sm">Total Predictions</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-alata font-bold">{totalStaked.toFixed(4)}</div>
+                  <div className="text-2xl font-alata font-bold">
+                    {totalStaked.toFixed(4)}
+                  </div>
                   <div className="text-white/90 text-sm">ETH Staked</div>
                 </div>
               </div>
@@ -205,15 +230,23 @@ const FriendsPredictionsView = () => {
                 {/* Prediction Options Summary */}
                 <div className="space-y-3">
                   {predictionOptions.map((option) => (
-                    <div key={option.id} className="bg-white border-2 border-lovefi-border rounded-2xl p-4">
+                    <div
+                      key={option.id}
+                      className="bg-white border-2 border-lovefi-border rounded-2xl p-4"
+                    >
                       <div className="flex items-center justify-between mb-2">
-                        <h3 className="text-lg font-alata font-bold text-black">{option.milestone}</h3>
-                        <span className="text-sm text-gray-600">{option.period}</span>
+                        <h3 className="text-lg font-alata font-bold text-black">
+                          {option.milestone}
+                        </h3>
+                        <span className="text-sm text-gray-600">
+                          {option.period}
+                        </span>
                       </div>
-                      
+
                       <div className="flex items-center justify-between mb-3">
                         <div className="text-sm text-gray-600">
-                          {option.betCount} friend{option.betCount !== 1 ? 's' : ''} predict this
+                          {option.betCount} friend
+                          {option.betCount !== 1 ? "s" : ""} predict this
                         </div>
                         <div className="text-sm font-medium text-lovefi-purple">
                           {option.totalStaked.toFixed(4)} ETH staked
@@ -221,9 +254,11 @@ const FriendsPredictionsView = () => {
                       </div>
 
                       <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div 
+                        <div
                           className="bg-lovefi-purple rounded-full h-2 transition-all duration-300"
-                          style={{ width: `${totalStaked > 0 ? (option.totalStaked / totalStaked) * 100 : 0}%` }}
+                          style={{
+                            width: `${totalStaked > 0 ? (option.totalStaked / totalStaked) * 100 : 0}%`,
+                          }}
                         />
                       </div>
                     </div>
@@ -232,51 +267,76 @@ const FriendsPredictionsView = () => {
 
                 {/* Individual Predictions */}
                 <div>
-                  <h3 className="text-lg font-alata font-bold text-black mb-4">All Predictions</h3>
+                  <h3 className="text-lg font-alata font-bold text-black mb-4">
+                    All Predictions
+                  </h3>
                   <div className="space-y-3">
                     {friendBets.map((bet) => (
-                  <div key={bet.id} className="bg-white border border-gray-200 rounded-2xl p-4">
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex items-center gap-3">
-                        <span className="text-2xl">{bet.avatar}</span>
-                        <div>
-                          <p className="text-sm text-gray-600">{bet.dateSubmitted}</p>
+                      <div
+                        key={bet.id}
+                        className="bg-white border border-gray-200 rounded-2xl p-4"
+                      >
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="flex items-center gap-3">
+                            <span className="text-2xl">{bet.avatar}</span>
+                            <div>
+                              <p className="text-sm text-gray-600">
+                                {bet.dateSubmitted}
+                              </p>
+                            </div>
+                          </div>
+                          <div
+                            className={`px-2 py-1 rounded-lg text-xs border ${getConfidenceColor(bet.confidence)}`}
+                          >
+                            {getConfidenceText(bet.confidence)}
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <span className="text-gray-600 text-sm">
+                              Predicts:{" "}
+                            </span>
+                            <span className="font-medium text-lovefi-purple">
+                              {bet.prediction}
+                            </span>
+                          </div>
+                          <div>
+                            <span className="text-gray-600 text-sm">
+                              Stake:{" "}
+                            </span>
+                            <span className="font-medium">{bet.stake} ETH</span>
+                          </div>
                         </div>
                       </div>
-                      <div className={`px-2 py-1 rounded-lg text-xs border ${getConfidenceColor(bet.confidence)}`}>
-                        {getConfidenceText(bet.confidence)}
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <span className="text-gray-600 text-sm">Predicts: </span>
-                        <span className="font-medium text-lovefi-purple">{bet.prediction}</span>
-                      </div>
-                      <div>
-                        <span className="text-gray-600 text-sm">Stake: </span>
-                        <span className="font-medium">{bet.stake} ETH</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+                    ))}
                   </div>
                 </div>
               </div>
             ) : (
               /* Leaderboard Tab */
               <div className="space-y-4">
-                <h3 className="text-lg font-alata font-bold text-black">Highest Stakes</h3>
+                <h3 className="text-lg font-alata font-bold text-black">
+                  Highest Stakes
+                </h3>
                 {leaderboard.map((bet, index) => (
-                  <div key={bet.id} className="bg-white border border-gray-200 rounded-2xl p-4">
+                  <div
+                    key={bet.id}
+                    className="bg-white border border-gray-200 rounded-2xl p-4"
+                  >
                     <div className="flex items-center gap-4">
                       {/* Rank */}
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
-                        index === 0 ? "bg-yellow-400 text-yellow-900" :
-                        index === 1 ? "bg-gray-300 text-gray-700" :
-                        index === 2 ? "bg-orange-300 text-orange-800" :
-                        "bg-gray-100 text-gray-600"
-                      }`}>
+                      <div
+                        className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
+                          index === 0
+                            ? "bg-yellow-400 text-yellow-900"
+                            : index === 1
+                              ? "bg-gray-300 text-gray-700"
+                              : index === 2
+                                ? "bg-orange-300 text-orange-800"
+                                : "bg-gray-100 text-gray-600"
+                        }`}
+                      >
                         {index + 1}
                       </div>
 
@@ -284,15 +344,23 @@ const FriendsPredictionsView = () => {
                       <div className="flex items-center gap-3 flex-1">
                         <span className="text-2xl">{bet.avatar}</span>
                         <div>
-                          <h4 className="font-alata font-medium text-black">{bet.friendName}</h4>
-                          <p className="text-sm text-gray-600">Predicts {bet.prediction}</p>
+                          <h4 className="font-alata font-medium text-black">
+                            {bet.friendName}
+                          </h4>
+                          <p className="text-sm text-gray-600">
+                            Predicts {bet.prediction}
+                          </p>
                         </div>
                       </div>
 
                       {/* Stake Amount */}
                       <div className="text-right">
-                        <div className="font-bold text-lovefi-purple">{bet.stake} ETH</div>
-                        <div className={`text-xs px-2 py-1 rounded ${getConfidenceColor(bet.confidence).replace('border-', '')}`}>
+                        <div className="font-bold text-lovefi-purple">
+                          {bet.stake} ETH
+                        </div>
+                        <div
+                          className={`text-xs px-2 py-1 rounded ${getConfidenceColor(bet.confidence).replace("border-", "")}`}
+                        >
                           {bet.confidence.toUpperCase()}
                         </div>
                       </div>
