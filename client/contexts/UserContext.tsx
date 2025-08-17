@@ -60,6 +60,11 @@ export function UserProvider({ children }: { children: ReactNode }) {
     setUserData({});
   }, []);
 
+  // Debug logging for development
+  if (process.env.NODE_ENV === 'development') {
+    console.log('UserProvider rendered');
+  }
+
   return (
     <UserContext.Provider value={{ userData, updateUserData, clearUserData }}>
       {children}
