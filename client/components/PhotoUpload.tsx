@@ -37,32 +37,21 @@ export default function PhotoUpload() {
   };
 
   const handleStartMatching = () => {
-    // Export all user data to JSON for backend
-    const userData = {
-      wallet: userData.wallet,
-      firstName: userData.firstName,
-      lastName: userData.lastName,
-      birthday: userData.birthday,
-      gender: userData.gender,
-      customGender: userData.customGender,
-      location: userData.location,
-      radius: userData.radius,
-      personalInterests: userData.personalInterests,
-      partnerPreferences: userData.partnerPreferences,
-      photos: uploadedPhotos.map((file) => ({
-        name: file.name,
-        size: file.size,
-        type: file.type,
-        lastModified: file.lastModified,
-      })),
-    };
+    // Update photos in context before export
+    updateUserData({ photos: uploadedPhotos });
 
-    // Log the JSON data for backend integration
-    console.log("User Data JSON for Backend:", JSON.stringify(userData, null, 2));
+    // Export user data using the utility function
+    const exportedData = logUserDataToConsole(userData);
 
-    // Here you would typically send the data to your backend
-    // For now, we'll just navigate to a success page or show completion
-    alert("Profile completed! User data logged to console for backend integration.");
+    // Optionally download as JSON file for testing
+    if (process.env.NODE_ENV === 'development') {
+      downloadUserDataAsJSON(userData, `lovefi-user-${Date.now()}.json`);
+    }
+
+    // Here you would typically send the exportedData to your backend
+    // Example: await sendToBackend(exportedData);
+
+    alert("Profile completed! ✅\n\nUser data exported and ready for backend.\nCheck console for JSON output.");
   };
 
   const handleBack = () => {
