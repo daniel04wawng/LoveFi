@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useUser } from "../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
 import AnimatedPageWrapper from "../components/AnimatedPageWrapper";
 
 export default function ProfilePage() {
