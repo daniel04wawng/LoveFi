@@ -265,7 +265,10 @@ export default function MatchingScreen() {
           {/* Decline button */}
           <button
             onClick={() => handleAction('decline')}
-            className="w-[78px] h-[78px] rounded-full bg-white shadow-lg flex items-center justify-center mr-5"
+            disabled={isAnimating}
+            className={`w-[78px] h-[78px] rounded-full bg-white shadow-lg flex items-center justify-center mr-5 transition-all duration-200 ${
+              isAnimating ? 'opacity-50 scale-95' : 'hover:scale-105 active:scale-95'
+            }`}
           >
             <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
               <path
@@ -280,7 +283,10 @@ export default function MatchingScreen() {
           {/* Message button */}
           <button
             onClick={() => handleAction('message')}
-            className="w-[99px] h-[99px] rounded-full bg-lovefi-purple shadow-lg flex items-center justify-center relative z-10"
+            disabled={isAnimating}
+            className={`w-[99px] h-[99px] rounded-full bg-lovefi-purple shadow-lg flex items-center justify-center relative z-10 transition-all duration-200 ${
+              isAnimating ? 'opacity-50 scale-95' : 'hover:scale-105 active:scale-95'
+            }`}
           >
             <svg width="48" height="48" viewBox="0 0 52 54" fill="none">
               <path
@@ -296,7 +302,10 @@ export default function MatchingScreen() {
           {/* Save/Heart button */}
           <button
             onClick={() => handleAction('save')}
-            className="w-[78px] h-[78px] rounded-full bg-white shadow-lg flex items-center justify-center ml-5"
+            disabled={isAnimating}
+            className={`w-[78px] h-[78px] rounded-full bg-white shadow-lg flex items-center justify-center ml-5 transition-all duration-200 ${
+              isAnimating ? 'opacity-50 scale-95' : 'hover:scale-105 active:scale-95'
+            }`}
           >
             <svg width="51" height="51" viewBox="0 0 51 51" fill="none">
               <path
