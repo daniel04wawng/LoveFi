@@ -54,6 +54,10 @@ interface UserData {
   location?: string;
   radius?: number;
 
+  // From sexuality selection
+  sexuality?: "straight" | "gay" | "lesbian" | "other";
+  customSexuality?: string;
+
   // From partner preferences
   partnerPreferences?: {
     id: string;
