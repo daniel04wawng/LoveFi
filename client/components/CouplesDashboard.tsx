@@ -175,14 +175,8 @@ const CouplesDashboard = () => {
               <div className="space-y-2">
                 {friendBets.slice(0, 2).map((bet) => (
                   <div key={bet.id} className="flex items-center justify-between text-sm">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm">{bet.avatar}</span>
-                      <span className="text-gray-700">{bet.friendName}</span>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-gray-900 font-medium">{bet.prediction}</div>
-                      <div className="text-xs text-gray-500">{bet.stake} ETH</div>
-                    </div>
+                    <div className="text-gray-900 font-medium">{bet.prediction}</div>
+                    <div className="text-xs text-gray-500">{bet.stake} ETH</div>
                   </div>
                 ))}
               </div>
