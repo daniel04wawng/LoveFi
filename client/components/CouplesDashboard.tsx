@@ -77,11 +77,11 @@ const CouplesDashboard = () => {
   const completedMilestones = milestones.filter(m => m.completed).length;
   const progressPercentage = (completedMilestones / milestones.length) * 100;
 
-  const getWeekProgress = () => {
-    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    return days.map((day, index) => ({
-      day,
-      completed: index < currentStreak % 7 || currentStreak >= 7
+  const getMilestoneProgress = () => {
+    return milestones.map(milestone => ({
+      name: milestone.name.replace(' Strong', '').replace(' Journey', '').replace(' Anniversary', ''),
+      completed: milestone.completed,
+      id: milestone.id
     }));
   };
 
