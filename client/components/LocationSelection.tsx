@@ -39,19 +39,26 @@ export default function LocationSelection({
 
   // Parse existing location data
   const parseLocationData = (location?: string): LocationData => {
-    if (!location) return { city: "", country: "" };
+    if (!location) return { street: "", city: "", country: "" };
 
     try {
       const parsed = JSON.parse(location);
       if (parsed.city && parsed.country) {
-        return parsed;
+        return {
+          street: parsed.street || "",
+          city: parsed.city,
+          country: parsed.country,
+          fullAddress: parsed.fullAddress,
+          latitude: parsed.latitude,
+          longitude: parsed.longitude
+        };
       }
     } catch {
       // If it's not JSON, treat as legacy string format
-      return { city: location, country: "" };
+      return { street: "", city: location, country: "" };
     }
 
-    return { city: location, country: "" };
+    return { street: "", city: location, country: "" };
   };
 
   const [locationData, setLocationData] = useState<LocationData>(
