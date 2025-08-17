@@ -179,9 +179,11 @@ export default function MessagesPage() {
           ) : (
             <div className="space-y-0">
               {messages.map((profile, index) => {
-                const conversation = getConversation(profile.id);
-                const lastMessage = conversation.length > 0
-                  ? conversation[conversation.length - 1]
+                const conversations = userData.conversations || [];
+                const conversation = conversations.find(conv => conv.profileId === profile.id);
+                const conversationMessages = conversation ? conversation.messages : [];
+                const lastMessage = conversationMessages.length > 0
+                  ? conversationMessages[conversationMessages.length - 1]
                   : null;
 
                 // Use sample data if no real conversation exists
