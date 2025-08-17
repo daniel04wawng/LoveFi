@@ -1,15 +1,4 @@
-export interface Profile {
-  id: string;
-  name: string;
-  age: number;
-  photos: string[];
-  distance: number;
-  matchPercentage: number;
-  cryptoTagline: string;
-  commonInterests: string[];
-  personalInterests: string[];
-  partnerPreferences: string[];
-}
+import { Profile } from "../contexts/UserContext";
 
 const cryptoTaglines = [
   "Insert Quirky Crypto Meme",
