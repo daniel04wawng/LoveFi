@@ -9,6 +9,7 @@ interface LocationSelectionProps {
 }
 
 interface LocationData {
+  street?: string;
   city: string;
   country: string;
   fullAddress?: string;
