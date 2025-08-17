@@ -96,6 +96,7 @@ export default function MatchingScreen() {
       case "save":
         if (currentProfile) {
           saveProfile(currentProfile);
+          addToMessages(currentProfile);
         }
         animateCardAndNext("right");
         break;
