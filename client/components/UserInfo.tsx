@@ -31,7 +31,7 @@ export default function UserInfo({ onContinue, onBack }: UserInfoProps) {
 
   const handleContinue = () => {
     if (onContinue) {
-      onContinue({ firstName, lastName, birthday });
+      onContinue({ firstName, lastName, birthday, zkProof: zkProof.trim() });
     }
   };
 
