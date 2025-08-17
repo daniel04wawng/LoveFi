@@ -20,6 +20,11 @@ export default function PartnerPreferences({
 }: PartnerPreferencesProps) {
   // Get user context
   const { userData, updateUserData } = useUser();
+  const location = useLocation();
+
+  // Determine back route based on referrer or default flow
+  const isFromProfile = location.state?.from === 'profile';
+  const backRoute = isFromProfile ? '/profile' : '/location-selection';
 
   const [preferences, setPreferences] = useState<PreferenceCategory[]>([
     {
