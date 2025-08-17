@@ -80,7 +80,7 @@ export default function ProfilePage() {
         </div>
 
         {/* Profile Content */}
-        <div className="px-10 pb-32">
+        <div className="px-10 pb-8">
           {/* Profile Picture Section */}
           <div className="mb-8">
             <div className="flex justify-between items-center mb-4">
