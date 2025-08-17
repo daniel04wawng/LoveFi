@@ -32,7 +32,14 @@ interface FriendBet {
 
 const CouplesDashboard = () => {
   const navigate = useNavigate();
+  const { clearUserData } = useUser();
   const [selectedMode] = useState<"short" | "long">("long");
+
+  const handleResetFlow = () => {
+    // Clear all user data and go back to beginning
+    clearUserData();
+    navigate("/", { replace: true });
+  };
   
   // Mock data - in real app this would come from blockchain/API
   const [jointWalletBalance] = useState(2.41186); // ETH
