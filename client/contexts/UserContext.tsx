@@ -20,6 +20,13 @@ interface UserData {
   // From location selection
   location?: string;
   radius?: number;
+
+  // From partner preferences
+  partnerPreferences?: {
+    id: string;
+    options: string[];
+    selected: number;
+  }[];
 }
 
 interface UserContextType {
