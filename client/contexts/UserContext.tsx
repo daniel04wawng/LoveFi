@@ -344,7 +344,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
       const stakeMessage: ChatMessage = {
         id: Date.now().toString(),
-        text: `Proposed a stake of $${amount} for an exclusive relationship`,
+        text: `Proposed a stake of ${amount} ETH for an exclusive relationship`,
         timestamp,
         isFromUser: true,
         isRead: false,
