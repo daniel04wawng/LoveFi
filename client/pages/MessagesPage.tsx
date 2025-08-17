@@ -356,32 +356,6 @@ export default function MessagesPage() {
         {openChatId && currentChatProfile && (
           <div className="fixed inset-0 bg-black/50 z-50 flex flex-col">
             <div className="flex-1 bg-white relative max-w-sm mx-auto w-full">
-              {/* Status Bar */}
-              <div className="h-11 bg-white flex items-center justify-between px-5 pt-2">
-                <div className="text-sm font-semibold">4:20</div>
-                <div className="flex items-center space-x-1">
-                  <div className="flex space-x-0.5">
-                    <div className="w-1 h-3 bg-black rounded-full"></div>
-                    <div className="w-1 h-3 bg-black rounded-full"></div>
-                    <div className="w-1 h-3 bg-black rounded-full"></div>
-                    <div className="w-1 h-3 bg-black rounded-full"></div>
-                  </div>
-                  <svg
-                    width="15"
-                    height="11"
-                    viewBox="0 0 15 11"
-                    className="text-black"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M5.44824 8.75745C6.7289 7.67518 8.60508 7.67518 9.88574 8.75745C9.95009 8.81566 9.98749 8.89827 9.98926 8.98499Z"
-                    />
-                  </svg>
-                  <div className="w-6 h-3 border border-black rounded-sm opacity-35 relative">
-                    <div className="w-4 h-1.5 bg-black rounded-sm absolute top-0.5 left-0.5"></div>
-                  </div>
-                </div>
-              </div>
 
               {/* Header with Back Button */}
               <div className="px-10 pt-2 pb-4 flex items-center">
