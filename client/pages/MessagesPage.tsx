@@ -133,7 +133,6 @@ export default function MessagesPage() {
   return (
     <AnimatedPageWrapper>
       <div className="w-full min-h-screen bg-white relative max-w-sm mx-auto overflow-x-hidden">
-
         {/* Header */}
         <div className="px-11 pt-4 pb-6">
           <h1 className="text-[34px] font-normal text-black leading-[150%] font-[Alata]">
@@ -356,7 +355,6 @@ export default function MessagesPage() {
         {openChatId && currentChatProfile && (
           <div className="fixed inset-0 bg-black/50 z-50 flex flex-col">
             <div className="flex-1 bg-white relative max-w-sm mx-auto w-full">
-
               {/* Header with Back Button */}
               <div className="px-10 pt-2 pb-4 flex items-center">
                 <button

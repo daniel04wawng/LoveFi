@@ -57,7 +57,6 @@ export default function ProfilePage() {
   return (
     <AnimatedPageWrapper>
       <div className="w-full min-h-screen bg-white relative max-w-sm mx-auto overflow-x-hidden">
-
         {/* Header */}
         <div className="px-11 pt-4 pb-6">
           <h1 className="text-[34px] font-normal text-black leading-[150%] font-[Alata]">
