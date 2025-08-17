@@ -60,10 +60,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setUserData({});
   }, []);
 
-  // Debug logging for development
-  if (process.env.NODE_ENV === 'development') {
-    console.log('UserProvider rendered');
-  }
+  // UserProvider is ready
 
   return (
     <UserContext.Provider value={{ userData, updateUserData, clearUserData }}>
