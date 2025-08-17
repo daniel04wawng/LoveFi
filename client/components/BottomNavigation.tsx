@@ -11,6 +11,8 @@ export default function BottomNavigation() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  console.log("BottomNavigation rendering, current path:", location.pathname);
+
   const tabs: Tab[] = [
     {
       id: "matching",
