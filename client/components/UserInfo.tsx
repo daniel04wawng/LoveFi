@@ -22,7 +22,7 @@ export default function UserInfo({ onContinue, onBack }: UserInfoProps) {
 
   // Determine back route based on referrer or default flow
   const isFromProfile = location.state?.from === 'profile';
-  const backRoute = isFromProfile ? '/profile' : '/wallet-connect';
+  const backRoute = isFromProfile ? '/profile' : '/';
 
   // Update context when local state changes
   // Remove automatic context updates to prevent infinite loops
