@@ -68,7 +68,7 @@ export default function MessagesPage() {
         </div>
 
         {/* Messages Section */}
-        <div className="px-10 pb-28">
+        <div className="px-10 pb-8">
           <h2 className="text-lg font-normal text-black mb-6 font-[Alata]">Messages</h2>
           
           {messages.length === 0 ? (
