@@ -129,6 +129,29 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     [userData.savedProfiles],
   );
 
+  const addToMessages = useCallback((profile: Profile) => {
+    setUserData((prev) => {
+      const existingMessages = prev.messages || [];
+      // Check if profile is already in messages
+      if (existingMessages.some((p) => p.id === profile.id)) {
+        return prev; // Profile already in messages, don't add duplicate
+      }
+      return {
+        ...prev,
+        messages: [...existingMessages, profile],
+      };
+    });
+  }, []);
+
+  const removeFromMessages = useCallback((profileId: string) => {
+    setUserData((prev) => ({
+      ...prev,
+      messages: (prev.messages || []).filter(
+        (profile) => profile.id !== profileId,
+      ),
+    }));
+  }, []);
+
   const contextValue = {
     userData,
     updateUserData,
