@@ -18,8 +18,9 @@ export default function PartnerPreferences({
   onContinue,
   onBack,
 }: PartnerPreferencesProps) {
+  // Get user context
   const { userData, updateUserData } = useUser();
-
+  
   const [preferences, setPreferences] = useState<PreferenceCategory[]>([
     {
       id: "lifestyle",
@@ -60,8 +61,8 @@ export default function PartnerPreferences({
       prev.map((category, idx) =>
         idx === categoryIndex
           ? { ...category, selected: optionIndex }
-          : category,
-      ),
+          : category
+      )
     );
   };
 
@@ -73,7 +74,7 @@ export default function PartnerPreferences({
 
   const renderToggleButton = (
     category: PreferenceCategory,
-    categoryIndex: number,
+    categoryIndex: number
   ) => {
     const isThreeOptions = category.options.length === 3;
 
@@ -91,8 +92,8 @@ export default function PartnerPreferences({
                 category.selected === 0
                   ? "15px 0 0 15px"
                   : category.selected === 2
-                    ? "0 15px 15px 0"
-                    : "0",
+                  ? "0 15px 15px 0"
+                  : "0",
             }}
           />
 
@@ -185,8 +186,8 @@ export default function PartnerPreferences({
           <div className="pt-12 pb-8">
             <h1 className="text-lg font-alata font-normal leading-[150%] text-black">
               To find your{" "}
-              <span className="text-lovefi-text-secondary">true love</span>,
-              lets start by describing who do you look for in a partner?
+              <span className="text-lovefi-text-secondary">true love</span>, lets
+              start by describing who do you look for in a partner?
             </h1>
           </div>
 
