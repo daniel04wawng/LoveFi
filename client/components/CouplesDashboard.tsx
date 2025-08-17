@@ -184,7 +184,10 @@ const CouplesDashboard = () => {
           {/* Cards Section */}
           <div className="px-5 space-y-4 pb-24">
             {/* Friends Betting Card */}
-            <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-4">
+            <button
+              onClick={() => navigate("/friends-predictions")}
+              className="w-full bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-4 text-left hover:from-purple-700 hover:to-pink-700 transition-all"
+            >
               <div className="flex items-center justify-between mb-3">
                 <h3 className="text-white font-alata font-medium">Friends Predictions</h3>
                 <span className="text-white/80 text-sm">🎯</span>
@@ -203,10 +206,10 @@ const CouplesDashboard = () => {
                   </div>
                 ))}
               </div>
-              <button className="w-full mt-3 py-2 bg-white/20 rounded-lg text-white text-sm">
+              <div className="w-full mt-3 py-2 bg-white/20 rounded-lg text-white text-sm text-center">
                 View All Predictions ({friendBets.length})
-              </button>
-            </div>
+              </div>
+            </button>
 
             {/* Milestone Progress Card */}
             <button
