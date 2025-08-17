@@ -113,7 +113,7 @@ export default function MessagesPage() {
     // Reset animation state after animation completes
     setTimeout(() => {
       setIsAnimatingIn(false);
-    }, 300);
+    }, 400);
   };
 
   const closeChat = () => {
