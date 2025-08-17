@@ -86,6 +86,14 @@ interface UserData {
 
   // Chat conversations with message history
   conversations?: ChatConversation[];
+
+  // Relationship status
+  relationshipStatus?: {
+    isInRelationship: boolean;
+    partnerId?: string;
+    stakeAmount?: number;
+    startDate?: string;
+  };
 }
 
 interface UserContextType {
