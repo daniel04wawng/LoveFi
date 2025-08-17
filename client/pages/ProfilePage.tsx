@@ -13,7 +13,10 @@ export default function ProfilePage() {
     const birthDate = new Date(birthday);
     let age = today.getFullYear() - birthDate.getFullYear();
     const monthDiff = today.getMonth() - birthDate.getMonth();
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+    if (
+      monthDiff < 0 ||
+      (monthDiff === 0 && today.getDate() < birthDate.getDate())
+    ) {
       age--;
     }
     return age;
@@ -37,7 +40,10 @@ export default function ProfilePage() {
   };
 
   const getPartnerPreferencesDisplay = () => {
-    if (!userData.partnerPreferences || userData.partnerPreferences.length === 0) {
+    if (
+      !userData.partnerPreferences ||
+      userData.partnerPreferences.length === 0
+    ) {
       return "Not set";
     }
     return userData.partnerPreferences
@@ -66,8 +72,16 @@ export default function ProfilePage() {
               <div className="w-1 h-3 bg-black rounded-full"></div>
               <div className="w-1 h-3 bg-black rounded-full"></div>
             </div>
-            <svg width="15" height="11" viewBox="0 0 15 11" className="text-black">
-              <path fill="currentColor" d="M5.44824 8.75745C6.7289 7.67518 8.60508 7.67518 9.88574 8.75745C9.95009 8.81566 9.98749 8.89827 9.98926 8.98499C9.99092 9.07162 9.95644 9.15475 9.89453 9.21545L7.88965 11.2379C7.83087 11.2973 7.7506 11.3307 7.66699 11.3307C7.5834 11.3307 7.5031 11.2973 7.44434 11.2379L5.43848 9.21545C5.37688 9.15475 5.34303 9.07141 5.34473 8.98499C5.34656 8.8983 5.3839 8.8156 5.44824 8.75745Z"/>
+            <svg
+              width="15"
+              height="11"
+              viewBox="0 0 15 11"
+              className="text-black"
+            >
+              <path
+                fill="currentColor"
+                d="M5.44824 8.75745C6.7289 7.67518 8.60508 7.67518 9.88574 8.75745C9.95009 8.81566 9.98749 8.89827 9.98926 8.98499C9.99092 9.07162 9.95644 9.15475 9.89453 9.21545L7.88965 11.2379C7.83087 11.2973 7.7506 11.3307 7.66699 11.3307C7.5834 11.3307 7.5031 11.2973 7.44434 11.2379L5.43848 9.21545C5.37688 9.15475 5.34303 9.07141 5.34473 8.98499C5.34656 8.8983 5.3839 8.8156 5.44824 8.75745Z"
+              />
             </svg>
             <div className="w-6 h-3 border border-black rounded-sm opacity-35 relative">
               <div className="w-4 h-1.5 bg-black rounded-sm absolute top-0.5 left-0.5"></div>
@@ -88,9 +102,11 @@ export default function ProfilePage() {
           {/* Profile Picture Section */}
           <div className="mb-8">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-normal text-black font-[Alata]">Photos</h2>
+              <h2 className="text-lg font-normal text-black font-[Alata]">
+                Photos
+              </h2>
               <button
-                onClick={() => navigate('/photo-upload')}
+                onClick={() => navigate("/photo-upload")}
                 className="text-lovefi-purple font-[Alata] text-sm hover:underline"
               >
                 Edit
@@ -99,7 +115,10 @@ export default function ProfilePage() {
             {userData.photos && userData.photos.length > 0 ? (
               <div className="grid grid-cols-2 gap-3">
                 {userData.photos.slice(0, 4).map((photo, index) => (
-                  <div key={index} className="aspect-square rounded-[15px] overflow-hidden">
+                  <div
+                    key={index}
+                    className="aspect-square rounded-[15px] overflow-hidden"
+                  >
                     <img
                       src={URL.createObjectURL(photo)}
                       alt={`Profile photo ${index + 1}`}
@@ -110,7 +129,9 @@ export default function ProfilePage() {
               </div>
             ) : (
               <div className="h-32 border-2 border-dashed border-gray-200 rounded-[15px] flex items-center justify-center">
-                <span className="text-gray-400 font-[Alata]">No photos uploaded</span>
+                <span className="text-gray-400 font-[Alata]">
+                  No photos uploaded
+                </span>
               </div>
             )}
           </div>
@@ -118,9 +139,11 @@ export default function ProfilePage() {
           {/* Basic Information */}
           <div className="mb-8">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-normal text-black font-[Alata]">Basic Information</h2>
+              <h2 className="text-lg font-normal text-black font-[Alata]">
+                Basic Information
+              </h2>
               <button
-                onClick={() => navigate('/user-info')}
+                onClick={() => navigate("/user-info")}
                 className="text-lovefi-purple font-[Alata] text-sm hover:underline"
               >
                 Edit
@@ -159,9 +182,11 @@ export default function ProfilePage() {
           {/* Location & Preferences */}
           <div className="mb-8">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-normal text-black font-[Alata]">Location & Search</h2>
+              <h2 className="text-lg font-normal text-black font-[Alata]">
+                Location & Search
+              </h2>
               <button
-                onClick={() => navigate('/location-selection')}
+                onClick={() => navigate("/location-selection")}
                 className="text-lovefi-purple font-[Alata] text-sm hover:underline"
               >
                 Edit
@@ -186,9 +211,11 @@ export default function ProfilePage() {
           {/* Partner Preferences */}
           <div className="mb-8">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-normal text-black font-[Alata]">Partner Preferences</h2>
+              <h2 className="text-lg font-normal text-black font-[Alata]">
+                Partner Preferences
+              </h2>
               <button
-                onClick={() => navigate('/partner-preferences')}
+                onClick={() => navigate("/partner-preferences")}
                 className="text-lovefi-purple font-[Alata] text-sm hover:underline"
               >
                 Edit
@@ -204,16 +231,19 @@ export default function ProfilePage() {
           {/* Personal Interests */}
           <div className="mb-8">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-normal text-black font-[Alata]">Personal Interests</h2>
+              <h2 className="text-lg font-normal text-black font-[Alata]">
+                Personal Interests
+              </h2>
               <button
-                onClick={() => navigate('/personal-interests')}
+                onClick={() => navigate("/personal-interests")}
                 className="text-lovefi-purple font-[Alata] text-sm hover:underline"
               >
                 Edit
               </button>
             </div>
             <div className="py-3">
-              {userData.personalInterests && userData.personalInterests.length > 0 ? (
+              {userData.personalInterests &&
+              userData.personalInterests.length > 0 ? (
                 <div className="flex flex-wrap gap-2">
                   {userData.personalInterests.map((interest, index) => (
                     <span
@@ -233,9 +263,13 @@ export default function ProfilePage() {
           {/* Wallet Information */}
           {userData.wallet && (
             <div className="mb-8">
-              <h2 className="text-lg font-normal text-black mb-4 font-[Alata]">Wallet</h2>
+              <h2 className="text-lg font-normal text-black mb-4 font-[Alata]">
+                Wallet
+              </h2>
               <div className="flex justify-between items-center py-3 border-b border-gray-100">
-                <span className="text-black font-[Alata]">Connected Wallet</span>
+                <span className="text-black font-[Alata]">
+                  Connected Wallet
+                </span>
                 <div className="flex items-center">
                   {userData.wallet.logo && (
                     <img
@@ -254,7 +288,9 @@ export default function ProfilePage() {
 
           {/* Statistics */}
           <div className="mb-8">
-            <h2 className="text-lg font-normal text-black mb-4 font-[Alata]">Statistics</h2>
+            <h2 className="text-lg font-normal text-black mb-4 font-[Alata]">
+              Statistics
+            </h2>
             <div className="space-y-4">
               <div className="flex justify-between items-center py-3 border-b border-gray-100">
                 <span className="text-black font-[Alata]">Saved Profiles</span>
@@ -263,7 +299,9 @@ export default function ProfilePage() {
                 </span>
               </div>
               <div className="flex justify-between items-center py-3 border-b border-gray-100">
-                <span className="text-black font-[Alata]">Active Conversations</span>
+                <span className="text-black font-[Alata]">
+                  Active Conversations
+                </span>
                 <span className="text-black/70 font-[Alata]">
                   {userData.messages?.length || 0}
                 </span>
@@ -317,7 +355,8 @@ export default function ProfilePage() {
                 Sign Out?
               </h3>
               <p className="text-black/70 font-[Alata] text-center mb-6">
-                Are you sure you want to sign out? You'll need to reconnect your wallet to sign back in.
+                Are you sure you want to sign out? You'll need to reconnect your
+                wallet to sign back in.
               </p>
               <div className="flex space-x-3">
                 <button
