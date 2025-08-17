@@ -79,11 +79,11 @@ export default function StakeProposal({
         {/* Amount Input */}
         <div className="mb-6">
           <label className="block text-sm font-[Alata] text-black mb-2">
-            Stake Amount
+            Stake Amount (ETH)
           </label>
           <div className="relative">
             <div className="absolute left-4 top-3.5 text-gray-400 font-[Alata]">
-              $
+              Ξ
             </div>
             <input
               type="number"
@@ -91,12 +91,12 @@ export default function StakeProposal({
               value={stakeAmount}
               onChange={(e) => setStakeAmount(e.target.value)}
               className="w-full h-12 pl-8 pr-4 border border-[#E8E6EA] rounded-[15px] bg-white text-lg font-[Alata] placeholder-gray-400 focus:outline-none focus:border-lovefi-purple"
-              step="0.01"
+              step="0.001"
               min="0"
             />
           </div>
           <p className="text-xs text-gray-500 font-[Alata] mt-2">
-            This amount will be held in escrow until both parties agree to the relationship terms.
+            This ETH amount will be held in escrow until both parties agree to the relationship terms.
           </p>
         </div>
 
