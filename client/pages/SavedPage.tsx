@@ -167,14 +167,16 @@ export default function SavedPage() {
                     Interests:
                   </h4>
                   <div className="flex flex-wrap gap-2">
-                    {selectedProfile.personalInterests.map((interest, index) => (
-                      <span
-                        key={index}
-                        className="px-2 py-1 bg-gray-100 rounded-md text-xs font-[Alata] text-gray-700"
-                      >
-                        {interest}
-                      </span>
-                    ))}
+                    {selectedProfile.personalInterests.map(
+                      (interest, index) => (
+                        <span
+                          key={index}
+                          className="px-2 py-1 bg-gray-100 rounded-md text-xs font-[Alata] text-gray-700"
+                        >
+                          {interest}
+                        </span>
+                      ),
+                    )}
                   </div>
                 </div>
 

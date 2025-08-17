@@ -19,7 +19,10 @@ export default function BottomNavigation() {
       icon: (
         <div className="w-6 h-6 flex items-center justify-center">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M10 18l-1.45-1.32C5.4 13.36 2 10.28 2 6.5 2 3.42 4.42 1 7.5 1c1.74 0 3.41.81 4.5 2.09C13.09 1.81 14.76 1 16.5 1 19.58 1 22 3.42 22 6.5c0 3.78-3.4 6.86-8.55 11.54L10 18z" transform="scale(0.9) translate(1,1)"/>
+            <path
+              d="M10 18l-1.45-1.32C5.4 13.36 2 10.28 2 6.5 2 3.42 4.42 1 7.5 1c1.74 0 3.41.81 4.5 2.09C13.09 1.81 14.76 1 16.5 1 19.58 1 22 3.42 22 6.5c0 3.78-3.4 6.86-8.55 11.54L10 18z"
+              transform="scale(0.9) translate(1,1)"
+            />
           </svg>
         </div>
       ),
@@ -31,7 +34,10 @@ export default function BottomNavigation() {
       icon: (
         <div className="w-6 h-6 flex items-center justify-center">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M15 1H5C3.9 1 3 1.9 3 3V19L10 16L17 19V3C17 1.9 16.1 1 15 1Z" transform="scale(0.9) translate(1,1)"/>
+            <path
+              d="M15 1H5C3.9 1 3 1.9 3 3V19L10 16L17 19V3C17 1.9 16.1 1 15 1Z"
+              transform="scale(0.9) translate(1,1)"
+            />
           </svg>
         </div>
       ),
@@ -43,10 +49,13 @@ export default function BottomNavigation() {
       icon: (
         <div className="w-6 h-6 flex items-center justify-center">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M18 0H2C0.9 0 0 0.9 0 2V20L4 16H18C19.1 16 20 15.1 20 14V2C20 0.9 19.1 0 18 0Z" transform="scale(0.9) translate(1,1)"/>
-            <circle cx="6" cy="8" r="1"/>
-            <circle cx="10" cy="8" r="1"/>
-            <circle cx="14" cy="8" r="1"/>
+            <path
+              d="M18 0H2C0.9 0 0 0.9 0 2V20L4 16H18C19.1 16 20 15.1 20 14V2C20 0.9 19.1 0 18 0Z"
+              transform="scale(0.9) translate(1,1)"
+            />
+            <circle cx="6" cy="8" r="1" />
+            <circle cx="10" cy="8" r="1" />
+            <circle cx="14" cy="8" r="1" />
           </svg>
         </div>
       ),
@@ -58,8 +67,11 @@ export default function BottomNavigation() {
       icon: (
         <div className="w-6 h-6 flex items-center justify-center">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-            <circle cx="10" cy="5" r="3"/>
-            <path d="M10 11c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4z" transform="translate(0,1)"/>
+            <circle cx="10" cy="5" r="3" />
+            <path
+              d="M10 11c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4z"
+              transform="translate(0,1)"
+            />
           </svg>
         </div>
       ),
@@ -90,7 +102,9 @@ export default function BottomNavigation() {
                 <div className="mb-1 transform transition-transform duration-200 hover:scale-110">
                   {tab.icon}
                 </div>
-                <span className="text-xs font-[Alata] font-medium">{tab.label}</span>
+                <span className="text-xs font-[Alata] font-medium">
+                  {tab.label}
+                </span>
               </button>
             );
           })}

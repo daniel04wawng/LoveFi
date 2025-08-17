@@ -99,7 +99,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
     setUserData((prev) => ({
       ...prev,
       savedProfiles: (prev.savedProfiles || []).filter(
-        (profile) => profile.id !== profileId
+        (profile) => profile.id !== profileId,
       ),
     }));
   }, []);
@@ -107,10 +107,10 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
   const isSaved = useCallback(
     (profileId: string) => {
       return (userData.savedProfiles || []).some(
-        (profile) => profile.id === profileId
+        (profile) => profile.id === profileId,
       );
     },
-    [userData.savedProfiles]
+    [userData.savedProfiles],
   );
 
   // UserProvider is ready
