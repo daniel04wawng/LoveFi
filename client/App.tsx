@@ -72,11 +72,21 @@ const App = () => (
 
 const rootElement = document.getElementById("root")!;
 
-// Fix for development hot reload context issues
+// Improved hot module reload handling
 if (import.meta.hot) {
-  // Always create a fresh root during hot reload to prevent context issues
+  // Clear any existing React root to prevent conflicts
+  if ((rootElement as any)._reactRootContainer) {
+    (rootElement as any)._reactRootContainer.unmount();
+    delete (rootElement as any)._reactRootContainer;
+  }
+
+  // Create fresh root for hot reload
   const root = createRoot(rootElement);
+  (rootElement as any)._reactRootContainer = root;
   root.render(<App />);
+
+  // Accept hot updates for this module
+  import.meta.hot.accept();
 } else {
   // In production, create root normally
   const root = createRoot(rootElement);
