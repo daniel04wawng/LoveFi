@@ -13,37 +13,47 @@ export default function MatchingScreen() {
   // Generate profiles based on user data
   useEffect(() => {
     const userInterests = userData.personalInterests || [];
-    const userPreferences = userData.partnerPreferences?.map(pref => pref.options[pref.selected]).filter(Boolean) || [];
+    const userPreferences =
+      userData.partnerPreferences
+        ?.map((pref) => pref.options[pref.selected])
+        .filter(Boolean) || [];
 
-    const generatedProfiles = generateProfiles(10, userInterests, userPreferences);
+    const generatedProfiles = generateProfiles(
+      10,
+      userInterests,
+      userPreferences,
+    );
     setProfiles(generatedProfiles);
   }, [userData]);
 
   const currentProfile = profiles[currentProfileIndex];
 
-  const handlePhotoChange = (direction: 'up' | 'down') => {
+  const handlePhotoChange = (direction: "up" | "down") => {
     if (!currentProfile) return;
-    
-    if (direction === 'up' && currentPhotoIndex > 0) {
+
+    if (direction === "up" && currentPhotoIndex > 0) {
       setCurrentPhotoIndex(currentPhotoIndex - 1);
-    } else if (direction === 'down' && currentPhotoIndex < currentProfile.photos.length - 1) {
+    } else if (
+      direction === "down" &&
+      currentPhotoIndex < currentProfile.photos.length - 1
+    ) {
       setCurrentPhotoIndex(currentPhotoIndex + 1);
     }
   };
 
-  const handleAction = (action: 'decline' | 'message' | 'save') => {
+  const handleAction = (action: "decline" | "message" | "save") => {
     switch (action) {
-      case 'decline':
+      case "decline":
         // Move to next profile
         nextProfile();
         break;
-      case 'message':
+      case "message":
         // Navigate to messaging (not implemented yet)
-        console.log('Navigate to messaging');
+        console.log("Navigate to messaging");
         break;
-      case 'save':
+      case "save":
         // Save profile for later
-        console.log('Profile saved');
+        console.log("Profile saved");
         nextProfile();
         break;
     }
@@ -55,7 +65,7 @@ export default function MatchingScreen() {
       setCurrentPhotoIndex(0);
     } else {
       // No more profiles - could show empty state or fetch more
-      console.log('No more profiles');
+      console.log("No more profiles");
     }
   };
 
@@ -68,8 +78,12 @@ export default function MatchingScreen() {
       <div className="w-full h-full bg-white flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-lovefi-purple mx-auto mb-4"></div>
-          <h2 className="text-xl font-[Alata] text-black mb-2">Finding your matches...</h2>
-          <p className="text-gray-600">Hold tight while we find people who share your interests!</p>
+          <h2 className="text-xl font-[Alata] text-black mb-2">
+            Finding your matches...
+          </h2>
+          <p className="text-gray-600">
+            Hold tight while we find people who share your interests!
+          </p>
         </div>
       </div>
     );
@@ -79,7 +93,9 @@ export default function MatchingScreen() {
     return (
       <div className="w-full h-full bg-white flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-xl font-[Alata] text-black mb-2">No more profiles</h2>
+          <h2 className="text-xl font-[Alata] text-black mb-2">
+            No more profiles
+          </h2>
           <p className="text-gray-600">Check back later for new matches!</p>
         </div>
       </div>
@@ -103,14 +119,14 @@ export default function MatchingScreen() {
             />
           </svg>
         </button>
-        
         <div className="text-center">
-          <h1 className="text-2xl font-[Alata] font-normal text-black">Discover</h1>
+          <h1 className="text-2xl font-[Alata] font-normal text-black">
+            Discover
+          </h1>
           <p className="text-xs font-[Alata] text-black/70">
             {userData.location || "Your Location"}
           </p>
         </div>
-        
         <div className="w-[52px]"></div> {/* Spacer */}
       </div>
 
@@ -134,15 +150,15 @@ export default function MatchingScreen() {
               const handleTouchEnd = (endEvent: TouchEvent) => {
                 const endY = endEvent.changedTouches[0].clientY;
                 const deltaY = startY - endY;
-                
+
                 if (Math.abs(deltaY) > 50) {
-                  handlePhotoChange(deltaY > 0 ? 'up' : 'down');
+                  handlePhotoChange(deltaY > 0 ? "up" : "down");
                 }
-                
-                document.removeEventListener('touchend', handleTouchEnd);
+
+                document.removeEventListener("touchend", handleTouchEnd);
               };
-              
-              document.addEventListener('touchend', handleTouchEnd);
+
+              document.addEventListener("touchend", handleTouchEnd);
             }}
           >
             <img
@@ -155,17 +171,30 @@ export default function MatchingScreen() {
           {/* Distance indicator */}
           <div className="absolute top-9 left-4">
             <div className="bg-white/15 rounded-[7px] px-3 py-2 flex items-center">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="mr-2">
-                <path d="M6.99996 0.583374C9.73838 0.583374 11.9583 2.80329 11.9583 5.54171C11.9583 7.28329 11.1546 9.04441 9.81092 10.7629C9.33404 11.3728 8.81541 11.9415 8.28408 12.4594C8.24031 12.5021 8.19727 12.5436 8.155 12.5841L7.9112 12.8127L7.68865 13.0133L7.48987 13.185L7.36847 13.2856C7.15544 13.4592 6.85014 13.4606 6.63555 13.2889L6.50862 13.1838L6.31075 13.0129L6.08861 12.8126L5.84491 12.5841L5.71583 12.4594C5.18451 11.9415 4.66588 11.3728 4.189 10.7629C2.84534 9.04441 2.04163 7.28329 2.04163 5.54171C2.04163 2.80329 4.26154 0.583374 6.99996 0.583374Z" fill="white"/>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                className="mr-2"
+              >
+                <path
+                  d="M6.99996 0.583374C9.73838 0.583374 11.9583 2.80329 11.9583 5.54171C11.9583 7.28329 11.1546 9.04441 9.81092 10.7629C9.33404 11.3728 8.81541 11.9415 8.28408 12.4594C8.24031 12.5021 8.19727 12.5436 8.155 12.5841L7.9112 12.8127L7.68865 13.0133L7.48987 13.185L7.36847 13.2856C7.15544 13.4592 6.85014 13.4606 6.63555 13.2889L6.50862 13.1838L6.31075 13.0129L6.08861 12.8126L5.84491 12.5841L5.71583 12.4594C5.18451 11.9415 4.66588 11.3728 4.189 10.7629C2.84534 9.04441 2.04163 7.28329 2.04163 5.54171C2.04163 2.80329 4.26154 0.583374 6.99996 0.583374Z"
+                  fill="white"
+                />
               </svg>
-              <span className="text-white text-xs font-[Alata]">{currentProfile.distance} km</span>
+              <span className="text-white text-xs font-[Alata]">
+                {currentProfile.distance} km
+              </span>
             </div>
           </div>
 
           {/* Match percentage */}
           <div className="absolute top-9 right-4">
             <div className="bg-white/15 rounded-[7px] px-3 py-2">
-              <span className="text-white text-xs font-[Alata]">{currentProfile.matchPercentage}% Match</span>
+              <span className="text-white text-xs font-[Alata]">
+                {currentProfile.matchPercentage}% Match
+              </span>
             </div>
           </div>
 
@@ -177,7 +206,7 @@ export default function MatchingScreen() {
                   <div
                     key={index}
                     className={`w-2 h-2 rounded-full ${
-                      index === currentPhotoIndex ? 'bg-white' : 'bg-white/50'
+                      index === currentPhotoIndex ? "bg-white" : "bg-white/50"
                     }`}
                   />
                 ))}
@@ -220,7 +249,7 @@ export default function MatchingScreen() {
         <div className="flex items-center justify-center mt-6 relative">
           {/* Decline button */}
           <button
-            onClick={() => handleAction('decline')}
+            onClick={() => handleAction("decline")}
             className="w-[78px] h-[78px] rounded-full bg-white shadow-lg flex items-center justify-center mr-5"
           >
             <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
@@ -235,7 +264,7 @@ export default function MatchingScreen() {
 
           {/* Message button */}
           <button
-            onClick={() => handleAction('message')}
+            onClick={() => handleAction("message")}
             className="w-[99px] h-[99px] rounded-full bg-lovefi-purple shadow-lg flex items-center justify-center relative z-10"
           >
             <svg width="48" height="48" viewBox="0 0 52 54" fill="none">
@@ -251,7 +280,7 @@ export default function MatchingScreen() {
 
           {/* Save/Heart button */}
           <button
-            onClick={() => handleAction('save')}
+            onClick={() => handleAction("save")}
             className="w-[78px] h-[78px] rounded-full bg-white shadow-lg flex items-center justify-center ml-5"
           >
             <svg width="51" height="51" viewBox="0 0 51 51" fill="none">

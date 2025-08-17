@@ -76,7 +76,7 @@ export default function BottomNavigation() {
         <div className="flex items-center justify-around py-2">
           {tabs.map((tab) => {
             const isActive = location.pathname === tab.path;
-            
+
             return (
               <button
                 key={tab.id}
@@ -87,9 +87,7 @@ export default function BottomNavigation() {
                     : "text-gray-500 hover:text-gray-700"
                 }`}
               >
-                <div className="mb-1">
-                  {tab.icon}
-                </div>
+                <div className="mb-1">{tab.icon}</div>
                 <span className="text-xs font-[Alata]">{tab.label}</span>
               </button>
             );
