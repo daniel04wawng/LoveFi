@@ -156,7 +156,7 @@ export default function MatchingScreen() {
 
           {/* Main photo with transition animations */}
           <div
-            className="absolute top-4 left-0 right-4 bottom-0 cursor-pointer rounded-[15px] overflow-hidden"
+            className="absolute top-4 left-0 right-4 bottom-0 cursor-pointer rounded-[15px] overflow-hidden group"
             onTouchStart={(e) => {
               if (isAnimating || isPhotoTransitioning) return;
               const startY = e.touches[0].clientY;
