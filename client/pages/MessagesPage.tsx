@@ -120,6 +120,7 @@ export default function MessagesPage() {
     setOpenChatId(null);
     setSearchParams({});
     setCurrentChatMessages([]); // Clear current chat when closing
+    setIsAnimatingIn(false);
   };
 
   const handleSendMessage = () => {
