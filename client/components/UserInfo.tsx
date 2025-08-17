@@ -274,7 +274,8 @@ export default function UserInfo({ onContinue, onBack }: UserInfoProps) {
                       Zero-Knowledge Proof
                     </p>
                     <p className="text-xs text-blue-600 font-alata">
-                      Optional cryptographic proof for enhanced privacy and verification without revealing personal data.
+                      Optional cryptographic proof for enhanced privacy and
+                      verification without revealing personal data.
                     </p>
                   </div>
                 </div>
