@@ -118,10 +118,16 @@ export default function MessagesPage() {
   };
 
   const closeChat = () => {
-    setOpenChatId(null);
-    setSearchParams({});
-    setCurrentChatMessages([]); // Clear current chat when closing
-    setIsAnimatingIn(false);
+    setIsAnimatingOut(true);
+
+    // Wait for slide-down animation to complete before closing
+    setTimeout(() => {
+      setOpenChatId(null);
+      setSearchParams({});
+      setCurrentChatMessages([]);
+      setIsAnimatingIn(false);
+      setIsAnimatingOut(false);
+    }, 300);
   };
 
   const handleSendMessage = () => {
