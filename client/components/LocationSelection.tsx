@@ -65,9 +65,57 @@ export default function LocationSelection({
   const isFromProfile = locationState.state?.from === 'profile';
   const backRoute = isFromProfile ? '/profile' : '/gender-selection';
 
+  // Debounced search function
+  useEffect(() => {
+    const searchTimer = setTimeout(() => {
+      if (locationData.city.length > 2) {
+        searchLocations(locationData.city);
+      } else {
+        setSuggestions([]);
+        setShowSuggestions(false);
+      }
+    }, 300);
+
+    return () => clearTimeout(searchTimer);
+  }, [locationData.city]);
+
+  const searchLocations = async (query: string) => {
+    setIsSearching(true);
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=5&q=${encodeURIComponent(query)}`
+      );
+      const results: NominatimResult[] = await response.json();
+      setSuggestions(results);
+      setShowSuggestions(results.length > 0);
+    } catch (error) {
+      console.error('Geocoding search failed:', error);
+      setSuggestions([]);
+      setShowSuggestions(false);
+    } finally {
+      setIsSearching(false);
+    }
+  };
+
+  const handleSuggestionSelect = (suggestion: NominatimResult) => {
+    const city = suggestion.address.city || suggestion.address.town || suggestion.address.village || '';
+    const country = suggestion.address.country || '';
+
+    setLocationData({
+      city,
+      country,
+      fullAddress: suggestion.display_name,
+      latitude: parseFloat(suggestion.lat),
+      longitude: parseFloat(suggestion.lon)
+    });
+
+    setShowSuggestions(false);
+  };
+
   const handleContinue = () => {
-    // Save location and radius to context when continuing
-    updateUserData({ location, radius });
+    // Save structured location data as JSON string for backward compatibility
+    const locationString = JSON.stringify(locationData);
+    updateUserData({ location: locationString, radius });
     if (onContinue) {
       onContinue();
     }
@@ -80,9 +128,15 @@ export default function LocationSelection({
     return "[Name]";
   };
 
-  const handleLocationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLocation(e.target.value);
+  const handleCityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLocationData(prev => ({ ...prev, city: e.target.value }));
   };
+
+  const handleCountryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLocationData(prev => ({ ...prev, country: e.target.value }));
+  };
+
+  const canContinue = locationData.city.trim() && locationData.country.trim();
 
   return (
     <AnimatedPageWrapper direction="left">
