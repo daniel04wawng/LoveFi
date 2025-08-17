@@ -100,8 +100,10 @@ export default function MatchingScreen() {
       case "save":
         // Heart button: Save to messages list but don't navigate
         if (currentProfile) {
+          console.log("Heart button clicked for profile:", currentProfile.name);
           saveProfile(currentProfile);
           addToMessages(currentProfile);
+          console.log("Profile saved and added to messages");
         }
         animateCardAndNext("right");
         break;
