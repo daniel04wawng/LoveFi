@@ -531,7 +531,7 @@ export default function MessagesPage() {
                                     <span className="font-[Alata] font-medium">Stake Proposal</span>
                                   </div>
                                   <p className="text-sm font-[Alata] mb-3">
-                                    💎 ${message.stakeData?.amount} for exclusive relationship
+                                    💎 {message.stakeData?.amount} ETH for exclusive relationship
                                   </p>
                                   {message.stakeData?.status === "pending" && !message.isFromUser && (
                                     <div className="flex gap-2 mt-3">
