@@ -72,7 +72,7 @@ export default function StakeProposal({
             Stake Your Commitment
           </h2>
           <p className="text-gray-600 font-[Alata] text-sm">
-            How much are you willing to stake for an exclusive relationship with {recipientName}?
+            How much ETH are you willing to stake for an exclusive relationship with {recipientName}?
           </p>
         </div>
 
