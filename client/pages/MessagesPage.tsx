@@ -45,7 +45,8 @@ export default function MessagesPage() {
 
       // If no conversation exists, start with default demo messages
       if (conversationMessages.length === 0) {
-        const profile = messages.find(p => p.id === chatId);
+        const userMessages = userData.messages || [];
+        const profile = userMessages.find(p => p.id === chatId);
         if (profile) {
           const userName = userData.firstName || "there";
           setCurrentChatMessages(getDefaultMessages(userName));
