@@ -39,6 +39,12 @@ export default function BottomNavigation() {
       path: "/challenges",
       icon: "🎯",
     },
+    {
+      id: "predictions",
+      label: "Predictions",
+      path: "/friends-predictions",
+      icon: "🔮",
+    },
   ];
 
   const singlesTabs: Tab[] = [
