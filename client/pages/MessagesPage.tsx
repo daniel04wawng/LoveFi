@@ -361,16 +361,18 @@ export default function MessagesPage() {
 
         {/* Chat Modal Overlay */}
         {openChatId && currentChatProfile && (
-          <div className="fixed inset-0 bg-black/50 z-50 flex flex-col">
+          <div className="fixed inset-0 bg-black/60 z-50 flex flex-col">
             <div
-              className={`flex-1 bg-white relative max-w-sm mx-auto w-full transition-transform duration-300 ease-out ${
+              className={`flex-1 bg-white relative w-full ${
                 isAnimatingIn
-                  ? 'translate-y-0 animate-slide-up'
-                  : 'translate-y-0'
+                  ? ''
+                  : ''
               }`}
               style={{
                 transform: isAnimatingIn ? 'translateY(100%)' : 'translateY(0)',
-                animation: isAnimatingIn ? 'slideUp 0.3s ease-out forwards' : 'none'
+                animation: isAnimatingIn ? 'slideUp 0.4s cubic-bezier(0.4, 0.0, 0.2, 1) forwards' : 'none',
+                maxWidth: '100vw',
+                borderRadius: isAnimatingIn ? '0' : '24px 24px 0 0'
               }}
             >
               {/* Header with Back Button */}
