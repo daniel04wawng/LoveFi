@@ -19,6 +19,10 @@ import LocationSelectionPage from "./pages/LocationSelectionPage";
 import PersonalInterestsPage from "./pages/PersonalInterestsPage";
 import PartnerPreferencesPage from "./pages/PartnerPreferencesPage";
 import PhotoUploadPage from "./pages/PhotoUploadPage";
+import MatchingPage from "./pages/MatchingPage";
+import SavedPage from "./pages/SavedPage";
+import MessagesPage from "./pages/MessagesPage";
+import ProfilePage from "./pages/ProfilePage";
 
 const queryClient = new QueryClient();
 
