@@ -21,7 +21,13 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@dynamic-labs/ethereum": "^4.27.0",
+    "@dynamic-labs/flow": "^4.27.0",
+    "@dynamic-labs/sdk-react-core": "^4.27.0",
+    "@dynamic-labs/waas-evm": "^4.27.0",
+    "@supabase/supabase-js": "^2.55.0",
     "dotenv": "^17.2.1",
+    "ethers": "^6.15.0",
     "express": "^5.1.0",
     "zod": "^3.25.76"
   },

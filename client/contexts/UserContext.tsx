@@ -98,6 +98,14 @@ interface UserData {
     nftTokenId?: string;
     nftMintDate?: string;
   };
+
+  // Profile NFT data
+  nftTokenId?: number;
+  nftContractAddress?: string;
+  transactionHash?: string;
+  metadataURI?: string;
+  profileNFTMinted?: boolean;
+  profileNFTMintDate?: string;
 }
 
 interface UserContextType {
