@@ -22,11 +22,16 @@ interface NominatimResult {
   lat: string;
   lon: string;
   address: {
+    house_number?: string;
+    road?: string;
+    street?: string;
     city?: string;
     town?: string;
     village?: string;
+    state?: string;
     country?: string;
     country_code?: string;
+    postcode?: string;
   };
 }
 
