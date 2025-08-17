@@ -269,17 +269,33 @@ export default function MatchingScreen() {
             </div>
           )}
 
-          {/* Swipe hints overlay */}
+          {/* Swipe hints overlay with transition feedback */}
           <div className="absolute inset-0 pointer-events-none z-10">
-            <div className="absolute top-0 left-0 right-0 h-1/2 flex items-center justify-center">
-              <div className="bg-black/20 rounded-full px-3 py-1 opacity-0 hover:opacity-100 transition-opacity">
-                <span className="text-white text-xs">↑ Next photo</span>
-              </div>
+            <div className={`absolute top-0 left-0 right-0 h-1/2 flex items-center justify-center transition-all duration-200 ${
+              isPhotoTransitioning && photoTransitionDirection === 'up' ? 'bg-white/10' : ''
+            }`}>
+              {currentPhotoIndex < currentProfile.photos.length - 1 && (
+                <div className={`bg-black/20 rounded-full px-3 py-1 transition-all duration-200 ${
+                  isPhotoTransitioning && photoTransitionDirection === 'up'
+                    ? 'opacity-100 scale-110'
+                    : 'opacity-0 group-hover:opacity-60'
+                }`}>
+                  <span className="text-white text-xs">↑ Next photo</span>
+                </div>
+              )}
             </div>
-            <div className="absolute bottom-0 left-0 right-0 h-1/2 flex items-center justify-center">
-              <div className="bg-black/20 rounded-full px-3 py-1 opacity-0 hover:opacity-100 transition-opacity">
-                <span className="text-white text-xs">↓ Previous photo</span>
-              </div>
+            <div className={`absolute bottom-0 left-0 right-0 h-1/2 flex items-center justify-center transition-all duration-200 ${
+              isPhotoTransitioning && photoTransitionDirection === 'down' ? 'bg-white/10' : ''
+            }`}>
+              {currentPhotoIndex > 0 && (
+                <div className={`bg-black/20 rounded-full px-3 py-1 transition-all duration-200 ${
+                  isPhotoTransitioning && photoTransitionDirection === 'down'
+                    ? 'opacity-100 scale-110'
+                    : 'opacity-0 group-hover:opacity-60'
+                }`}>
+                  <span className="text-white text-xs">↓ Previous photo</span>
+                </div>
+              )}
             </div>
           </div>
 
