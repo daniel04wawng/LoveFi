@@ -362,7 +362,7 @@ export default function MessagesPage() {
               onClick={() => (window.location.href = "/messages")}
               className="flex flex-col items-center justify-center py-4 px-2 rounded-lg text-purple-600 bg-purple-100"
             >
-              <div className="text-3xl mb-2">���</div>
+              <div className="text-3xl mb-2">💬</div>
               <span className="text-sm font-medium">Messages</span>
             </button>
             <button
@@ -617,6 +617,14 @@ export default function MessagesPage() {
             </div>
           </div>
         )}
+
+        {/* Stake Proposal Modal */}
+        <StakeProposal
+          isOpen={isStakeModalOpen}
+          onClose={() => setIsStakeModalOpen(false)}
+          onSubmit={handleStakeSubmit}
+          recipientName={currentChatProfile?.name || ""}
+        />
       </div>
     </AnimatedPageWrapper>
   );
